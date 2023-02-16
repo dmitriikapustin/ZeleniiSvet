@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 
-import Button from '../components/Button';
-import ProjectsList from '../components/ItemsCards.jsx';
-
 import { motion, AnimatePresence } from "framer-motion";
 
 import Head from 'next/head'
