@@ -9,6 +9,14 @@ import '../styles/atoms/Button.sass';
 
 // Подключаем блоки
 import '../styles/components/Block.sass';
+import '../styles/components/PromoLine.sass'
+import '../styles/components/Header.sass'
+import '../styles/components/HeroSection.sass'
+import '../styles/components/Services.sass'
+import '../styles/components/Help.sass'
+import '../styles/components/WeWork.sass'
+import '../styles/components/Map.sass'
+import '../styles/components/Footer.sass'
 
 // Эти контроллеры не удаляем
 // Внутри контроллеров пишутся дефолтные стили по цветам, шрифтам и прочему

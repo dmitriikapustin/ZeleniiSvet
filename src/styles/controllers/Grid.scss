@@ -64,18 +64,18 @@ $mob-gutter: (
   }
   
   // CLASSES
-.container {
-    @include grid-base($desk-grid-width);
-    @media screen and (max-width: $grid-ipad-breakpoint) {
-      width: $ipad-grid-width;
-    }
-    @media screen and (max-width: $grid-mobile-breakpoint) {
-      width: $mob-grid-width;
-    }
-    &-0 {
-      @include grid-base(100%);
-    }
-  }
+// .container {
+//     @include grid-base($desk-grid-width);
+//     @media screen and (max-width: $grid-ipad-breakpoint) {
+//       width: $ipad-grid-width;
+//     }
+//     @media screen and (max-width: $grid-mobile-breakpoint) {
+//       width: $mob-grid-width;
+//     }
+//     &-0 {
+//       @include grid-base(100%);
+//     }
+//   }
   
 .c {
   @include columns-loop(d, $grid-desktop-columns, $desk-gutter);

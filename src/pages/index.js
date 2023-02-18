@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-
-import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
 
 import Head from 'next/head'
-
-import Block from '../components/Block'
+import PromoLine from '@/components/PromoLine';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import Services from '@/components/Services/Services';
+import Help from '@/components/Help';
+import WeWork from '@/components/WeWork/WeWork';
+import MapBlock from '@/components/MapBlock';
+import Footer from '@/components/Footer';
 
 function App() {
-
-  const [modalOpen, setModalOpen] = useState(false)
-  const close = () => setModalOpen(false)
-  const open = () => setModalOpen(true)
 
   return (
     <>
@@ -19,9 +19,18 @@ function App() {
         <title>Заголовок</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
-
-      <Block />
-
+      <PromoLine/>
+      <div className='scroll-area'>
+        <Header/>
+        <main>
+          <HeroSection/>
+          <Services/>
+          <Help/>
+          <WeWork/>
+          <MapBlock/>
+          <Footer/>
+        </main>
+      </div>
     </>
   );
 }
