@@ -1,0 +1,35 @@
+.services
+    margin: -150px 0px 90px
+    .container
+        gap: 20px
+
+    &-card
+        background: var(--white)
+        border-radius: 15px
+        overflow: hidden
+
+        &__img
+            height: 150px
+
+        &__body
+            padding: 30px 20px 40px
+            text-align: center
+        
+        &__title
+            color: var(--dark-green)
+            margin-bottom: 15px
+            font-size: 24px
+            line-height: 29px
+
+            b
+                color: var(--light-green)
+        
+        &__desc
+            color: var(--gray)
+            font-size: 14px
+            line-height: 17px
+    
+    @media(max-width: 1000px)
+        margin-bottom: 40px
+        .container
+            flex-direction: column
