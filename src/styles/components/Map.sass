@@ -6,16 +6,33 @@
 
     .container
         gap: 90px
-        align-items: stretch
+        align-items: center
 
     &__info
         max-width: 410px
         flex-shrink: 0
 
+    &__mask
+        position: absolute
+        display: block
+        width: calc(100% + 2px)
+        height: calc(100% + 2px)
+        top: -1px
+        right: -1px
+        left: -1px
+        bottom: -1px
+        z-index: 100000
+
+        & + div
+            position: relative
+            z-index: 0
+
     &__map
         border-radius: 36px
+        position: relative
         width: 100%
         overflow: hidden
+        height: 455px
 
         div > ymaps:first-child
             display: none
@@ -74,6 +91,9 @@
         &__info
             max-width: none
             padding: 0 20px 70px
+        
+        &__mask
+            display: none
         
         &__map
             border-radius: 36px 36px 0px 0px 

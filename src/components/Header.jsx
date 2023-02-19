@@ -30,7 +30,7 @@ const HeaderContent = ({isMob}) => {
                 <a href="#" className="header__menu-item">Управление активами</a>
                 <a href="#" className="header__menu-item">О компании</a>
             </nav>
-            <button className={`action ${isMob ? 'action--white' : 'action--light'}`}>
+            <button className='action action--light'>
                 Оставить заявку
             </button>
         </>

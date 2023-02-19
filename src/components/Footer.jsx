@@ -1,6 +1,6 @@
 import logo from '../assets/svg/logo-light.svg'
-import inst from '../assets/svg/socials/inst.svg'
-import tg from '../assets/svg/socials/tg.svg'
+import inst from '../assets/svg/socials/inst-green.svg'
+import tg from '../assets/svg/socials/tg-green.svg'
 
 export default function Footer(){
     return(
@@ -29,7 +29,7 @@ export default function Footer(){
                             <img src={inst.src} />
                         </a>
                         <a href="">
-                            <img src={tg.src} />
+                            <img src={tg.src} style={{marginRight: 2}} />
                         </a>
                     </div>
                 </div>
