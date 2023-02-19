@@ -1,0 +1,257 @@
+////////// ---- ОБЩИЕ ДЕФОЛТНЫЕ ---- //////////
+
+
+.cursor-pointer
+	cursor: pointer
+
+.p-events-none
+	pointer-events: none
+
+.p-events-auto
+	pointer-events: auto
+
+
+
+////////// ---- DISPLAY ---- //////////
+
+.block
+	display: block
+
+.inline-block
+	display: inline-block
+
+.table
+	display: table
+
+
+
+////////// ---- FLEX ---- //////////
+
+.flex
+	display: flex
+	&-row
+		flex-direction: row
+	&-row-reverse
+		flex-direction: row-reverse
+	&-col
+		flex-direction: column !important
+	&-col-reverse
+		flex-direction: column-reverse
+	&-wrap
+		flex-wrap: wrap
+	&-wrap-reverse
+		flex-wrap: wrap-reverse
+	&-nowrap
+		flex-wrap: nowrap !important
+
+
+
+
+////////// ---- JUSTIFY CONTENT ---- //////////
+
+.justify
+	&-start
+		justify-content: flex-start
+	&-center
+		justify-content: center
+	&-between
+		justify-content: space-between
+	&-end
+		justify-content: flex-end
+	&-around
+		justify-content: space-around
+	&-evenly
+		justify-content: space-evenly
+
+
+
+////////// ---- ALIGN ITEMS ---- //////////
+
+.items
+	&-start
+		align-items: flex-start
+	&-center
+		align-items: center
+	&-baseline
+		align-items: baseline
+	&-end
+		align-items: flex-end
+	&-stretch
+		align-items: stretch
+
+
+
+////////// ---- WIDTH ---- //////////
+
+.w
+	&-fit
+		width: fit-content
+	&-screen
+		width: 100vw
+	&-full
+		width: 100%
+	&-auto
+		width: auto
+	&-min
+		width: min-content
+	&-max
+		width: max-content
+	&-fill
+		width: stretch
+
+
+////////// ---- HEIGHT ---- //////////
+
+.h
+	&-fit
+		height: fit-content
+	&-screen
+		height: 100vw
+	&-full
+		height: 100%
+	&-auto
+		height: auto
+	&-min
+		height: min-content
+	&-max
+		height: max-content
+	&-fill
+		height: stretch
+
+
+////////// ---- TEXT ALIGN ---- //////////
+
+.text
+	&-left
+		text-align: left
+	&-center
+		text-align: center
+	&-right
+		text-align: right
+	&-justify
+		text-align: justify
+	&-start
+		text-align: start
+	&-end
+		text-align: end
+
+
+////////// ---- POSITION ---- //////////
+
+.static
+	position: static
+
+.absolute
+	position: absolute
+
+.fixed
+	position: fixed
+
+.relative
+	position: relative
+
+.sticky
+	position: sticky
+
+
+////////// ---- OPACITY ---- //////////
+
+.opacity
+	&-0
+		opacity: 0
+	&-50
+		opacity: 0.5
+	&-69
+		opacity: 0.69
+	&-85
+		opacity: 0.85
+	&-100
+		opacity: 1
+
+
+////////// ---- MARGIN ---- //////////
+
+// ПРЕДЛАГАЮ ОБОЗНАЧАТЬ РЯД ПЕРЕМЕННЫХ В ЗАВИСИМОСТИ ОТ МАКЕТА, НО НЕ ЧЕРЕЗ $, А ОБЫЧНЫМИ КЛАССАМИ, ТК $ НЕ ПОДДАЁТСЯ MEDIA QUERIES
+// ПРИМЕР
+
+.m-block-y
+	margin-top: 20px
+	margin-bottom: 20px
+
+//
+
+
+.m
+	&-0
+		margin: 0px
+	&-auto
+		margin: auto
+	&-0-auto
+		margin: 0 auto
+
+
+.mr
+	&-0
+		margin-right: 0
+
+.ml
+	&-0
+		margin-left: 0
+
+.mt
+	&-0
+		margin-top: 0
+
+.mb
+	&-0
+		margin-bottom: 0
+
+.my
+	&-0
+		margin-top: 0
+		margin-bottom: 0
+
+.mx
+	&-0
+		margin-left: 0
+		margin-right: 0
+
+
+
+////////// ---- PADDING ---- //////////
+
+// ЗДЕСЬ МОЖНО СДЕЛАТЬ ПЕРМЕННУЮ-КЛАСС ДЛЯ БЛОКОВ, ИМЕЮЩИХ КОНТЕНТ И IMAGE НА BC
+// ЧТОБЫ КАРТИНКА ТЯНУЛАСЬ НА 100%, А КОНТЕНТ СОХРАНЯЛ ОТСТУПЫ
+
+.p
+	&-0
+		padding: 0px
+	&-auto
+		padding: auto
+
+
+.pr
+	&-0
+		padding-right: 0
+
+.pl
+	&-0
+		padding-left: 0
+
+.pt
+	&-0
+		padding-top: 0
+
+.pb
+	&-0
+		padding-bottom: 0
+
+.py
+	&-0
+		padding-top: 0
+		padding-bottom: 0
+
+.px
+	&-0
+		padding-left: 0
+		padding-right: 0

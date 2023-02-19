@@ -1,0 +1,52 @@
+section
+    overflow-x: hidden 
+
+:root
+    --white: #fff
+    --primary-white: #F4F5F9
+    --dark-green: #164629
+    --light-green: #35C759
+    --light-gray: #636363
+    --gray: #5B5B5B
+    --main-bg: radial-gradient(94.76% 94.76% at 0% -1.16%, #F4F5F9 0%, rgba(244, 245, 249, 0.95) 100%) 
+
+.container
+    max-width: 1280px
+    padding: 0px 20px
+    width: 100%
+    margin: 0 auto
+
+.scroll-area
+    position: relative
+
+.action
+    padding: 13px 25px
+    background: var(--primary-white)
+    color: var(--light-green)
+    border: none
+    outline: none
+    border-radius: 35px
+    font-size: 16px
+    line-height: 20px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+
+    &--light
+        background: var(--light-green)
+        color: var(--white)
+
+    &--white
+        background: var(--white)
+        color: var(--dark-green)
+
+        svg path
+            fill: var(--dark-green)
+
+body, html
+    background: var(--main-bg)
+
+
+body, html, section, footer
+    overflow-x: hidden
