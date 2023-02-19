@@ -37,14 +37,22 @@
                 height: 3px
                 background: var(--light-green)
                 border-radius: 3px
+                transition: all .7s
 
                 &:nth-child(2)
                     width: 29px
                     transition: all .3s
 
             &--open
+                span:nth-child(1)
+                    transform-origin: top left
+                    transform: rotate(45deg) translateY(-9px)
+                    width: 30px
+                span:nth-child(3)
+                    transform: rotate(-45deg) translateX(4px) translateY(-3px)
+                    width: 30px
                 span:nth-child(2)
-                    transform: translateX(11px)
+                    display: none
                     
 
         &-mob
@@ -54,8 +62,8 @@
             z-index: 100
             opacity: 0
             transition: all .7s
-            top: 49px
-            min-height: calc(100vh - 49px)
+            top: 48px
+            min-height: calc(100vh - 48px)
             right: 0
             left: 0
 
@@ -66,7 +74,7 @@
 
                 .action
                     display: inline-flex
-                    color: var(--light-green)
+                    margin: 0 auto
                     padding: 13px 30px
                     font-size: 16px
                     width: 182px
@@ -77,19 +85,19 @@
                     gap: 40px
 
                     a
-                        color: var(--white)
+                        color: var(--light-green)
                         font-size: 20px
                         font-weight: bold
+                        text-align: center
                     
 
                 &-mob__menu
-                    width: 316px
                     min-height: calc(100vh - 49px)
                     margin-left: auto
                     padding: 62px 20px 
                     flex-direction: column
                     display: flex
                     justify-content: space-between
-                    background-color: var(--light-green)
+                    background-color: var(--white)
 
                 

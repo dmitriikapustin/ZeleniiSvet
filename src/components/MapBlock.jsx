@@ -4,6 +4,7 @@ import tg from '../assets/svg/socials/tg.svg'
 import vk from '../assets/svg/socials/vk.svg'
 import wa from '../assets/svg/socials/wa.svg'
 import mark from '../assets/svg/map-icon.svg'
+import mask from '../assets/svg/map-mask.svg'
 import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
 
 const MAP_POINT = [59.9651155, 30.3156276]
@@ -51,6 +52,7 @@ export default function MapBlock() {
                     </div>
                 </div>
                 <div className='map__map'>
+                    <img src={mask.src} className='map__mask' />
                 <YMaps
                     width='100%'
                     height='100%'

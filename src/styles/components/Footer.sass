@@ -20,7 +20,13 @@
             gap: 50px
 
             a
-                display: block
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 40px
+                height: 40px
+                border-radius: 10px
+                background: var(--white)
 
             img
                 width: auto
@@ -41,6 +47,11 @@
     @media(max-width: 1000px)
         &__top
             flex-direction: column
+
+        &__menu
+            grid-template-columns: 1fr
+            gap: 20px
+            padding: 0
 
         &__logo
             max-width: 156px
