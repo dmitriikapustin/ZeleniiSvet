@@ -1,0 +1,53 @@
+.hero
+    background: var(--bg-pic)
+    background-size: cover
+
+    &__title
+        margin-bottom: 37px
+        i
+            color: var(--white)
+            font-style: normal
+            font-size: 64px
+            margin-bottom: 10px
+        span
+            background: var(--primary-white)
+            color: var(--dark-green)
+            padding: 0 30px
+            margin-left: -30px
+            font-weight: 600
+            font-size: 72px
+            line-height: 88px
+            border-radius: 110px
+            white-space: nowrap
+    
+    &__subtitle
+        max-width: 495px
+        margin-bottom: 34px
+        color: var(--primary-white)
+        font-size: 28px
+
+    &__action
+        padding: 13px 25px
+        background: var(--primary-white)
+        color: var(--light-green)
+        border: none
+        outline: none
+        border-radius: 35px
+        font-size: 16px
+
+    .container
+        padding: 80px 20px 230px 120px
+
+    @media(max-width: 1000px)
+        .container
+            padding: 40px 20px 320px
+        &__subtitle
+            font-size: 16px
+        &__title
+            i
+                font-size: 48px 
+            span
+                font-size: 48px
+                line-height: 59px
+                padding: 0 20px
+                margin-left: -15px

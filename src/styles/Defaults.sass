@@ -9,6 +9,45 @@ section
     --light-gray: #636363
     --gray: #5B5B5B
     --main-bg: radial-gradient(94.76% 94.76% at 0% -1.16%, #F4F5F9 0%, rgba(244, 245, 249, 0.95) 100%) 
+    --bg-pic: url('/images/back.jpg')
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    overflow-y: visible
+
+
+#map
+    overflow: visible
+    & *
+        overflow: visible
+
+section
+    width: inherit
+
+img
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+.hidden
+    display: none
+
+.opacity
+    opacity: 0.5
+    width: 20px
+    margin-right: 0px
+
+.cont-padding-l-r
+    padding-left: 50px !important
+    padding-right: 50px !important
+
+
+.cont-padding
+    padding: 50px !important
 
 .container
     max-width: 1280px
@@ -32,10 +71,19 @@ section
     align-items: center
     justify-content: center
     gap: 10px
+    transition: all 0.3s ease-out
+    cursor: pointer
+
+    &:hover
+        background: var(--dark-green)
+        color: var(--white)
+        svg path 
+            fill: var(--white)
 
     &--light
         background: var(--light-green)
         color: var(--white)
+        
 
     &--white
         background: var(--white)

@@ -10,35 +10,32 @@ import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
 
 import Slider from '../components/Slider';
-import CalcBlock from '@/blocks/CalcBlock';
-import FormBlock from '@/blocks/FormBlock';
-import PartnersBlock from '@/blocks/PartnersBlock';
+import CalcBlock from '@/components/Calculator';
+import FormBlock from '@/components/Form';
+import PartnersBlock from '@/components/Partners';
 import FormС from '../components/FormС'
 import Layout from '../components/animationC/Layout'
 import Head from 'next/head'
 import PromoLine from '@/components/PromoLine';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import Services from '@/components/Services/Services';
+import Services from '@/components/Services';
 import Help from '@/components/Help';
-import WeWork from '@/components/WeWork/WeWork';
+import WeWork from '@/components/WeWork';
 import MapBlock from '@/components/MapBlock';
 import Footer from '@/components/Footer';
 
 
+import MainProfits from '@/components/MainProfits'
+import ForWhat from '@/components/ForWhat'
 
 
-
-
-
-
-
-export async function getStaticProps() {
-	const respPhones = await axios.get(`http://localhost:1337/api/form-requests?populate=*`);
-	const dataPhonesResp = respPhones.data;
-	console.log("YOYOOOOYOOYOYYO")
-	return { props: { dataGetPhones: dataPhonesResp } }
-}
+// export async function getStaticProps() {
+// 	const respPhones = await axios.get(`http://localhost:1337/api/form-requests?populate=*`);
+// 	const dataPhonesResp = respPhones.data;
+// 	console.log("YOYOOOOYOOYOYYO")
+// 	return { props: { dataGetPhones: dataPhonesResp } }
+// }
 
 
 
@@ -53,7 +50,7 @@ function App({dataGetPhones}) {
     <>
 
       <Head>
-        <title>Заголовок</title>
+        <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
       <PromoLine/>
@@ -63,10 +60,12 @@ function App({dataGetPhones}) {
           <HeroSection/>
           <Services/>
           <Help/>
+          <MainProfits />
           <WeWork/>
 		  <PartnersBlock />
 		  <div className='bc-white-container'>
 		  	<CalcBlock />
+        <ForWhat />
 		  </div>
 		  <FormBlock data={dataGetPhones}/>
           <MapBlock/>

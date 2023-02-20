@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Link from "next/link";
-import Slider from 'react-rangeslider'
-import 'react-rangeslider/lib/index.css'
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { motion } from "framer-motion";
 import Button from '../components/Button'

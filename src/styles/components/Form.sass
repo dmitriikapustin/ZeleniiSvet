@@ -1,0 +1,330 @@
+@media(max-width: 1000px)
+	.formblock
+		padding: 20px !important
+	.form
+		width: 100% !important
+
+@media ( min-width: 1700px )
+
+	.form
+		width: 460px !important
+
+.form
+	width: 40%
+	h2, p, span
+		color: var(--white)
+	.form-heading
+		margin-bottom: 15px
+	.popup
+		display: none
+		&.active
+			display: flex
+			position: fixed
+			left: 0
+			top: 0
+			justify-content: center
+			align-items: center
+			width: 100%
+			height: 100vh
+			background-color: RGBA(0,0,0,0.7)
+			z-index: 999 !important
+			.popup-container
+				background-color: #fff
+				padding: 15px 25px
+				margin: auto auto
+				width: 350px
+				border-radius: 9px
+				.popup-text
+					margin-bottom: 15px
+				.ok-button-container
+					display: flex
+					justify-content: flex-end !important
+					.ok-button
+						width: fit-content
+						a
+							padding: 4px 8px
+							font-weight: 300 !important
+
+
+
+	.input-field
+		position: relative
+		overflow: visible
+		margin-top: 15px
+
+		// &:not(:placeholder-shown)
+		// 	label
+		// 		top: -16px
+		// 		font-size: 90%
+		// &:focus
+		// 	label
+		// 		top: -16px
+		// 		font-size: 90%
+
+		input
+			border: 0
+			height: 50px
+			background-color: #f5f4f433
+			// opacity: 0.1
+			font-size: 12px
+			overflow: visible
+			width: 65%
+			border-radius: 1000px
+			// &:focus
+			// 	&+label
+			// 		top: -16px
+			// 		font-size: 90%
+			// &:-webkit-autofill
+			// 	&+label
+			// 		top: -16px
+			// 		font-size: 90%
+			// &:not(:placeholder-shown)
+			// 	&+label
+			// 		top: -16px
+			// 		font-size: 90%
+			// &:focus
+			// 	outline: none
+			// 	border-bottom: 1px solid #70BC24
+			// 	transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+		span
+			font-size: 1vw
+			margin-top: 5px
+			color: #DC143C !important
+			width: 100% !important
+
+		label
+			position: absolute
+			font-size: 1.111vw 
+			font-weight: 300
+			line-height: 21px
+			left: 30px
+			top: 15px
+			overflow: visible
+			white-space: nowrap
+			z-index: 1
+			opacity: 0.9
+			color: var(--white)
+			pointer-events: none
+			transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+	.button.form-button
+		width: 50% !important
+		height: auto
+		button
+			transition: all 0.2s ease-out
+			border-radius: 1000px
+			outline: none
+			border: none
+			width: 100%
+			padding: 0 !important
+			height: fit-content !important
+			background-color: var(--white)
+			display: flex
+			justify-content: center
+			align-items: center
+			a 
+				color: var(--light-green)
+			&:hover
+				background-color: var(--dark-green)
+				a 
+					color: var(--white)
+			&.disabled
+				opacity: 0.8
+
+
+
+
+
+
+/// FORMBLOCK
+
+.formblock
+	margin-top: 0px
+	padding: 30px 60px
+	margin-bottom: 80px
+	border-radius: 30px
+	width: 100%
+	height: 100%
+	background-size: cover !important
+	background-position: center
+	object-fit: cover
+	background: var(--bg-pic)
+	background-size: cover
+	// transform-style: preserve-3d
+	// transform: skew(1deg) perspective(100px) rotateY(-0.5deg) 
+	.formblock-container
+		padding-left: 50px
+	&.wide div
+		flex-direction: row !important
+
+
+.range-slider
+
+
+	input[type=range] 
+		// -webkit-appearance: none /* Hides the slider so that custom slider can be made */
+		width: 100% /* Specific width is required for Firefox. */
+		// background: var(--gray)
+		color: var(--light-green) !important
+		background-color: #dedede !important
+		// background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff1100), color-stop(100%, #ff1100)) !important
+
+
+
+	input[type=range]::-webkit-slider-thumb 
+		// -webkit-appearance: none
+		
+
+	input[type=range]:focus 
+		outline: none /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+		
+
+	input[type=range]::-ms-track 
+		width: 100%
+		cursor: pointer
+
+		/* Hides the slider so custom styles can be added */
+		// background: transparent 
+		// border-color: transparent
+		color: var(--light-green) !important
+		
+
+	/* Special styling for WebKit/Blink */
+	input[type=range]::-webkit-slider-thumb 
+		-webkit-appearance: none
+		border: none
+		height: 14px
+		width: 14px
+		border-radius: 1000px
+		background: var(--light-green) 
+		cursor: pointer
+		margin-top: -4px /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+		box-shadow: none
+
+
+
+	/* All the same stuff for Firefox */
+	input[type=range]::-moz-range-thumb 
+		box-shadow: none
+		border: none
+		height: 14px
+		width: 14px
+		border-radius: 1000px
+		background: var(--light-green) 
+		cursor: pointer
+
+
+	/* All the same stuff for IE */
+	input[type=range]::-ms-thumb 
+		box-shadow: none
+		border: none
+		height: 14px
+		width: 14px
+		border-radius: 1000px
+		background: var(--light-green) 
+		cursor: pointer
+
+	
+
+	input[type=range] 
+		-webkit-appearance: none
+		margin: 18px 0
+		width: 100%
+		color: var(--light-green) 
+		background: #E4E8ED 
+		border-radius: 10px
+
+	input[type=range]:focus 
+		outline: none
+		// background: var(--light-green)
+
+	input[type=range]::-webkit-slider-runnable-track 
+		width: 100%
+		height: 6px
+		cursor: pointer
+		box-shadow: none
+		border-radius: 10px
+		border: none
+		color: var(--light-green) !important
+
+	input[type=range]:focus::-webkit-slider-runnable-track 
+		// background: var(--light-green) 
+
+	input[type=range]::-moz-range-track 
+		width: 100%
+		height: 6px
+		cursor: pointer
+		box-shadow: none
+		background: var(--light-green) 
+		border-radius: 10px
+		border: none
+		color: var(--light-green) !important
+
+	input[type=range]::-moz-range-thumb 
+		box-shadow: none
+		border: none
+		height: 14px
+		width: 14px
+		border-radius: 1000px
+		background: var(--light-green) 
+		cursor: pointer
+
+	input[type=range]::-ms-track 
+		width: 100%
+		height: 8.4px
+		cursor: pointer
+		background: transparent
+		border-color: transparent
+		border-width: 16px 0
+		color: var(--light-green)
+
+	input[type=range]::-ms-fill-lower 
+		border: none
+		background: var(--light-green) 
+		border-radius: 10px
+		box-shadow: none
+		color: var(--light-green) !important
+
+	input[type=range]::-ms-fill-upper 
+		background: var(--light-green) 
+		border-radius: 10px
+		border:  none
+		box-shadow: none
+		color: var(--light-green) !important
+
+	input[type=range]::-ms-thumb 
+		box-shadow: none
+		border: none
+		height: 14px
+		width: 14px
+		border-radius: 1000px
+		background: var(--light-green) 
+		cursor: pointer
+		color: var(--light-green) !important
+
+
+	input[type=range]:focus::-ms-fill-lower 
+		background: var(--light-green) 
+
+	input[type=range]:focus::-ms-fill-upper 
+		background: var(--light-green)  
+
+
+// .sum div
+// 	height: 36px
+// 	display: flex
+// 	width: 100%
+// 	div 
+// 		height: '5px',
+// 		width: '100%',
+// 		borderRadius: '4px',
+// 		background: getTrackBackground({
+// 			values,
+// 			colors: ['#548BF4', '#ccc'],
+// 			min: MIN,
+// 			max: MAX,
+// 			rtl
+// 		}),
+// 		alignSelf: 'center'
+

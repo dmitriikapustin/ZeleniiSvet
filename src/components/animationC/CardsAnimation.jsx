@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 const CardsAnimation = ({children, className}) => {
 
-    
     const initial = {
         opacity: 0,
         scale: .9
@@ -13,8 +12,6 @@ const CardsAnimation = ({children, className}) => {
         scale: 1
 
     }
-
-
 
   return (
     <div className={className}>

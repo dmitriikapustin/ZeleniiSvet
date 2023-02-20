@@ -4,17 +4,13 @@
     "private": true,
     "dependencies": {
         "@pbe/react-yandex-maps": "^1.2.2",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^14.4.3",
         "axios": "^1.2.3",
+        "eslint": "8.34.0",
         "eslint-config-next": "^13.1.5",
         "flickity": "^2.3.0",
         "formik": "^2.2.9",
         "framer-motion": "^8.5.2",
-        "mime-types": "^2.1.35",
         "next": "^13.1.5",
-        "node-sass": "^8.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-flickity-component": "^4.0.1",
@@ -23,22 +19,18 @@
         "react-optimized-image": "^0.4.1",
         "react-player": "^2.11.0",
         "react-range": "^1.8.14",
-        "react-rangeslider": "^2.2.0",
         "react-responsive-carousel": "^3.2.23",
         "react-scripts": "5.0.1",
         "react-scroll": "^1.8.9",
         "react-text-mask": "^5.5.0",
         "react-yandex-maps": "^4.6.0",
         "sass": "^1.57.1",
-        "sharp": "^0.31.3",
-        "web-vitals": "^3.1.1",
-        "yandex-map-react": "^1.1.1",
         "yup": "^0.32.11"
     },
     "scripts": {
-        "dev": "next dev -p 4000",
+        "dev": "next dev -p 4001",
         "build": "next build",
-        "start": "next start -p 4000"
+        "start": "next start -p 4001"
     },
     "eslintConfig": {
         "extends": [
@@ -61,14 +53,6 @@
     "devDependencies": {
         "@webpack-cli/generators": "^3.0.1",
         "html-webpack-plugin": "^5.5.0",
-        "image-minimizer-webpack-plugin": "^3.8.1",
-        "imagemin": "^8.0.1",
-        "imagemin-gifsicle": "^7.0.0",
-        "imagemin-jpegtran": "^7.0.0",
-        "imagemin-optipng": "^8.0.0",
-        "imagemin-pngquant": "^9.0.2",
-        "imagemin-svgo": "^10.0.1",
-        "imagemin-webpack-plugin": "^2.4.2",
         "prettier": "^2.8.3",
         "webpack": "^5.75.0",
         "webpack-cli": "^5.0.1",
