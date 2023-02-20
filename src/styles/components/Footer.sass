@@ -1,0 +1,79 @@
+.footer
+    background: var(--bg-pic)
+    background-size: cover
+    padding: 50px 0px 60px
+
+    &__title
+        color: var(--white)
+        max-width: 450px
+        font-size: 42px
+        line-height: 50px
+
+    &__top
+        margin-bottom: 70px
+
+    &__bottom
+        span
+            color: var(--white)
+            margin-left: 10px
+        
+        &-social
+            gap: 10px
+            background: var(--white)
+            border-radius: 13px
+            padding: 10px
+
+            a
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 40px
+                height: 40px
+                background: var(--light-green)
+                border-radius: 10px
+
+            img
+                width: auto
+                height: auto
+
+    &__menu
+        display: grid
+        grid-template-columns: 1fr 1fr 
+        column-gap: 100px
+        row-gap: 20px
+        padding-right: 50px
+
+        a
+            flex-basis: 50%
+            color: var(--white)
+            font-size: 14px
+
+    @media(max-width: 1000px)
+        &__top
+            flex-direction: column
+
+        &__menu
+            grid-template-columns: 1fr
+            gap: 20px
+            padding: 0
+
+        &__logo
+            max-width: 156px
+            margin-right: auto
+
+        &__bottom
+            flex-direction: column-reverse
+            align-items: center
+            gap: 50px
+
+            &-social
+                gap: 16px
+
+            div
+                justify-content: flex-start
+                width: fit-content
+        &__title
+            font-weight: bold
+            font-size: 28px
+            line-height: 34px
+            margin-bottom: 50px

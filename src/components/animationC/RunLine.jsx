@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion, useTime, useTransform, useMotionValue } from "framer-motion";
+import ScrollAnimation from '../animationC/ScrollAnimation'
+
 
 
 const RunLine = ({children, className, fromX, toX}) => {
@@ -12,7 +14,7 @@ const RunLine = ({children, className, fromX, toX}) => {
 			x: {
 				repeat: Infinity,
 				repeatType: "loop",
-				duration: 20,
+				duration: 50,
 				ease: "linear",
 			},
 			},
@@ -22,15 +24,16 @@ const RunLine = ({children, className, fromX, toX}) => {
 
   return (
 	//   <div className='flex flex-row nowrap runline-container'>
+	<ScrollAnimation delay={0.1} triggerOnce={false}>
 		<motion.div
 			className={className}
 			animate="animate"
 			variants={runLineVariants}
 			>
-				{children}
-
-
+				
+					{children}
 		</motion.div>
+	</ScrollAnimation>
 	//   </div>
   )
 }
