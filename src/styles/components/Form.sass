@@ -60,16 +60,36 @@
 		// 	label
 		// 		top: -16px
 		// 		font-size: 90%
-
-		input
-			border: 0
+		.input-container
 			height: 50px
 			background-color: #f5f4f433
+			border-radius: 1000px
+			width: 65% !important
+			.label
+				&.animate
+					transform: translate3d(200%, 0, 0)
+					opacity: 0
+					transition: all .2s ease 
+			.label2
+				&.animate
+					transform: translate3d(200%, 0, 0)
+					opacity: 0
+					transition: all .2s ease 
+		input
+			border: 0
+			outline: none
+			height: 50px
 			// opacity: 0.1
 			font-size: 12px
 			overflow: visible
-			width: 65%
-			border-radius: 1000px
+			font-size: 1.111vw 
+			color: white
+			margin-left: 30px
+			background-color: transparent
+			width: 100%
+			// position: absolute
+			// left: 30px
+			// top: 15px
 			// &:focus
 			// 	&+label
 			// 		top: -16px
@@ -86,12 +106,22 @@
 			// 	outline: none
 			// 	border-bottom: 1px solid #70BC24
 			// 	transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+		.error-container
+			width: fit-content
+			height: fit-content
+			padding: 5px
+			// transition: all .2s ease-in-out
+			border-radius: 5px
+			background-color: #FBFBFB
+			.error-message
+				display: block
+				font-size: 1vw
 
-		span
-			font-size: 1vw
-			margin-top: 5px
-			color: #DC143C !important
-			width: 100% !important
+				color: #9da0a8 !important
+				width: 100% !important
+				
+
+
 
 		label
 			position: absolute
@@ -130,7 +160,8 @@
 				a 
 					color: var(--white)
 			&.disabled
-				opacity: 0.8
+				opacity: 0.75
+
 
 
 

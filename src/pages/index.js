@@ -30,12 +30,12 @@ import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
 
-// export async function getStaticProps() {
-// 	const respPhones = await axios.get(`http://localhost:1337/api/form-requests?populate=*`);
-// 	const dataPhonesResp = respPhones.data;
-// 	console.log("YOYOOOOYOOYOYYO")
-// 	return { props: { dataGetPhones: dataPhonesResp } }
-// }
+export async function getStaticProps() {
+	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+	const dataPhonesResp = respPhones.data;
+	console.log(dataPhonesResp)
+	return { props: { dataGetPhones: dataPhonesResp } }
+}
 
 
 
@@ -55,6 +55,11 @@ function App({dataGetPhones}) {
       </Head>
       <PromoLine/>
       <div className='scroll-area'>
+		  <div className='bc-white-container'>
+		  	<CalcBlock />
+        {/* <ForWhat /> */}
+		  </div>
+		  <FormBlock data={dataGetPhones}/>
         <Header/>
         <main>
           <HeroSection/>
@@ -63,11 +68,6 @@ function App({dataGetPhones}) {
           <MainProfits />
           <WeWork/>
 		  <PartnersBlock />
-		  <div className='bc-white-container'>
-		  	<CalcBlock />
-        <ForWhat />
-		  </div>
-		  <FormBlock data={dataGetPhones}/>
           <MapBlock/>
           <Footer/>
         </main>

@@ -39,7 +39,7 @@ const ScrollAnimation = ({children, delay, triggerOnce, className}) => {
 
     }
 
-    console.log(delay)
+    // console.log(delay)
 
   return (
         <motion.div

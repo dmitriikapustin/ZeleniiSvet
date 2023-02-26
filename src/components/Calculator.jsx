@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
+import ReactDOM from 'react-dom';
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { motion, animate } from "framer-motion";
@@ -15,6 +16,8 @@ import { Range, getTrackBackground } from 'react-range';
 
 import useDebounce from '../hooks/useDebounce'
 
+import ContentEditable from 'react-contenteditable'
+
 const MIN = 500000
 const MAX = 20000000
 const STEP = 100000
@@ -29,19 +32,16 @@ const itemVariants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   };
 
-function prettify(num) {
-	var n = num.toString();
-	return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
-}
 
-function prettifySum(str) {	return str += " ₽" }
-function prettifyTerm(str) { return str += " лет" }
+
+
+
 
 const handleInputFocus = () => {
 
 }
 
-function Counter({ from, to, text }) {
+function Counter({ from, to, className}) {
 	const nodeRef = useRef();
 
 	useEffect(() => {
@@ -51,14 +51,14 @@ function Counter({ from, to, text }) {
 		duration: 1,
 		onUpdate(value) {
 			let newValue = parseInt(value)
-			node.textContent = prettify(newValue);
+			node.textContent = newValue;
 		}
 		});
 
 		return () => controls.stop();
 	}, [from, to]);
 	// return <p ref={nodeRef}/>
-	return <div className='div-result font-5-bold'><p className='p-result font-5-bold' ref={nodeRef}/> ₽ в месяц</div>
+	return <div className={'div-result-' + (className) + ' font-5-bold'}><p className={'p-result-' + (className) + ' font-5-bold'} ref={nodeRef}/> ₽</div>
 }
 
 const RangeSlider = ({onChange, value, ...sliderProps}) => {
@@ -103,22 +103,25 @@ const RangeSlider = ({onChange, value, ...sliderProps}) => {
 
 const CalcBlock = ({rtl}) => {
 
+	const dateC = new Date();
+
+	let day = dateC.getDate();
+	let month = dateC.getMonth() + 1;
+	let year = dateC.getFullYear();
+
+	let currentDate = `${day}.${month}.${year}`;
+
 	const services = [
 		{
 			id: 0,
-			name: 'Услуга 1',
-			percentage: 9
+			name: 'Аннуитетный',
 		},
 		{
 			id: 1,
-			name: 'Услуга 2',
-			percentage: 7
-		},
-		{
-			id: 2,
-			name: 'Услуга 3',
-			percentage: 5
+			name: 'Дифференцированный',
+
 		}
+
 	]
 
 
@@ -126,17 +129,21 @@ const CalcBlock = ({rtl}) => {
 	const [togglePopup, setTogglePopup] = useState(false)
 	const [isOpen, setIsOpen] = useState(false);
 	const [choosenService, setChoosenService] = useState(1)
-	const [sum, setSum] = useState(MIN*2)
-	const [term, setTerm] = useState(5)
-	const [rate, setRate] = useState(services[choosenService].percentage)
+	const [sum, setSum] = useState(1000000)
+	const [term, setTerm] = useState(60)
+	const [rate, setRate] = useState(4.4)
 	const [result, setResult] = useState(0)
+	const [overpayment, setOverpayment] = useState(0)
+	const [kindOfPayment, setKindOfPayment] = useState("Аннуитетный")
+	const [date, setDate] = useState(currentDate)
+	const [valueSum, setValueSum] = useState(sum)
+	const [valueTerm, setValueTerm] = useState(term)
+	const [valueRate, setValueRate] = useState(rate)
 	// const [sliderValue, setSliderValue] = useState(5)
 	const wrapperRef = useRef(null);
-	// const prevCountRef = useRef();
-	// useEffect(() => {
-	// 	//assign the ref's current value to the count Hook
-	// 	prevCountRef.current = sum;
-	//   }, [sum])
+
+
+
 	useOutsideAlerter(wrapperRef, isOpen);
 
 
@@ -148,7 +155,9 @@ const CalcBlock = ({rtl}) => {
 		return ref.current; //in the end, return the current ref value.
 	  }
 
-	const prevCount = usePrevious(result)
+	const prevCountResult = usePrevious(result)
+
+	const prevCountOverpayment = usePrevious(overpayment)
 
 
 
@@ -173,154 +182,304 @@ const CalcBlock = ({rtl}) => {
 		[sum]
 	  );
 
-	function calc(sum, term, rate) {
+	function calc(sum, term, rate, kind) {
 
-		
+		let calcResult;
 
 		let sumString = sum.toString().replace(/\s/g, '')
 		let termString = term.toString().replace(/\s/g, '')
 		let S = parseInt(sumString)
-		let p = parseInt(termString)
-		let n = rate
+		let n = parseInt(termString)
+		let p = rate
 
 		p = p;
-		n = n / 100;
+		n = n;
 
-		console.log(S, p, n)
+		// console.log(S/n, (S - S/n) * p/12/100)
 
-		let calcResult = Math.round((S * n / (1 - Math.pow(1 + n, -p)))/12);
+		kind === "Дифференцированный" ? calcResult = Math.round((S/n) + ((S - S/n) * p/12/100)) : calcResult = S * (p/12/100 + ((p/12/100)/(Math.pow(1 + p/12/100, n) - 1)))
+
+		// let calcResult = Math.round((S/n) + ((S - S/n) * p/12/100))
+
+
+
+		
+		// if (kind === "Аннуитетный") {
+		// 	let calcResult = Math.round((S * n / (1 - Math.pow(1 + n, -p)))/12);
+		// 	return calcResult
+		// } else if (kind === "Дифференцированный") {
+		// 	n = n / 12
+		// 	let calcResult = Math.round((S * (n + (n / Math.pow(1 + n, p) - 1))));
+		// 	return calcResult
+		// } 
+		
+		console.log(calcResult, n, S)
+
+		let overpayment = calcResult * n - S
+
 
 		if (isNaN(calcResult)) {
 			setResult(0)
+			setOverpayment(0)
 		} else {
 			setResult(calcResult)
+			setOverpayment(overpayment)
 		}
 
 	}
 
-	// const fetchStrapiPhones = (data) => {
-	// 	const phonesArr = [];
-	// 	data.data.data?.map((item) => {
-	// 		phonesArr.push(item.attributes.PhoneNumber)
-	// 		return phonesArr
-	// 	})
-	// 	// console.log(phonesArr)
-	// 	return phonesArr
-	// }
+
+	
+	
+	function useOutsideAlerter(ref) {
+		useEffect(() => {
+			/**
+			 * Alert if clicked on outside of element
+			 */
+			function handleClickOutside(event) {
+				if (ref.current && !ref.current.contains(event.target)) {
+					setIsOpen(false)
+				}
+			}
+			// Bind the event listener
+			document.addEventListener("mousedown", handleClickOutside);
+			return () => {
+				// Unbind the event listener on clean up
+				document.removeEventListener("mousedown", handleClickOutside);
+			};
+		}, [ref]);
+	}
 
 
+	
+	useEffect(() => {
+		valueSumHandler(sum)
+	}, [sum])
 
-	// const schema = Yup.object({
-	// 	name: Yup.string()
-	// 			.min(3, 'Минимальное количество символов: 3.')
-	// 			.required('Обязательное поле'),
-	// 	mobilephone: Yup.string()
-	// 			.min(10, 'Минимальное количество символов: 10.')
-	// 			.required('Обязательное поле')
-	// 			.test('existenceNumber', 'Такой номер уже есть в базе.',
-	// 				function(value) {
-	// 					const arr = fetchStrapiPhones(data)
-	// 					const booleanResult = !arr.includes(value)
-	// 					// console.log(value, arr, booleanResult)
-	// 					return booleanResult
-	// 				} 
-	// 			)
-	//   })
+	useEffect(() => {
+		valueTermHandler(term)
+	}, [term])
 
+	useEffect(() => {
+		valueRateHandler(rate)
+	}, [rate])
 
-
-	//   const handleSchemaValue = (nameForm, numberForm) => {
-		
-	// 	const obj = {
-	// 		name: nameForm,
-	// 		mobilephone: numberForm
-	// 	}
-
-	// 	setIsSchemaValid(schema.isValidSync(obj))
-	// 	console.log(schema, schema.isValid(obj), schema.isValidSync(obj))
-
-
-	// 	// console.log(e.value)
-	//   }
-
-	// const formik = useFormik({
-	// 	initialValues: {
-	// 	  name: '',
-	// 	  mobilephone: '',
-	// 	},
-	// 	validationSchema: schema,
-	// 	onSubmit: function (values) {
-	// 		const STRAPI_API = "http://localhost:1337/api/form-requests"
-	// 		const TOKEN = "5957892134:AAF5p2FfyBeIyVjp1DaMPPUNJ0bzQ2wSffc";
-	// 		const CHAT_ID = "582978211";
-	// 		const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
-	// 		let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone}`;
-
-	// 		axios.post(URI_API, {
-	// 			chat_id: CHAT_ID,
-	// 			parse_mode: 'html',
-	// 			text: message
-	// 		})
-
-	// 		axios.post(STRAPI_API,{
-	// 			data: {
-	// 				FirstName: values.name,
-	// 				PhoneNumber: values.mobilephone
-	// 			}
-	// 		})
-
-	// 	}
-	//   })
 
 
 	useEffect(() => {
 
 		const timer = setTimeout(() => {
-			calc(sum, term, rate)
+			calc(sum, term, rate, kindOfPayment)
 		  }, 200);
 		  return () => clearTimeout(timer);
-	}, [sum, term, rate])
+	}, [sum, term, rate, kindOfPayment])
+
+	// const handleSliderValue = (e) => {
+	// 	setSum(e.target.value)
+	// }
 
 
-	function useOutsideAlerter(ref) {
-		useEffect(() => {
-		  /**
-		   * Alert if clicked on outside of element
-		   */
-		  function handleClickOutside(event) {
-			if (ref.current && !ref.current.contains(event.target)) {
-				setIsOpen(false)
-			}
-		  }
-		  // Bind the event listener
-		  document.addEventListener("mousedown", handleClickOutside);
-		  return () => {
-			// Unbind the event listener on clean up
-			document.removeEventListener("mousedown", handleClickOutside);
-		  };
-		}, [ref]);
-	  }
 
+	//// --- ФУНКЦИЯ BACKSPACE --- ////
 
-	const handleSliderValue = (e) => {
-		setSum(e.target.value)
+	function PosEndSum(end) {
+
+		var len = end.target.value.length;
+
+		// console.log(len, end.target)
+		
+		// Mostly for Web Browsers
+		if (end.target.setSelectionRange) {
+			end.target.focus();
+			end.target.setSelectionRange(len-2, len-2);
+		} else if (end.target.createTextRange) {
+			var t = end.target.createTextRange();
+			t.collapse(true);
+			t.moveEnd('character', len-2);
+			t.moveStart('character', len-2);
+			t.select();
+		}
 	}
+
 
 	const sumHandler = (e) => {
-		const sumInput = e.target.value
+
+		/// ЗДЕСЬ УБИРАЮТСЯ ПРОБЕЛЫ И ВСЕ КРОМЕ ЦИФР ИЗ SUM, УСТАНАВЛИВАЕТСЯ МИНИМАЛЬНОЕ ЗНАЧЕНИЕ SUM
+
+		
+		var sumInput = e.target.value
+
+		sumInput === ' ₽' ? sumInput = '1 ₽' : sumInput
+		
 		console.log(sumInput)
-		setSum(sumInput)
+		
+		var sum = sumInput.match(/\d/g);
+		sum = sum.join("");		
+
+		console.log(sum)
+
+		if ( parseInt(sum) > 15000000 ) {
+			setSum('15000000')
+		} else if ( parseInt(sum) < 0) {
+			setSum('0')
+		} else {
+			setSum(sum)
+		}
+
+		// console.log(sum, sumInputRef)
+
 	}
+
+	const valueSumHandler = (sum) => {
+		// console.log(sum)
+		setValueSum(sum + ' ₽')
+
+	}
+
+
+
+
+
+
+	function PosEndTerm(end) {
+
+		var len = end.target.value.length;
+
+		// console.log(len, end.target)
+		
+		// Mostly for Web Browsers
+		if (end.target.setSelectionRange) {
+			end.target.focus();
+			end.target.setSelectionRange(len-4, len-4);
+		} else if (end.target.createTextRange) {
+			var t = end.target.createTextRange();
+			t.collapse(true);
+			t.moveEnd('character', len-4);
+			t.moveStart('character', len-4);
+			t.select();
+		}
+	}
+
 
 	const termHandler = (e) => {
-		const termInput = e.target.value;
-		setTerm(termInput)
+		var termInput = e.target.value;
+
+		termInput === ' мес' ? termInput = '1 мес' : termInput
+
+		var term = termInput.match(/\d/g);
+		term = term.join("");	
+
+		if ( parseInt(term) > 360 ) {
+			setTerm('360')
+		} 
+
+		/// ЗДЕСЬ НЕТ МИНИМАЛЬНОГО ПОРОГА В 12 МЕС, ЕСЛИ ЭТО ПРИНИПИАЛЬНО, ТО НАДО ГДЕ-ТО ОТДЕЛЬНО ЕГО УСТАНАВЛИВАТЬ
+
+		// else if ( parseInt(term) < 12) {
+		// 	setTerm(term)
+		// 	const timer = setTimeout(() => {
+		// 		if (parseInt(term) < 12) {
+		// 			setTerm('12')
+		// 		} else {
+		// 			setTerm(term)
+		// 		}
+		// 	  }, 1000);
+		// 	  return () => clearTimeout(timer);
+		// } 
+		else {
+			setTerm(term)
+		}
+
 	}
 
-	const rateHandler = (service) => {
-		setIsOpen(false)
-		setChoosenService(service.id)
-		setRate(service.percentage)
+	const valueTermHandler = (term) => {
+		// console.log(sum)
+		setValueTerm(term + ' мес')
+
+	}
+
+
+
+	function PosEndRate(end) {
+
+		var len = end.target.value.length;
+
+		// console.log(len, end.target)
+		
+		// Mostly for Web Browsers
+		if (end.target.setSelectionRange) {
+			end.target.focus();
+			end.target.setSelectionRange(len-2, len-2);
+		} else if (end.target.createTextRange) {
+			var t = end.target.createTextRange();
+			t.collapse(true);
+			t.moveEnd('character', len-2);
+			t.moveStart('character', len-2);
+			t.select();
+		}
+	}
+
+	const rateHandler = (e) => {
+		var rateInput = e.target.value;
+		let rateC;
+		rateInput === ' %' ? rateInput = '0 %' : rateC = rateInput.match(/\d./).join("").trim()
+		var len = e.target.value.length;
+		var dotInInput = rateInput.split(".").length - 1
+
+		// console.log(dotInInput)
+
+		// if (rateInput.infexOf('.') > -1 && len === 4) {
+
+		// }
+
+		console.log(len)
+
+		// len === 4 ? rateC = rateInput.match(/\d/g) : rateC = rateInput.match(/\d./g)
+
+
+		if ( parseInt(rateC) > 50 ) {
+			setRate('50')
+		} else if ( parseInt(rateC) < 0) {
+			setRate('0')
+		} else {
+			setRate(rateC)
+		}
+
+	}
+
+	const valueRateHandler = (rate) => {
+		// console.log(sum)
+		setValueRate(rate + ' %')
+
+	}
+
+
+
+
+	// const backSpace = (ref) => {
+	// 	var strValue = ref
+	// 	var position = ref.selectionStart-1
+
+
+	// 	strValue = strValue.substr(0, position) + '' + strValue.substr(position + 1)
+	// 	console.log(strValue, position)
+	// 	ref = strValue
+	// }
+
+
+
+
+
+
+
+
+	const dateHandler = (e) => {
+		const newDate = e.target.value;
+		setDate(newDate)
+	}
+
+	const kindOfPaymentHandler = (kind) => {
+		setKindOfPayment(kind.name)
 	}
 
 	const [values, setValues] = useState([MIN])
@@ -338,7 +497,7 @@ const CalcBlock = ({rtl}) => {
 				<p className='font-2-regular'>Прямо здесь и сейчас выберите необходимую сумму <span className='font-2-bold'>кредита</span> и его срок. А на консультации с нашим сотрудником сможете задать ему любые вопросы по своему расчёту. </p>
 			</div>
 			<div className="main flex flex-col">
-				<div className="service-and-rate flex flex-row">
+				{/* <div className="service-and-rate flex flex-row">
 					<div className="service flex flex-col">
 						<p className='p-top font-2-regular'>Услуга</p>
 						<motion.nav
@@ -405,19 +564,38 @@ const CalcBlock = ({rtl}) => {
 						<p className='p-top font-2-regular'>Процентная ставка</p>
 						<p className='rate-value font-4-bold'>от {services[choosenService].percentage}%</p>
 					</div>
-				</div>
+				</div> */}
 				<div className="sum flex flex-col">
-					<p className='font-2-regular'>Сумма кредита</p>
-					<input
-						className='font-3-regular calc-input'
-						type="text"
-						value={prettifySum(prettify(sum))}
-						onClick={(e) => {e.target.value = sum}}
-						onChange={sumHandler}
-					/>
+					<p className='font-2-regular param-name'>Сумма кредита</p>
+					<div className="sum-container flex flex-row">
+						<input
+							className='font-3-regular calc-input'
+							id='sum'
+							type="text"
+							min="300000"
+							max="15000000"
+							value={valueSum}
+							onClick={(e) => {
+								PosEndSum(e)
+							}} 
+							onChange={(e) => {
+								sumHandler(e)
+								const timer = setTimeout(() => {
+									PosEndSum(e)
+								  }, 150);
+								  /// ПОЧЕМУ-ТО ЕСЛИ СТАВИТЬ МЕНЬШЕ 150, НЕ ВСЕГДА ОТРАБАТЫВАЕТ (ВОЗВРАЩАЕТСЯ В НУЖНОЕ МЕСТО - ПОСЛЕ ЧИСЛА)
+								  return () => clearTimeout(timer);
+							}}
+						/>
+						<div className="var-container flex flex-row justify-between">
+							<a className={'var' + (sum === 1000000 ? ' active' : '')} onClick={() => setSum(1000000)}>1 млн</a>
+							<a className={'var' + (sum === 3000000 ? ' active' : '')} onClick={() => setSum(3000000)}>3 млн</a>
+							<a className={'var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
+						</div>
+					</div>
 
 					{/* <RangeSlider {...sliderProps} classes="additional-css-classes" /> */}
-					<Range
+					{/* <Range
 						values={values}
 						step={STEP}
 						min={MIN}
@@ -480,7 +658,7 @@ const CalcBlock = ({rtl}) => {
 							/>
 						</div>
 						)}
-					/>
+					/> */}
 					
 					{/* <Slider 
 						value={sum}
@@ -492,14 +670,33 @@ const CalcBlock = ({rtl}) => {
 
 				</div>
 				<div className="term flex flex-col">
-					<p className='font-2-regular'>Срок кредита</p>
-					<input
-						className='font-3-regular calc-input'
-						type="text"
-						value={prettifyTerm(term)}
-						onClick={(e) => {e.target.value = term}}
-						onChange={termHandler}
-					/>
+					<p className='font-2-regular param-name'>Срок кредита</p>
+					<div className="term-container flex flex-row">
+						<input
+							className='font-3-regular calc-input'
+							type="text"
+							min="12"
+							max="360"
+							value={valueTerm}
+							onClick={(e) => {
+								PosEndTerm(e)
+							}} 
+							onChange={(e) => {
+								termHandler(e)
+								const timer = setTimeout(() => {
+									PosEndTerm(e)
+								  }, 150);
+								  return () => clearTimeout(timer);
+							}}
+						/>
+						<div className="var-container flex flex-row justify-between">
+							<a className={'var' + (term === 60 ? ' active' : '')} onClick={() => setTerm(60)}>5 лет</a>
+							<a className={'var' + (term === 84 ? ' active' : '')} onClick={() => setTerm(84)}>7 лет</a>
+							<a className={'var' + (term === 240 ? ' active' : '')} onClick={() => setTerm(240)}>20 лет</a>
+							<a className={'var' + (term === 360 ? ' active' : '')} onClick={() => setTerm(360)}>30 лет</a>
+						</div>
+
+				</div>
 
 				{/* <Range
 						step={0.1}
@@ -541,6 +738,34 @@ const CalcBlock = ({rtl}) => {
 						/>
 					</div> */}
 				</div>
+				<div className="rate flex flex-col">
+					<p className='font-2-regular param-name'>Годовая ставка</p>
+					<div className="rate-container flex flex-row">
+						<input
+							className='font-3-regular calc-input'
+							type="text"
+							value={rate}
+							value={valueRate}
+							onClick={(e) => {
+								PosEndRate(e)
+							}} 
+							onChange={(e) => {
+								rateHandler(e)
+								const timer = setTimeout(() => {
+									PosEndRate(e)
+								  }, 150);
+								  return () => clearTimeout(timer);
+							}}
+						/>
+						<div className="var-container flex flex-row justify-between">
+							<a className={'var' + (rate === 4.4 ? ' active' : '')} onClick={() => setRate(4.4)}>4.4%</a>
+							<a className={'var' + (rate === 8 ? ' active' : '')} onClick={() => setRate(8)}>8%</a>
+							<a className={'var' + (rate === 10 ? ' active' : '')} onClick={() => setRate(10)}>10%</a>
+							<a className={'var' + (rate === 12 ? ' active' : '')} onClick={() => setRate(12)}>12%</a>
+							<a className={'var' + (rate === 16 ? ' active' : '')} onClick={() => setRate(16)}>16%</a>
+						</div>
+					</div>
+				</div>
 				<div className="ind-calc flex flex-row">
 					<img src="/images/ind-calc.svg" alt="" />
 					<Link 
@@ -551,6 +776,78 @@ const CalcBlock = ({rtl}) => {
 							Перейти в индивидуальный калькулятор
 					</Link>
 				</div>
+				<div className="choose-kind-and-date flex flex-row w-full">
+					<motion.nav
+								initial={false}
+								ref={wrapperRef}
+								animate={isOpen ? "open" : "closed"}
+								className="menu"
+							>
+								<p className='font-2-regular param-name'>Вид платежа</p>
+								<motion.button
+								whileTap={{ scale: 0.97 }}
+								onClick={() => setIsOpen(!isOpen)}
+								>
+								<a className='font-2-regular'>{kindOfPayment}</a>
+								<motion.div
+									variants={{
+									open: { rotate: 180 },
+									closed: { rotate: 0 }
+									}}
+									transition={{ duration: 0.2 }}
+									style={{ originY: 0.55 }}
+								>
+									<svg width="19" height="9" viewBox="0 0 19 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M9.98681 8.92392C10.1193 8.91019 10.2446 8.85592 10.3467 8.76852L18.7619 1.53126L18.7618 1.5311C18.8974 1.41515 18.9822 1.24887 18.9975 1.06888C19.0128 0.888886 18.9573 0.709974 18.8432 0.571921C18.7292 0.43388 18.5659 0.347744 18.3896 0.332913C18.2134 0.317926 18.0385 0.375194 17.9037 0.492251L9.91753 7.362L1.93139 0.49225C1.79654 0.375193 1.62168 0.317925 1.44542 0.332912C1.26917 0.347741 1.10589 0.433878 0.991881 0.57192C0.877726 0.70996 0.822268 0.88886 0.837563 1.06888C0.85286 1.24889 0.937659 1.41516 1.07329 1.5311L9.48849 8.76836C9.62706 8.88731 9.80698 8.94348 9.98681 8.92392Z" fill="white"/>
+									</svg>
+
+								</motion.div>
+								</motion.button>
+								<motion.ul
+								className=''
+								variants={{
+									open: {
+									clipPath: "inset(0% 0% 0% 0% round 10px)",
+									transition: {
+										type: "spring",
+										bounce: 0,
+										duration: 0.7,
+										delayChildren: 0.3,
+										staggerChildren: 0.05
+									}
+									},
+									closed: {
+									clipPath: "inset(10% 50% 90% 50% round 10px)",
+									transition: {
+										type: "spring",
+										bounce: 0,
+										duration: 0.3
+									}
+									}
+								}}
+								style={{ pointerEvents: isOpen ? "auto" : "none" }}
+								>
+								{services.map((service, index) => {
+									return (
+										<motion.li key={service.id + index} id={service.id} variants={itemVariants} className={(kindOfPayment === service.name) ? 'active' : ''}>
+											<a onClick={() => kindOfPaymentHandler(service)}>{service.name}</a>
+										</motion.li>
+									)
+								})}
+
+								</motion.ul>
+					</motion.nav>
+					<div className="input-date">
+						<p className='font-2-regular param-name'>Дата получения кредита</p>
+						<input
+								className='font-3-regular calc-input-date'
+								type="text"
+								value={date}
+								onClick={(e) => {e.target.value = date}}
+								onChange={dateHandler}
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div className="calcblock-right flex flex-col">
@@ -558,12 +855,14 @@ const CalcBlock = ({rtl}) => {
 
 			</div>
 			<div className="text-cover">
-				<p className='p-top font-4-regular'>Ваш ежемесячный платеж составит</p>
-				<Counter from={prevCount} to={result} text={'руб'} /> 
+				<p className='p-top font-4-regular'>Ежемесячный платёж</p>
+				<Counter from={prevCountResult} to={result} className={'payment'} /> 
+				{/* <p className='p-top font-4-regular'>Переплата по процентам за кредит</p>
+				<Counter from={prevCountOverpayment} to={overpayment} text={'руб'} />  */}
 				<div style={{width: '70%'}} className='button bc-white flex flex-row' onClick={() => setTogglePopup(true)}>
 					<a className='font-1-bold'>Нужна консультация</a>
 					<svg width="18" height="19"  fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M10.5 13.6299L9.45 12.5424L12.1125 9.87988H3V8.37988H12.1125L9.45 5.71738L10.5 4.62988L15 9.12988L10.5 13.6299Z" fill="#35C759"/>
+						<path d="M10.5 13.6299L9.45 12.5424L12.1125 9.87988H3V8.37988H12.1125L9.45 5.71738L10.5 4.62988L15 9.12988L10.5 13.6299Z" fill="#fff"/>
 					</svg>
 				</div>
 			</div>

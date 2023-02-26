@@ -81,48 +81,77 @@ const FormС = (data) => {
 	}, [])
 
 
-
+	
 
 
 
 	const animateInput = {
-		x: 200,
-		opacity: 0
+		x: [100, 200],
+		opacity: [0.5, 0],
+		transition: {
+			// type: 'spring',
+			duration: 0.08,
+			ease: [0.075, 0.82, 0.165, 1],
+			stiffness: 1000 ,
+			repeatType: 'reverse'
+			// damping: 24
+		}
 	}
 
-	const transition = {
-		type: 'spring',
-		duration: 0.2,
-		ease: "linear"
-	}
+	// const transition = {
+	// 	type: 'spring',
+	// 	duration: 0.2,
+	// 	ease: "linear",
+	// 	stiffness: 500, 
+	// 	damping: 24
+	// }
 
 
 	const fetchStrapiPhones = (data) => {
 		const phonesArr = [];
 		data.data.data?.map((item) => {
-			phonesArr.push(item.attributes.PhoneNumber)
+			phonesArr.push(item.attributes.phonenumber)
 			return phonesArr
 		})
-		// console.log(phonesArr)
+
 		return phonesArr
 	}
 
 
 
-	const schema = Yup.object({
+	const schema = Yup.object().shape({
 		name: Yup.string()
-				// .min(3, 'Минимальное количество символов: 3.')
+				.min(3, 'Минимальное количество символов: 3.')
 				.required('Обязательное поле'),
 		mobilephone: Yup.string()
 				.min(10, 'Минимальное количество символов: 10.')
-				.typeError('Введите корректный номер')
 				.required('Обязательное поле')
-				.test('existenceNumber', 'Такой номер уже есть в базе.',
+				// .test('обязательное поле ввода', (value, { createError, path }) => {
+				// 	if (!value) return createError({
+				// 	  path,
+				// 	  message: "Обязательное поле",
+				// 	})
+				// 	else return true;
+				//  })
+				// .test('Длина номера', (value, { createError, path }) => {
+				// if (parseInt(value).length < 8 && value !== undefined) return createError({
+				// 	path,
+				// 	message: "Минимум 8",
+				// })
+				// else return true;
+				// }),
+
+				.test('existenceNumber',
 					function(value) {
+
 						const arr = fetchStrapiPhones(data)
 						const booleanResult = !arr.includes(value)
-						// console.log(value, arr, booleanResult)
-						return booleanResult
+						console.log(arr)
+						return booleanResult === true ? true : this.createError({
+							message: `Такой номер уже есть в базе.`,
+							path: 'mobilephone', // Fieldname
+						  })
+
 					} 
 				)
 	  })
@@ -137,7 +166,7 @@ const FormС = (data) => {
 	}
 
 	setIsSchemaValid(schema.isValidSync(obj))
-	console.log(schema, schema.isValid(obj), schema.isValidSync(obj))
+	// console.log(schema, schema.isValid(obj), schema.isValidSync(obj))
 
 
 	// console.log(e.value)
@@ -152,17 +181,15 @@ const FormС = (data) => {
 		},
 		validationSchema: schema,
 		onSubmit: function (values) {
-			let message;
-			const STRAPI_API = "http://localhost:1337/api/form-requests"
+
+			const STRAPI_API = "https://api.zesvet.ru/api/form-requests"
 			const TOKEN = "5957892134:AAF5p2FfyBeIyVjp1DaMPPUNJ0bzQ2wSffc";
 			const CHAT_ID = "582978211";
 			const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
-			if (props.sum && props.term && props.rate && props.result) {
-				message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone} <b> Сумма:</b> ${props.sum} <b> Срок:</b> ${props.term} <b> Ставка:</b> ${props.rate} <b> Ежемесячный платёж:</b> ${props.result} `;
-			} else {
-			 	message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone}`;
-			}
+
+			let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone}`;
+
 			axios.post(URI_API, {
 				chat_id: CHAT_ID,
 				parse_mode: 'html',
@@ -171,8 +198,8 @@ const FormС = (data) => {
 
 			axios.post(STRAPI_API,{
 				data: {
-					FirstName: values.name,
-					PhoneNumber: values.mobilephone
+					name: values.name,
+					phonenumber: values.mobilephone
 				}
 			})
 
@@ -189,7 +216,7 @@ const FormС = (data) => {
 			>
 				<form onSubmit={formik.handleSubmit} id="tg">
 					<div style={styleInput} className='input-field'>
-						<div style={styleInnerInput}>
+						<div style={styleInnerInput} className='input-container'>
 
 							<input
 								disabled={disableInputs}
@@ -210,23 +237,33 @@ const FormС = (data) => {
 								onBlur={onBlur}
 								value={formik.values.name}
 							/>
-							<motion.label
-								animate={focused === true ? animateInput : ''}
-								transition={transition}
+							<label
+								// initial={{x: 0, opacity: 1}}
+								// animate={focused === false && formik.values.name === '' ? '' : animateInput}
+								className={(focused === false && formik.values.name === '' ? 'label' : 'label animate')}
 								for="name">
 								Имя
-							</motion.label>
+							</label>
 							<br />
-							{formik.errors.name && (
-								<span className=''>{formik.errors.name}</span>
-							)}
 						</div>
+							{formik.errors.name && (
+								<motion.div 
+									transition={{
+										duration: .2,
+										ease: 'easeInOut'
+									}}
+									initial={{opacity: 0, scale: 0.9}}
+									animate={{opacity: 1, scale: 1}}
+									className="error-container">
+									<span className='error-message'>{formik.errors.name}</span>
+								</motion.div>
+							)}
 					</div>
 					<div style={styleInput} className='input-field'>
 						<ScrollAnimation
 							delay={0}
 						>
-							<div style={styleInnerInput}>
+							<div style={styleInnerInput} className='input-container'>
 
 								<MaskedInput
 									disabled={disableInputs}
@@ -236,7 +273,7 @@ const FormС = (data) => {
 									id="mobilephone"
 									placeholder=" "
 									className='font-1-bold'
-									onFocus={onFocus}
+									onFocus={onFocus2}
 									onChange={(e) => {
 										formik.handleChange(e)
 										const timer = setTimeout(() => {
@@ -245,14 +282,28 @@ const FormС = (data) => {
 										return () => clearTimeout(timer);
 									}
 									}
-									onBlur={onBlur}
+									onBlur={onBlur2}
 									// onBlur={formik.handleBlur} 
-									value={formik.values.mobilephone}
+									value={formik.values.mobilephone.replace(/_/g, " ")}
 								/>
-								<label for="phone">Телефон</label>
+								<label 
+									className={(focused2 === false && formik.values.mobilephone === '' ? 'label2' : 'label2 animate')}
+									for="phone">Телефон
+								</label>
 								<br />
-								{formik.touched && formik.errors.mobilephone && (
-									<span className=''>{formik.errors.mobilephone}</span>
+								{formik.errors.mobilephone && (
+									<motion.div 
+										transition={{
+											duration: .2,
+											ease: 'easeInOut',
+											repeatType: 'mirror'
+										}}
+										initial={{opacity: 0, scale: 0.9}}
+										animate={{opacity: 1, scale: 1}}
+										exit={{ opacity: 0 }}
+										className="error-container">
+										<span className='error-message'>{formik.errors.mobilephone}</span>
+									</motion.div>
 								)}
 							</div>
 						</ScrollAnimation>
