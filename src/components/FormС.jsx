@@ -181,8 +181,7 @@ const FormС = (data) => {
 	return (
 		<div className="flex flex-col form" style={{ margin: '30px 0' }}>
 			<div className='form-top-text flex flex-col'>
-				<h2 className='font-4-bold form-heading'>Мы хотим вам помочь, потому что знаем как.</h2>
-				<p className='font-2-regular form-text'>Если вам нужна помощь в кредитной проблеме, то оставьте заявку ниже. Как можно быстрее перезвоним и с пониманием выслушаем, а потом предложим решение.</p>
+				<h2 className='font-4-bold form-heading'>Мы хотим вам помочь, потому что знаем как</h2>
 			</div>
 			<ScrollAnimation
 				delay={0}

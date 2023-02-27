@@ -67,7 +67,7 @@ function App({dataGetPhones}) {
 		  	<CalcBlock />
         <ForWhat />
 		  </div>
-		  <FormBlock data={dataGetPhones}/>
+		  {/* <FormBlock data={dataGetPhones}/> */}
           <MapBlock/>
           <Footer/>
         </main>

@@ -8,7 +8,7 @@ export default function HeroSection(){
                         <span className="font-5-light">любые цели</span>
                     </h2>
                     <p className="hero__subtitle">
-                        Мы не берём предоплату и не просим миллиона документов.                 
+                        Мы не берём предоплату и не просим миллиона документов         
                     </p>
                     <button className="action">
                         Оставить заявку

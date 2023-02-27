@@ -24,7 +24,7 @@ const RunLine = ({children, className, fromX, toX}) => {
 
   return (
 	//   <div className='flex flex-row nowrap runline-container'>
-	<ScrollAnimation delay={0.1} triggerOnce={false}>
+	<ScrollAnimation delay={0.1} triggerOnce={true}>
 		<motion.div
 			className={className}
 			animate="animate"

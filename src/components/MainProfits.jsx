@@ -5,7 +5,7 @@ export default function MainProfits(){
         <section className="mainProfits">
             <div class="container">
                 <div class="cards">
-                <ScrollAnimation delay={0} triggerOnce={false}>
+                <ScrollAnimation delay={0} triggerOnce={true}>
                     <div class="card round">
                         <img src="/images/image1.png" alt=""/>
                         <h1 class="title_card">Получите <span>лучшие условия </span></h1>
@@ -17,7 +17,7 @@ export default function MainProfits(){
                         </a>
                     </div>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.5} triggerOnce={false}>
+                <ScrollAnimation delay={0.5} triggerOnce={true}>
                     <div class="card">
                         <img src="/images/image2.png" alt=""/>
                         <h1 class="title_card">Получите <span>лучшие условия </span></h1>

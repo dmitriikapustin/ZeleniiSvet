@@ -6,10 +6,10 @@ export default function Help(){
     return(
         <section className="help">
             <div className="container flex items-center">
-                <ScrollAnimation delay={0} triggerOnce={false}>
+                <ScrollAnimation delay={0} triggerOnce={true}>
                     <img src={src.src} srcSet={srcSet.src} className="help__img" />
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.4} triggerOnce={false}>
+                <ScrollAnimation delay={0.4} triggerOnce={true}>
                     <div className='help__content'>
                         <h2 className='help__title font-5-light'>Наша миссия — получить у банка <b>выгодное кредитование</b> для вас.</h2>
                         <p className="help__desc">Мы знаем, что у всех разные ситуации в жизни. Расскажите свою — разберёмся и поможем. </p>

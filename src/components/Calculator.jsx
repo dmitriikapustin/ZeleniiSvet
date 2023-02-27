@@ -331,6 +331,7 @@ const CalcBlock = ({rtl}) => {
 	}
 
   return (
+	<ScrollAnimation delay={0.5} triggerOnce={true}>
 	<div className='calcblock flex flex-row'>
 		<div className="calcblock-left flex flex-col">
 			<div className='top-text flex flex-col'>
@@ -579,6 +580,7 @@ const CalcBlock = ({rtl}) => {
 			</motion.div>
 		</div>
 	</div>
+	</ScrollAnimation>
   )
 }
 

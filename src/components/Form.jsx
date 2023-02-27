@@ -3,8 +3,8 @@ import FormС from './FormС'
 
 const FormBlock = ({data}) => {
   return (
-	<div className='flex flex-col container' style={{'overflow': 'visible'}}>
-		<div className="formblock formblock-container">
+	<div className='flex container' style={{'overflow': 'visible'}}>
+		<div className="formblock wide formblock-container">
 			<FormС data={data}/>
 		</div>
 	</div>

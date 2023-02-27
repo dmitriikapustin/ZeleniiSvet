@@ -60,10 +60,10 @@ export default function WeWork(){
     return(
         <section className="work">
             <div className="container">
-                <ScrollAnimation delay={0} triggerOnce={false}>
+                <ScrollAnimation delay={0} triggerOnce={true}>
                     <h2 className="work__title font-5-light"><b>Работаем</b> с физическими и юридическими лицами</h2>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0} triggerOnce={false}>
+                <ScrollAnimation delay={0} triggerOnce={true}>
                     <p className="work__text">
                         Группа Компаний <b>«Зеленый свет»</b> создана, чтобы оказывать качественные финансовые услуги.
                     </p>

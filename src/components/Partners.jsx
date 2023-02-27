@@ -10,10 +10,10 @@ const PartnersBlock = () => {
   return (
     <div className='partners'>
         <div class="title_partners">
-                <ScrollAnimation delay={0.3} triggerOnce={false}>
+                <ScrollAnimation delay={0.3} triggerOnce={true}>
                     <h1 class="text_partners">Наши <span>партнеры</span></h1>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.5} triggerOnce={false}>
+                <ScrollAnimation delay={0.5} triggerOnce={true}>
                     <p>Мы — группа брокерских компаний «Зелёный свет». Официально сотрудничаем с более чем 30 российскими банками, так как ценим честность и прозрачность в нашей работе.</p>
                 </ScrollAnimation>
         </div>
