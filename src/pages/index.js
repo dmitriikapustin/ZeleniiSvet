@@ -24,6 +24,7 @@ import Help from '@/components/Help';
 import WeWork from '@/components/WeWork';
 import MapBlock from '@/components/MapBlock';
 import Footer from '@/components/Footer';
+import Story from '@/components/Story';
 
 
 import MainProfits from '@/components/MainProfits'
@@ -55,6 +56,12 @@ function App({dataGetPhones}) {
       </Head>
       <PromoLine/>
       <div className='scroll-area'>
+      <Story
+          fetchUrl={''} // Сюда отдаем юрл который надо разобрать
+          type={1}
+          fullsize={false}
+          reverse={true}
+      />
 		  <div className='bc-white-container'>
 		  	<CalcBlock />
         {/* <ForWhat /> */}
