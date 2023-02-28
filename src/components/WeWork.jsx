@@ -6,8 +6,8 @@ import icon5 from './../assets/svg/5.svg'
 import icon6 from './../assets/svg/6.svg'
 import icon7 from './../assets/svg/7.svg'
 
-import ScrollCardsAnimation from './animationC/ScrollCardsAnimation'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollCardsAnimation from './animations/ScrollCardsAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 import WeWorkCard from './WeWorkCard'
 
@@ -61,16 +61,16 @@ export default function WeWork(){
         <section className="work">
             <div className="container">
                 <ScrollAnimation delay={0} triggerOnce={false}>
-                    <h2 className="work__title font-5-light"><b>Работаем</b> с физическими и юридическими лицами</h2>
+                    <h2 className="work__title text-center"><span>Работаем</span> с физическими и юридическими лицами</h2>
                 </ScrollAnimation>
                 <ScrollAnimation delay={0} triggerOnce={false}>
-                    <p className="work__text">
-                        Группа Компаний <b>«Зеленый свет»</b> создана, чтобы оказывать качественные финансовые услуги.
+                    <p className="work__text text-center">
+                        Группа Компаний <span>«Зеленый свет»</span> создана, чтобы оказывать качественные финансовые услуги.
                     </p>
                 </ScrollAnimation>
 
                 <ScrollCardsAnimation
-                    className={"work__cards"}
+                    className={"work__cards items-stretch"}
                 >
                     {mock.map((m, i) => <WeWorkCard key={i} {...m} isGreen={i === 7}/>)}
                 </ScrollCardsAnimation>

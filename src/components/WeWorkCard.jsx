@@ -3,9 +3,9 @@ import greenBg from './../assets/svg/work-card-bg.svg'
 export default function WeWorkCard(props){
     const {icon, title, text, isGreen} = props
     return(
-        <div className={`work-card ${isGreen ? 'work-card--green' : ''}`} style={{backgroundImage: isGreen ? `url(${greenBg.src})` : 'f'}}>
-            <div>{icon && !isGreen &&  <img src={icon} className="work-card__icon" />}</div>
-            <div className="work-card__title">{title}</div>
+        <div className={`work-card flex flex-col h-full ${isGreen ? 'work-card--green' : ''}`} style={{backgroundImage: isGreen ? `url(${greenBg.src})` : 'f'}}>
+            <div>{icon && !isGreen &&  <img src={icon} className="work-card__icon block w-auto h-auto" />}</div>
+            <h3 className="work-card__title">{title}</h3>
             {text.map((t, i) => <p className="work-card__text" key={i}>{t}</p>)}
             <button className={`action ${isGreen ? 'action--white' : 'action--light'}`}>
                 <span>Оставить заявку</span>

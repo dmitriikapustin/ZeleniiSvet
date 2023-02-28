@@ -1,7 +1,7 @@
 import src from './../assets/png/card-mock.png'
 import srcSet from './../assets/png/card-mock@2x.png'
 import ServicesCard from './ServicesCard'
-import CardsAnimation from './animationC/CardsAnimation'
+import CardsAnimation from './animations/CardsAnimation'
 
 const mock = [
     {

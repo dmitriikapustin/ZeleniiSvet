@@ -1,20 +1,14 @@
 .map
-    background: var(--white)
+    background: $White
     padding: 100px 0px
-    position: relative
     z-index: 2
-
-    .container
-        gap: 90px
-        align-items: center
 
     &__info
         max-width: 410px
         flex-shrink: 0
+        margin-right: 90px
 
     &__mask
-        position: absolute
-        display: block
         width: calc(100% + 2px)
         height: calc(100% + 2px)
         top: -1px
@@ -28,9 +22,7 @@
             z-index: 0
 
     &__map
-        border-radius: 36px
-        position: relative
-        width: 100%
+        border-radius: $baseRadius
         overflow: hidden
         height: 455px
 
@@ -39,22 +31,17 @@
 
     &__title
         margin-bottom: 15px
-        color: var(--dark-green)
-        font-size: 42px
-        line-height: 51px
+        color: $DarkedMain
+
 
     &__text
-        font-size: 16px
-        line-height: 19px
-        color: var(--gray)
+        color: $LightedBlack
 
     &__group
         margin-top: 20px
 
         &-title
-            font-size: 14px
-            line-height: 17px
-            color: var(--light-gray)
+            color: $LightedBlack
             margin-bottom: 10px
         
         &-link
@@ -63,9 +50,8 @@
             color: var(--dark-green)
 
         &-socials
-            display: flex
-            gap: 10px
-
+            a:not(:last-child)
+                margin-right: 10px
             a
                 width: 40px
                 height: 40px
@@ -73,7 +59,7 @@
                 display: flex
                 align-items: center
                 justify-content: center
-                background: var(--light-green)
+                background: $Main
 
                 img
                     width: auto

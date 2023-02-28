@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import MaskedInput from "react-text-mask";
 import axios from 'axios';
 import { motion } from "framer-motion";
-import ScrollAnimation from '../components/animationC/ScrollAnimation'
+import ScrollAnimation from '../components/animations/ScrollAnimation'
 
 
 import { useState, useEffect } from 'react';

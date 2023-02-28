@@ -1,6 +1,6 @@
 import src from '../assets/png/credit-img.png'
 import srcSet from '../assets/png/credit-img@2x.png'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 export default function Help(){
     return(
@@ -11,7 +11,7 @@ export default function Help(){
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.4} triggerOnce={false}>
                     <div className='help__content'>
-                        <h2 className='help__title font-5-light'>Наша миссия — получить у банка <b>выгодное кредитование</b> для вас.</h2>
+                        <h2 className='help__title'>Наша миссия — получить у банка <span>выгодное кредитование</span> для вас.</h2>
                         <p className="help__desc">Мы знаем, что у всех разные ситуации в жизни. Расскажите свою — разберёмся и поможем. </p>
                         <button className='action action--light'>
                             <span>Оставить заявку</span>

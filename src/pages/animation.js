@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from "next/link";
-import TestAnimation from '../components/animationC/TestAnimation'
-import Calculator from '../components/animationC/Calculator'
-import TextA from '../components/animationC/TextA'
-import TextB from '../components/animationC/TextB'
-import Scroll from '../components/animationC/Scroll'
-import Parallax from '../components/animationC/Parallax'
-import RunLine from '../components/animationC/RunLine'
+import TestAnimation from '../components/animations/TestAnimation'
+import Calculator from '../components/animations/Calculator'
+import TextA from '../components/animations/TextA'
+import TextB from '../components/animations/TextB'
+import Scroll from '../components/animations/Scroll'
+import Parallax from '../components/animations/Parallax'
+import RunLine from '../components/animations/RunLine'
 
 
 

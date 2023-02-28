@@ -1,29 +1,28 @@
 .help
-    .container
-        gap: 80px
 
     &__img
         max-width: 579px
         margin-left: -56px
+        margin-right: 80px
 
     &__content
         max-width: 545px
 
     &__title
-        font-size: 42px
-        line-height: 51px
-        margin-bottom: 20px
-        color: var(--dark-green)
 
-        b
-            color: var(--light-green)
+        margin-bottom: 20px
+        color: $DarkedMain
+
     
     &__desc
         margin-bottom: 40px
-        font-size: 16px
-        line-height: 19px
-        color: var(--gray)
+        color: $LightedBlack
         max-width: 409px
+
+    .action
+        span 
+            color: $White
+            font-weight: 400
 
     @media(max-width: 1000px)
         .container

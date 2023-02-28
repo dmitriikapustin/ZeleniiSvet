@@ -1,23 +1,23 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import RunningLine from './animationC/RunningLine'
-import RunLine from './animationC/RunLine'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import RunningLine from './animations/RunningLine'
+import RunLine from './animations/RunLine'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 
 
 const PartnersBlock = () => {
   return (
-    <div className='partners'>
-        <div class="title_partners">
+    <div className='partners flex flex-col justify-center'>
+        <div class="title_partners flex items-center flex-col">
                 <ScrollAnimation delay={0.3} triggerOnce={false}>
-                    <h1 class="text_partners">Наши <span>партнеры</span></h1>
+                    <h2 class="text_partners text-center">Наши <span>партнеры</span></h2>
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.5} triggerOnce={false}>
-                    <p>Мы — группа брокерских компаний «Зелёный свет». Официально сотрудничаем с более чем 30 российскими банками, так как ценим честность и прозрачность в нашей работе.</p>
+                    <p className='text-center'>Мы — группа брокерских компаний «Зелёный свет». Официально сотрудничаем с более чем 30 российскими банками, так как ценим честность и прозрачность в нашей работе.</p>
                 </ScrollAnimation>
         </div>
-        <div class="sliders_partners">
+        <div class="sliders_partners flex flex-col h-full relative">
             <RunLine className={"slider_track"} fromX={"-50%"} toX={'0%'}>
                 <div class="slide">
                     <img className="slider_logo" src="/images/logo/partner_logo_1.svg" alt="" />

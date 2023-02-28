@@ -3,75 +3,62 @@
     
 
     &__title
-        text-align: center
         font-size: 42px
         line-height: 51px
         margin: 0px auto 20px
-        color: var(--dark-green)
+        color: $DarkedMain
         max-width: 522px
-
-        b
-            color: var(--light-green)
     
     &__text
-        text-align: center
         margin: 0 auto 50px
         max-width: 500px
-        color: var(--gray)
-        font-size: 16px
-        line-height: 19px
-        b
-           color: var(--light-green)
+        color: $LightedBlack
+
+
 
     &__cards
         display: grid
         grid-template-columns: repeat(4, 1fr)
         gap: 20px
-        align-items: stretch
 
     &-card
-        height: 100%
-        background: var(--white)
+        background: $White
         border-radius: 16px
         padding: 50px 25px
-        display: flex
-        flex-direction: column
+
 
         &--green
             background-repeat: no-repeat
             background-position: center
             background-size: cover
+            .action
+                span
+                    color: $DarkedMain !important
+                    font-weight: 400
             .work-card
                 &__title
                     font-weight: 600
                     margin-top: 20px
                     line-height: 110%
                 &__title, &__text
-                    color: var(--white)
+                    color: $White
 
         .action
             margin-top: auto
-            padding: 15px 26px
             max-width: 204px
-            font-size: 16px
-            gap: 8px
+            // font-size: 16px
+            // gap: 8px
+            span
+                color: $White
+                font-weight: 400
 
         &__title
-            font-size: 24px
-            line-height: 29px
-            color: var(--dark-green)
-            margin-bottom: 20px
+            color: $DarkedMain
 
         &__text
-            color: var(--gray)
-            font-size: 14px
-            line-height: 17px
-            margin-bottom: 20px
+            color: $LightedBlack
 
         &__icon
-            width: auto
-            height: auto
-            display: block
             margin-bottom: 20px
 
     @media(max-width: 1200px)
