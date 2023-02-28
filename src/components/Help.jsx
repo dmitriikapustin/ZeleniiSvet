@@ -1,6 +1,6 @@
 import src from '../assets/png/credit-img.png'
 import srcSet from '../assets/png/credit-img@2x.png'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 export default function Help(){
     return(

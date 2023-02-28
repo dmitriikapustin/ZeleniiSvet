@@ -1,36 +1,49 @@
 a 
     text-decoration: none
-    font-size: 16px
+    font-size: $baseFontSize
     cursor: pointer
     font-weight: 500
+    width: fit-content
 p 
     font-weight: 500
-    font-size: 16px
+    font-size: $baseFontSize
+    width: fit-content
+    color: $LightedBlack
+h1
+    font-size: $baseFontSize * 2.5
+    color: $DarkedMain
 h2 
     font-weight: 500
-    font-size: 36px
+    font-size: $baseFontSize * 2
     width: 100%
     margin-bottom: 0.5em
+    color: $DarkedMain
 h3 
-    font-size: 16px
+    font-size: $baseFontSize * 1.5
     font-weight: 500
     margin-bottom: 1em
+    color: $DarkedMain
 h4 
-    font-size: 28px
+    font-size: $baseFontSize
     font-weight: 400
     margin-bottom: 0.5em
+    color: $DarkedMain
 h5
-    font-size: 16px
+    font-size: $baseFontSize
     font-weight: 500
     margin-bottom: 1em
+    color: $DarkedMain
+
 
 @media (max-width: 800px)
     a, p
-        font-size: 14px
+        font-size: $baseFontSize - 2px
+    h1
+        font-size: $baseFontSize * 1.75
     h2
-        font-size: 32px
+        font-size: $baseFontSize * 1.5
     h3
-        font-size: 14px
+        font-size: $baseFontSize * 1.25
     h4  
-        font-size: 20px
+        font-size: $baseFontSize
     

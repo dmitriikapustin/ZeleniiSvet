@@ -1,4 +1,4 @@
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 export default function MainProfits(){
     return (

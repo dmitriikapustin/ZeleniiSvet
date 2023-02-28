@@ -6,8 +6,8 @@ import icon5 from './../assets/svg/5.svg'
 import icon6 from './../assets/svg/6.svg'
 import icon7 from './../assets/svg/7.svg'
 
-import ScrollCardsAnimation from './animationC/ScrollCardsAnimation'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollCardsAnimation from './animations/ScrollCardsAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 import WeWorkCard from './WeWorkCard'
 

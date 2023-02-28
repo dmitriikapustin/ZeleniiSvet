@@ -10,13 +10,11 @@ import MaskedInput from "react-text-mask";
 import axios from 'axios';
 import FormС from '@/components/FormС';
 
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 import { Range, getTrackBackground } from 'react-range';
 
-import useDebounce from '../hooks/useDebounce'
-
-import ContentEditable from 'react-contenteditable'
+import useDebounce from '../components/hooks/useDebounce'
 
 const MIN = 500000
 const MAX = 20000000
@@ -31,9 +29,6 @@ const itemVariants = {
 	},
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   };
-
-
-
 
 
 
@@ -744,7 +739,7 @@ const CalcBlock = ({rtl}) => {
 						<input
 							className='font-3-regular calc-input'
 							type="text"
-							value={rate}
+							// value={rate}
 							value={valueRate}
 							onClick={(e) => {
 								PosEndRate(e)

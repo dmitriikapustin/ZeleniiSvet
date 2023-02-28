@@ -1,8 +1,8 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import RunningLine from './animationC/RunningLine'
-import RunLine from './animationC/RunLine'
-import ScrollAnimation from './animationC/ScrollAnimation'
+import RunningLine from './animations/RunningLine'
+import RunLine from './animations/RunLine'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 
 

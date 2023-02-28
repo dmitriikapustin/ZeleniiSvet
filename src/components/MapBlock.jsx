@@ -6,7 +6,7 @@ import wa from '../assets/svg/socials/wa.svg'
 import mark from '../assets/svg/map-icon.svg'
 import mask from '../assets/svg/map-mask.svg'
 import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
 const MAP_POINT = [59.9651155, 30.3156276]
 

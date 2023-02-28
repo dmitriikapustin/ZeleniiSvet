@@ -1,26 +1,24 @@
-import ScrollAnimation from './animationC/ScrollAnimation'
+import ScrollAnimation from './animations/ScrollAnimation'
 
-
-export default function forWhat(){
+export default function ForWhat(){
     return (
-        <section className="forWhat">
-            <div class="container">
-                <div class="cards_services">
-                <ScrollAnimation delay={0} triggerOnce={false}>
-                    <div class="card_services">
-                        <img class="card_img" src="/images/card.png" alt=""/>
-                        <h1 class="title_card"><span>Зачем</span> нужен кредитный брокер?</h1>
-                        <p>Вам необходимы деньги, а банк по каким-то причинам не дал их в долг. Брокер согласует с банком всё по кредиту так, чтобы он вас устроил.</p>
+        <section className="forWhat ">
+            <div className="container cards_services flex flex-row items-center">
+                <ScrollAnimation delay={0} triggerOnce={false} className={'cd6 cm4'}>
+                    <div className="card_services flex flex-col items-center relative">
+                        <img className="card_img w-auto h-auto" src="/images/card.png" alt=""/>
+                        <h2 className="titleCard text-center"><span>Зачем</span> нужен кредитный брокер?</h2>
+                        <p className='text-center'>Вам необходимы деньги, а банк по каким-то причинам не дал их в долг. Брокер согласует с банком всё по кредиту так, чтобы он вас устроил.</p>
+                    </div>
+                    
+                </ScrollAnimation>
+                <ScrollAnimation delay={0.5} triggerOnce={false} className={'cd6 cm4'}>
+                    <div className="card_services flex flex-col items-center relative">
+                        <img className="card_img w-auto h-auto" src="/images/card.png" alt=""/>
+                        <h2 className="titleCard text-center"><span>Зачем</span> нужен кредитный брокер?</h2>
+                        <p className='text-center'>Вам необходимы деньги, а банк по каким-то причинам не дал их в долг. Брокер согласует с банком всё по кредиту так, чтобы он вас устроил.</p>
                     </div>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.5} triggerOnce={false}>
-                    <div class="card_services">
-                        <img class="card_img" src="/images/card.png" alt=""/>
-                        <h1 class="title_card"><span>Зачем</span> нужен кредитный брокер?</h1>
-                        <p>В вашем текущем кредите есть просрочка, а банк отказался идти на компромисс? Наш специалист рефинансирует этот долг на выгодных условиях, сэкономив ваши деньги и время.</p>
-                    </div>
-                </ScrollAnimation>
-                </div>
             </div>
         </section>
     )
