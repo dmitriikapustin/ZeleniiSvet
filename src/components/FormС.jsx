@@ -66,11 +66,9 @@ const FormС = (data) => {
 	const onFocus2 = () => setFocused2(true)
 	const onBlur = () => setFocused(false)
 	const onBlur2 = () => setFocused2(false)
-	// const [phonePost, setPhonePost] = useState('')
-	// const [phoneGet, setPhoneGet] = useState(data)
 	const [error, setError] = useState(null)
 
-	console.log(data)
+	// console.log(data)
 
 
 	useEffect(() => {
@@ -146,7 +144,7 @@ const FormС = (data) => {
 
 						const arr = fetchStrapiPhones(data)
 						const booleanResult = !arr.includes(value)
-						console.log(arr)
+						// console.log(arr)
 						return booleanResult === true ? true : this.createError({
 							message: `Такой номер уже есть в базе.`,
 							path: 'mobilephone', // Fieldname

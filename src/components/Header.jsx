@@ -9,7 +9,7 @@ export default function Header(){
         <>
         <header className="header">
             <PromoLine></PromoLine>
-            <div className='container flex justify-between items-center mts'>
+            <div className='container flex justify-between items-center mtm'>
                 <img src={logo.src} className='header__logo' />
                 <HeaderContent/>
                 <div className={`header__burger ${show && 'header__burger--open'}`} onClick={() => setShow(!show)}>

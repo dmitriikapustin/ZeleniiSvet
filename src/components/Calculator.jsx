@@ -304,14 +304,13 @@ const Calculator = ({rtl}) => {
 		
 		var sumInput = e.target.value
 
-		sumInput === ' ₽' ? sumInput = '1 ₽' : sumInput
+		sumInput === ' ₽' ? sumInput = '0' : sumInput
 		
-		console.log(sumInput)
+		// console.log(sumInput)
 		
 		var sum = sumInput.match(/\d/g);
 		sum = sum.join("");		
 
-		console.log(sum)
 
 		if ( parseInt(sum) > 15000000 ) {
 			setSum('15000000')
@@ -327,7 +326,7 @@ const Calculator = ({rtl}) => {
 
 	const valueSumHandler = (sum) => {
 		// console.log(sum)
-		setValueSum(sum + ' ₽')
+		sum === '0' ? setValueSum(' ₽') : setValueSum(sum + ' ₽')
 
 	}
 
@@ -359,9 +358,12 @@ const Calculator = ({rtl}) => {
 	const termHandler = (e) => {
 		var termInput = e.target.value;
 
-		termInput === ' мес' ? termInput = '1 мес' : termInput
+		// termInput === ' мес' ? termInput = '1 мес' : termInput
+
+		termInput === ' мес' ? termInput = '0' : termInput
 
 		var term = termInput.match(/\d/g);
+
 		term = term.join("");	
 
 		if ( parseInt(term) > 360 ) {
@@ -389,7 +391,7 @@ const Calculator = ({rtl}) => {
 
 	const valueTermHandler = (term) => {
 		// console.log(sum)
-		setValueTerm(term + ' мес')
+		term === '0' ? setValueTerm(' мес') : setValueTerm(term + ' мес')
 
 	}
 
@@ -417,9 +419,17 @@ const Calculator = ({rtl}) => {
 	const rateHandler = (e) => {
 		var rateInput = e.target.value;
 		let rateC;
-		rateInput === ' %' ? rateInput = '0 %' : rateC = rateInput.match(/\d./).join("").trim()
+		// rateInput === ' %' ? rateInput = '0' : rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g).join("").trim()
 		var len = e.target.value.length;
 		var dotInInput = rateInput.split(".").length - 1
+
+		console.log(len, rateC, rateInput)
+
+		if (!rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)) rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)
+
+		console.log(rateC)
+
+
 
 		// console.log(dotInInput)
 
@@ -427,24 +437,25 @@ const Calculator = ({rtl}) => {
 
 		// }
 
-		console.log(len)
 
 		// len === 4 ? rateC = rateInput.match(/\d/g) : rateC = rateInput.match(/\d./g)
 
 
-		if ( parseInt(rateC) > 50 ) {
-			setRate('50')
-		} else if ( parseInt(rateC) < 0) {
-			setRate('0')
-		} else {
-			setRate(rateC)
-		}
+		// if ( parseInt(rateC) > 50 ) {
+		// 	setRate('50')
+		// } else if ( parseInt(rateC) < 0) {
+		// 	setRate('0')
+		// } else {
+		// 	setRate(rateC)
+		// }
 
 	}
 
 	const valueRateHandler = (rate) => {
+
+		rate === '0' ? setValueRate(' %') : setValueRate(rate + ' %')
 		// console.log(sum)
-		setValueRate(rate + ' %')
+		// setValueRate(rate + ' %')
 
 	}
 

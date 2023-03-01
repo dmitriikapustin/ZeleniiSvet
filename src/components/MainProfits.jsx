@@ -18,7 +18,7 @@ export default function MainProfits(){
                     </div>
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.5} triggerOnce={false} className={"cd6 cm4 scroll-container"}>
-                    <div className="card flex flex-col items-center">
+                    <div className="card card-2 flex flex-col items-center">
                         <img src="/images/image2.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>
                         <p className='text-center'>Отправляйте деньги через ACH, Wire или SWIFT в США или по всему миру в несколько кликов.</p>

@@ -19,7 +19,7 @@ export default function MapBlock() {
                         <p className="map__text">Вы всегда сможете дозвониться до нас и узнать ответы на все свои вопросы. </p>
                         <div className="map__group">
                             <div className="map__group-title">Телефон</div>
-                            <a href="#" className="map__group-link">8 999 999 99 99</a>
+                            <a href="#" className="map__group-link">8 495 799 29 55</a>
                         </div>
                         <div className="map__group">
                             <div className="map__group-title">Почта</div>
@@ -28,7 +28,7 @@ export default function MapBlock() {
                         <div className="map__group">
                             <p className="map__group-title">Адрес</p>
                             <p className="map__group-link">
-                                Тут какой-то адрес в 2 строки, 125480
+                                г. Москва, ул. Ленинская слобода, д. 26
                             </p>
                         </div>
                         <div className="map__group">
