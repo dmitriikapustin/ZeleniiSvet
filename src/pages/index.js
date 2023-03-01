@@ -14,7 +14,6 @@ import CalcBlock from '@/components/Calculator';
 import FormBlock from '@/components/Form';
 import PartnersBlock from '@/components/Partners';
 import FormС from '../components/FormС'
-import Layout from '../components/animations/Layout'
 import Head from 'next/head'
 import PromoLine from '@/components/PromoLine';
 import Header from '@/components/Header';

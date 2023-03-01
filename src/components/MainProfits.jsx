@@ -3,9 +3,9 @@ import ScrollAnimation from './animations/ScrollAnimation'
 export default function MainProfits(){
     return (
         <section className="mainProfits">
-            <div className="container">
-                <div className="cards flex w-full">
-                <ScrollAnimation delay={0} triggerOnce={false} className="scroll-container">
+            <div className="container flex flex-row">
+                {/* <div className="cards flex w-full"> */}
+                <ScrollAnimation delay={0} triggerOnce={false} className={"cd6 cm4 scroll-container"}>
                     <div className="card flex flex-col items-center round">
                         <img src="/images/image1.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>
@@ -17,7 +17,7 @@ export default function MainProfits(){
                         </a>
                     </div>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.5} triggerOnce={false} className="scroll-container">
+                <ScrollAnimation delay={0.5} triggerOnce={false} className={"cd6 cm4 scroll-container"}>
                     <div className="card flex flex-col items-center">
                         <img src="/images/image2.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>
@@ -29,7 +29,7 @@ export default function MainProfits(){
                         </a>
                     </div>
                 </ScrollAnimation>
-                </div>
+                {/* </div> */}
             </div>
         </section>
     )

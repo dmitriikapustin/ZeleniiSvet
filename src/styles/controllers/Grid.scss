@@ -1,6 +1,6 @@
 $grid-desktop-columns: 12;
 $grid-desktop-sideMargin: 40px;
-$grid-desktop-gutter: 20px;
+$grid-desktop-gutter: 40px;
 $grid-desktop-breakpoint: 1440px;
 
 $grid-ipad-columns: 8;
@@ -86,3 +86,97 @@ $mob-gutter: (
       @include columns-loop(m, $grid-mobile-columns, $mob-gutter);
     }
   }
+
+// mx, mxs, mxm, mxl / pt, pts, ptm, ptl
+// перечисление отступов 
+$spacers: (
+  '': $basePadding,
+  s: $basePadding * $sizeSRate,
+  m: $basePadding * $sizeMRate,
+  l: $basePadding * $sizeLRate,
+);
+
+// типы отступов
+$types: (
+  "m": "margin",
+  "p": "padding"
+);
+
+// стороны
+$sides: (
+  "": "",
+  t: "-top",
+  r: "-right",
+  b: "-bottom",
+  l: "-left"
+);
+
+@media (min-width: 800px) {
+
+  // перебираем перечисление
+  @each $key-spacer,
+  $factor in $spacers {
+
+    // перебираем типы
+    @each $key-type,
+    $type in $types {
+
+      // перебираем стороны
+      @each $key-side,
+      $side in $sides {
+
+        // для всех и каждой стороны
+        .#{$key-type}#{$key-side}#{$key-spacer} {
+          #{$type}#{$side}: $factor;
+        }
+      }
+
+      // для горизонтального отступа
+      .#{$key-type}x#{$key-spacer} {
+        #{$type}-left: $factor;
+        #{$type}-right: $factor;
+      }
+
+      // для вертикального отступа
+      .#{$key-type}y#{$key-spacer} {
+        #{$type}-bottom: $factor;
+        #{$type}-top: $factor;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+
+  // перебираем перечисление
+  @each $key-spacer,
+  $factor in $spacers {
+
+    // перебираем типы
+    @each $key-type,
+    $type in $types {
+
+      // перебираем стороны
+      @each $key-side,
+      $side in $sides {
+
+        // для всех и каждой стороны
+        .#{$key-type}#{$key-side}#{$key-spacer} {
+          #{$type}#{$side}: $factor / $mobileRate;
+        }
+      }
+
+      // для горизонтального отступа
+      .#{$key-type}x#{$key-spacer} {
+        #{$type}-left: $factor / $mobileRate;
+        #{$type}-right: $factor / $mobileRate;
+      }
+
+      // для вертикального отступа
+      .#{$key-type}y#{$key-spacer} {
+        #{$type}-bottom: $factor / $mobileRate;
+        #{$type}-top: $factor / $mobileRate;
+      }
+    }
+  }
+}

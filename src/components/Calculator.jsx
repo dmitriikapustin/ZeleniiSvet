@@ -53,7 +53,7 @@ function Counter({ from, to, className}) {
 		return () => controls.stop();
 	}, [from, to]);
 	// return <p ref={nodeRef}/>
-	return <div className={'div-result-' + (className) + ' font-5-bold'}><p className={'p-result-' + (className) + ' font-5-bold'} ref={nodeRef}/> ₽</div>
+	return <div className={'div-result-' + (className) + ' font-5-bold'}><h2 className={'p-result-' + (className)} ref={nodeRef}/> ₽</div>
 }
 
 const RangeSlider = ({onChange, value, ...sliderProps}) => {
@@ -269,9 +269,7 @@ const CalcBlock = ({rtl}) => {
 		  return () => clearTimeout(timer);
 	}, [sum, term, rate, kindOfPayment])
 
-	// const handleSliderValue = (e) => {
-	// 	setSum(e.target.value)
-	// }
+
 
 
 
@@ -451,15 +449,6 @@ const CalcBlock = ({rtl}) => {
 
 
 
-	// const backSpace = (ref) => {
-	// 	var strValue = ref
-	// 	var position = ref.selectionStart-1
-
-
-	// 	strValue = strValue.substr(0, position) + '' + strValue.substr(position + 1)
-	// 	console.log(strValue, position)
-	// 	ref = strValue
-	// }
 
 
 
@@ -486,205 +475,71 @@ const CalcBlock = ({rtl}) => {
 
   return (
 	<div className='calcblock flex flex-row'>
-		<div className="calcblock-left flex flex-col">
-			<div className='top-text flex flex-col'>
-				<h2 className='font-5-regular'>Узнайте свой будущий платёж.</h2>
-				<p className='font-2-regular'>Прямо здесь и сейчас выберите необходимую сумму <span className='font-2-bold'>кредита</span> и его срок. А на консультации с нашим сотрудником сможете задать ему любые вопросы по своему расчёту. </p>
+		<div className="calcblock-left cd7 cm4 flex flex-col">
+			<div className='top-text cd12 cd4 flex flex-col'>
+				<h2 className=''>Узнайте свой будущий платёж.</h2>
+				<p className=''>Прямо здесь и сейчас выберите необходимую сумму <span className='font-2-bold'>кредита</span> и его срок. А на консультации с нашим сотрудником сможете задать ему любые вопросы по своему расчёту. </p>
 			</div>
 			<div className="main flex flex-col">
-				{/* <div className="service-and-rate flex flex-row">
-					<div className="service flex flex-col">
-						<p className='p-top font-2-regular'>Услуга</p>
-						<motion.nav
-							initial={false}
-							ref={wrapperRef}
-							animate={isOpen ? "open" : "closed"}
-							className="menu"
-						>
-							<motion.button
-							whileTap={{ scale: 0.97 }}
-							onClick={() => setIsOpen(!isOpen)}
-							>
-							<a className='font-2-regular'>Ипотечный кредит</a>
-							<motion.div
-								variants={{
-								open: { rotate: 180 },
-								closed: { rotate: 0 }
-								}}
-								transition={{ duration: 0.2 }}
-								style={{ originY: 0.55 }}
-							>
-								<svg width="19" height="9" viewBox="0 0 19 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M9.98681 8.92392C10.1193 8.91019 10.2446 8.85592 10.3467 8.76852L18.7619 1.53126L18.7618 1.5311C18.8974 1.41515 18.9822 1.24887 18.9975 1.06888C19.0128 0.888886 18.9573 0.709974 18.8432 0.571921C18.7292 0.43388 18.5659 0.347744 18.3896 0.332913C18.2134 0.317926 18.0385 0.375194 17.9037 0.492251L9.91753 7.362L1.93139 0.49225C1.79654 0.375193 1.62168 0.317925 1.44542 0.332912C1.26917 0.347741 1.10589 0.433878 0.991881 0.57192C0.877726 0.70996 0.822268 0.88886 0.837563 1.06888C0.85286 1.24889 0.937659 1.41516 1.07329 1.5311L9.48849 8.76836C9.62706 8.88731 9.80698 8.94348 9.98681 8.92392Z" fill="white"/>
-								</svg>
-
-							</motion.div>
-							</motion.button>
-							<motion.ul
-							className=''
-							variants={{
-								open: {
-								clipPath: "inset(0% 0% 0% 0% round 10px)",
-								transition: {
-									type: "spring",
-									bounce: 0,
-									duration: 0.7,
-									delayChildren: 0.3,
-									staggerChildren: 0.05
-								}
-								},
-								closed: {
-								clipPath: "inset(10% 50% 90% 50% round 10px)",
-								transition: {
-									type: "spring",
-									bounce: 0,
-									duration: 0.3
-								}
-								}
-							}}
-							style={{ pointerEvents: isOpen ? "auto" : "none" }}
-							>
-							{services.map((service, index) => {
-								return (
-									<motion.li key={service.id + index} id={service.id} variants={itemVariants}>
-										<a onClick={() => rateHandler(service)}>{service.name}</a>
-									</motion.li>
-								)
-							})}
-
-							</motion.ul>
-						</motion.nav>
-					</div>
-					<div className="rate flex flex-col">
-						<p className='p-top font-2-regular'>Процентная ставка</p>
-						<p className='rate-value font-4-bold'>от {services[choosenService].percentage}%</p>
-					</div>
-				</div> */}
 				<div className="sum flex flex-col">
-					<p className='font-2-regular param-name'>Сумма кредита</p>
+					<p className='param-name'>Сумма кредита</p>
 					<div className="sum-container flex flex-row">
-						<input
-							className='font-3-regular calc-input'
-							id='sum'
-							type="text"
-							min="300000"
-							max="15000000"
-							value={valueSum}
-							onClick={(e) => {
-								PosEndSum(e)
-							}} 
-							onChange={(e) => {
-								sumHandler(e)
-								const timer = setTimeout(() => {
+						<div className="input-container cd6 cm4">
+							<input
+								className='calc-input cd6 cm4 '
+								id='sum'
+								type="text"
+								min="300000"
+								max="15000000"
+								value={valueSum}
+								onClick={(e) => {
 									PosEndSum(e)
-								  }, 150);
-								  /// ПОЧЕМУ-ТО ЕСЛИ СТАВИТЬ МЕНЬШЕ 150, НЕ ВСЕГДА ОТРАБАТЫВАЕТ (ВОЗВРАЩАЕТСЯ В НУЖНОЕ МЕСТО - ПОСЛЕ ЧИСЛА)
-								  return () => clearTimeout(timer);
-							}}
-						/>
-						<div className="var-container flex flex-row justify-between">
+								}} 
+								onChange={(e) => {
+									sumHandler(e)
+									const timer = setTimeout(() => {
+										PosEndSum(e)
+									}, 150);
+									/// ПОЧЕМУ-ТО ЕСЛИ СТАВИТЬ МЕНЬШЕ 150, НЕ ВСЕГДА ОТРАБАТЫВАЕТ (ВОЗВРАЩАЕТСЯ В НУЖНОЕ МЕСТО - ПОСЛЕ ЧИСЛА)
+									return () => clearTimeout(timer);
+								}}
+							/>
+						</div>
+						<div className="var-container cd6 cm4 flex flex-row justify-between">
 							<a className={'var' + (sum === 1000000 ? ' active' : '')} onClick={() => setSum(1000000)}>1 млн</a>
 							<a className={'var' + (sum === 3000000 ? ' active' : '')} onClick={() => setSum(3000000)}>3 млн</a>
 							<a className={'var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
 						</div>
 					</div>
 
-					{/* <RangeSlider {...sliderProps} classes="additional-css-classes" /> */}
-					{/* <Range
-						values={values}
-						step={STEP}
-						min={MIN}
-						max={MAX}
-						onChange={(values) => handleRange(values)}
-						className={'flex-row range-slider-new'}
-						renderTrack={({ props, children }) => (
-						<div
-							onMouseDown={props.onMouseDown}
-							onTouchStart={props.onTouchStart}
-							style={{
-								...props.style,
-								height: '36px',
-								display: 'flex',
-								width: '100%'
-							  }}
-							  
-						>
-							<div
-							ref={props.ref}
-							style={{
-								height: '5px',
-								width: '100%',
-								borderRadius: '4px',
-								background: getTrackBackground({
-								  values,
-								  colors: ['#548BF4', '#ccc'],
-								  min: MIN,
-								  max: MAX,
-								  rtl
-								}),
-								alignSelf: 'center'
-							  }}
-							>
-							{children}
-							</div>
-						</div>
-						)}
-						renderThumb={({ props, isDragged }) => (
-						<div
-							{...props}
-							style={{
-								...props.style,
-								height: '42px',
-								width: '42px',
-								borderRadius: '4px',
-								backgroundColor: '#FFF',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								boxShadow: '0px 2px 6px #AAA'
-							  }}
-						>
-							<div
-							style={{
-								height: '16px',
-								width: '5px',
-								backgroundColor: isDragged ? '#548BF4' : '#CCC'
-							  }}
-							/>
-						</div>
-						)}
-					/> */}
+
 					
-					{/* <Slider 
-						value={sum}
-						// onChange={handleSliderValue}
-						min={0}
-						max={100000000}
-						step={10000}
-					/> */}
+
 
 				</div>
 				<div className="term flex flex-col">
-					<p className='font-2-regular param-name'>Срок кредита</p>
-					<div className="term-container flex flex-row">
-						<input
-							className='font-3-regular calc-input'
-							type="text"
-							min="12"
-							max="360"
-							value={valueTerm}
-							onClick={(e) => {
-								PosEndTerm(e)
-							}} 
-							onChange={(e) => {
-								termHandler(e)
-								const timer = setTimeout(() => {
+					<p className='param-name'>Срок кредита</p>
+					<div className="term-container flex flex-row w-full">
+						<div className="input-container cd6 cm4">
+							<input
+								className='calc-input'
+								type="text"
+								min="12"
+								max="360"
+								value={valueTerm}
+								onClick={(e) => {
 									PosEndTerm(e)
-								  }, 150);
-								  return () => clearTimeout(timer);
-							}}
-						/>
-						<div className="var-container flex flex-row justify-between">
+								}} 
+								onChange={(e) => {
+									termHandler(e)
+									const timer = setTimeout(() => {
+										PosEndTerm(e)
+									}, 150);
+									return () => clearTimeout(timer);
+								}}
+							/>
+						</div>
+						<div className="var-container flex flex-row justify-between cd6 cm4">
 							<a className={'var' + (term === 60 ? ' active' : '')} onClick={() => setTerm(60)}>5 лет</a>
 							<a className={'var' + (term === 84 ? ' active' : '')} onClick={() => setTerm(84)}>7 лет</a>
 							<a className={'var' + (term === 240 ? ' active' : '')} onClick={() => setTerm(240)}>20 лет</a>
@@ -734,25 +589,27 @@ const CalcBlock = ({rtl}) => {
 					</div> */}
 				</div>
 				<div className="rate flex flex-col">
-					<p className='font-2-regular param-name'>Годовая ставка</p>
+					<p className='param-name'>Годовая ставка</p>
 					<div className="rate-container flex flex-row">
-						<input
-							className='font-3-regular calc-input'
-							type="text"
-							// value={rate}
-							value={valueRate}
-							onClick={(e) => {
-								PosEndRate(e)
-							}} 
-							onChange={(e) => {
-								rateHandler(e)
-								const timer = setTimeout(() => {
+						<div className="input-container cd6 cm4">
+							<input
+								className='calc-input'
+								type="text"
+								// value={rate}
+								value={valueRate}
+								onClick={(e) => {
 									PosEndRate(e)
-								  }, 150);
-								  return () => clearTimeout(timer);
-							}}
-						/>
-						<div className="var-container flex flex-row justify-between">
+								}} 
+								onChange={(e) => {
+									rateHandler(e)
+									const timer = setTimeout(() => {
+										PosEndRate(e)
+									}, 150);
+									return () => clearTimeout(timer);
+								}}
+							/>
+						</div>
+						<div className="var-container flex flex-row justify-between cd6 cm4">
 							<a className={'var' + (rate === 4.4 ? ' active' : '')} onClick={() => setRate(4.4)}>4.4%</a>
 							<a className={'var' + (rate === 8 ? ' active' : '')} onClick={() => setRate(8)}>8%</a>
 							<a className={'var' + (rate === 10 ? ' active' : '')} onClick={() => setRate(10)}>10%</a>
@@ -761,11 +618,11 @@ const CalcBlock = ({rtl}) => {
 						</div>
 					</div>
 				</div>
-				<div className="ind-calc flex flex-row">
+				<div className="ind-calc flex flex-row cd6 cm4">
 					<img src="/images/ind-calc.svg" alt="" />
 					<Link 
 						href={'/indcalc'}					
-						className='font-2-regular' 
+						className='' 
 						as={`indcalc?sum=${sum}&term=${term}&rate=${rate}`}
 						>
 							Перейти в индивидуальный калькулятор
@@ -776,14 +633,14 @@ const CalcBlock = ({rtl}) => {
 								initial={false}
 								ref={wrapperRef}
 								animate={isOpen ? "open" : "closed"}
-								className="menu"
+								className="menu cd6 cm4"
 							>
-								<p className='font-2-regular param-name'>Вид платежа</p>
+								<p className='param-name'>Вид платежа</p>
 								<motion.button
 								whileTap={{ scale: 0.97 }}
 								onClick={() => setIsOpen(!isOpen)}
 								>
-								<a className='font-2-regular'>{kindOfPayment}</a>
+								<a className=''>{kindOfPayment}</a>
 								<motion.div
 									variants={{
 									open: { rotate: 180 },
@@ -832,10 +689,10 @@ const CalcBlock = ({rtl}) => {
 
 								</motion.ul>
 					</motion.nav>
-					<div className="input-date">
-						<p className='font-2-regular param-name'>Дата получения кредита</p>
+					<div className="input-date cd6 cm4">
+						<p className='param-name'>Дата получения кредита</p>
 						<input
-								className='font-3-regular calc-input-date'
+								className='calc-input-date'
 								type="text"
 								value={date}
 								onClick={(e) => {e.target.value = date}}
@@ -845,17 +702,17 @@ const CalcBlock = ({rtl}) => {
 				</div>
 			</div>
 		</div>
-		<div className="calcblock-right flex flex-col">
+		<div className="calcblock-right cd5 cd4 flex flex-col">
 			<div className="cover">
 
 			</div>
 			<div className="text-cover">
-				<p className='p-top font-4-regular'>Ежемесячный платёж</p>
+				<h3 className='p-top'>Ежемесячный платёж</h3>
 				<Counter from={prevCountResult} to={result} className={'payment'} /> 
 				{/* <p className='p-top font-4-regular'>Переплата по процентам за кредит</p>
 				<Counter from={prevCountOverpayment} to={overpayment} text={'руб'} />  */}
 				<div style={{width: '70%'}} className='button bc-white flex flex-row' onClick={() => setTogglePopup(true)}>
-					<a className='font-1-bold'>Нужна консультация</a>
+					<a className=''>Нужна консультация</a>
 					<svg width="18" height="19"  fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.5 13.6299L9.45 12.5424L12.1125 9.87988H3V8.37988H12.1125L9.45 5.71738L10.5 4.62988L15 9.12988L10.5 13.6299Z" fill="#fff"/>
 					</svg>

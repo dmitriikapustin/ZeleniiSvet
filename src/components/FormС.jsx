@@ -272,7 +272,7 @@ const FormС = (data) => {
 									name="mobilephone"
 									id="mobilephone"
 									placeholder=" "
-									className='font-1-bold'
+									className=''
 									onFocus={onFocus2}
 									onChange={(e) => {
 										formik.handleChange(e)

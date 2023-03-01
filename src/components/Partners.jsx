@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import RunningLine from './animations/RunningLine'
 import RunLine from './animations/RunLine'
 import ScrollAnimation from './animations/ScrollAnimation'
 

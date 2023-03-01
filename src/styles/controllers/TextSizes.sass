@@ -4,6 +4,11 @@ a
     cursor: pointer
     font-weight: 500
     width: fit-content
+
+
+input, label
+    font-size: $baseFontSize
+    font-weight: 500
 p 
     font-weight: 500
     font-size: $baseFontSize
@@ -11,11 +16,11 @@ p
     color: $LightedBlack
     margin-bottom: 1em
 h1
-    font-size: $baseFontSize * 3
+    font-size: $baseFontSize * 3.5
     color: $DarkedMain
 h2 
     font-weight: 500
-    font-size: $baseFontSize * 3
+    font-size: $baseFontSize * 2.5
     width: 100%
     margin-bottom: 0.5em
     color: $DarkedMain
@@ -37,7 +42,7 @@ h5
 
 
 @media (max-width: 800px)
-    a, p
+    a, p, input, label
         font-size: $baseFontSize - 2px
     h1
         font-size: $baseFontSize * 1.75

@@ -1,20 +1,24 @@
 .hero
     background: var(--bg-pic)
     background-size: cover
+    span
+        font-size: $baseFontSize * 3.5
+        background: $White
+        color: $DarkedMain
+        padding: 0 30px
+        margin-left: -30px
+        border-radius: 110px
+        white-space: nowrap
 
     &__title
-        margin-bottom: 37px
-        i
-            color: $White
-            margin-bottom: 10px
-        span
-            background: $White
-            color: $DarkedMain
-            padding: 0 30px
-            margin-left: -30px
-            border-radius: 110px
-            white-space: nowrap
+        max-width: 600px
+        color: $White !important
+        margin-bottom: 10px
+        font-weight: 400
+        line-height: 1
+
     h3
+        margin-top: 15px
         margin-bottom: 34px
         color: $White
 

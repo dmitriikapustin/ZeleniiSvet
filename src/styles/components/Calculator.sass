@@ -48,20 +48,17 @@
 			width: 100%
 			margin-bottom: 10px
 			h2
-				color: var(--dark-green)
 				margin-bottom: 10px
 			span
-				color: var(--light-green)
+				color: $Main
 			p
-				font-weight: 400
 				width: 85%
-				color: var(--gray)
+				font-weight: 400
+				color: $LightedBlack
 				font-size: 16px
 		.main
 			.menu
 				// background: #688DD6
-				width: calc(50% - 10px)
-				margin-right: 10px
 				color: black
 				height: auto
 				position: relative
@@ -82,7 +79,6 @@
 					&.close
 						display: none
 
-
 				li
 					color: black
 					display: block
@@ -96,17 +92,13 @@
 						left: 93%
 						top: 35%
 						z-index: 1000 !important
-						background-color: var(--light-green)
-
-
-
+						background-color: $Main
 
 				ul,
 				li
 					list-style: none
 					margin: 0
 					padding: 10px
-
 
 				button
 					-webkit-appearance: button
@@ -116,7 +108,7 @@
 					border-radius: 10px
 					outline: none
 					border: 1px solid #9da0a8
-					padding: 10px 20px
+					padding: 10px 15px
 					cursor: pointer
 					width: 100%
 					text-align: left
@@ -140,32 +132,31 @@
 				.service
 					margin-right: 60px
 				.rate-value
-					color: var(--light-green)
-					font-size: 36px
+					color: $Main
+					// font-size: 36px
 					font-weight: 600
 			.sum, .term, .rate
 				margin-top: 40px
 				.param-name
-					transform: translate3d(13px, 31px, 0)
+					transform: translate3d(22px, 47px, 0)
 					width: fit-content
 					background: linear-gradient(0deg, hsla(0, 0%, 98%, 1) 0%, hsla(0, 0%, 100%, 1) 50%)	
 					padding: 3px 4px
 					z-index: 999 !important
 				.calc-input
-					width: calc(50% - 10px)
 					margin-top: 20px
-					margin-right: 10px
 					height: 60px
 					background-color: #FBFBFB
 					border-radius: 10px
 					outline: none
 					border: 1px solid #9da0a8
 					padding: 10px 15px
-					font-size: 18px
+					// font-size: 18px
+					width: 100%
 				.sum-container, .term-container, .rate-container
 					justify-content: space-between
 					.var-container
-						width: 50%
+						// padding: 0px 15px
 						justify-content: space-between !important
 						.var
 							background: #FBFBFB
@@ -173,83 +164,174 @@
 							border-radius: 10px
 							margin-top: 20px
 							height: 60px 
-							font-size: 18px
+							// font-size: 18px
 							&.active
-								background: var(--light-green) !important
+								background: $Main !important
 								color: white !important
 			.ind-calc
-				margin-top: 30px
-				margin-bottom: 30px
+				margin-top: 45px
+				margin-bottom: 20px
 				align-items: center
 				img
 					width: 25px
 					height: 25px
-					margin-right: 10px
+					// margin-right: 10px
 				a	
-					color: var(--light-green)
+					color: $Main
 					height: fit-content
-					border-bottom: 1px solid var(--light-green)
+					border-bottom: 1px solid $Main
 					transition: .3s all ease
 					&:hover 
 						opacity: 0.69
 
 			p
-				color: var(--gray)
+				color: $LightedBlack
 
 			.choose-kind-and-date
 				.param-name
-					transform: translate3d(15px, 12px, 0)
+					transform: translate3d(12px, 28px, 0)
 					width: fit-content
 					background: linear-gradient(0deg, hsla(0, 0%, 98%, 1) 0%, hsla(0, 0%, 100%, 1) 50%)	
 					padding: 3px 4px
 					z-index: 999 !important
 				.input-date
-					width: 50%
 					.calc-input-date
 						width: 100%
-						margin-right: 10px
 						height: 60px
 						background-color: #FBFBFB
 						border-radius: 10px
 						outline: none
 						border: 1px solid #9da0a8
 						padding: 10px 15px
-						font-size: 18px
+						// font-size: 18px
 
 	.calcblock-right
+		.p-result-payment
+			width: fit-content !important
 		align-items: center
 		justify-content: center
 		height: auto
 		position: relative
 		p
-			color: var(--white)
+			color: $White
 		.cover
-			background: #FBFBFB
+			background: $Main
 			background-size: cover
 			border-radius: 30px
-			width: 80%
+			width: 100%
 			height: 320px
 		.text-cover
 			width: 63%
 			position: absolute
 
 			.button
-				background-color: var(--light-green)
+				background-color: $White
 				a
-					color: white
+					color: $DarkedMain
+				svg path
+					fill: $DarkedMain
 			.p-top
-				color: var(--gray)
-				font-size: 28px
+				color: $White
+				// font-size: 28px
 				width: 80%
 				font-weight: 300 !important
+			.div-result-payment
+				font-size: $baseFontSize * 2.5 !important
 			.div-result-payment, .p-result-payment
 				display: flex 
 				align-items: baseline
-				color: var(--light-green) !important
+				color: $White!important
 				font-weight: 600
-				font-size: 42px
+				// font-size: 42px
 			.p-result-payment
 				margin-top: 10px
 				margin-right: 10px
 				margin-bottom: 25px
 
+@media ( max-width: 800px )
+
+	.calcblock
+		margin-top: 0
+		padding-bottom: 20px
+		padding-top: 20px 
+		.calc-input
+			height: 50px 
+		.param-name
+			transform: translate3d(16px, 43px, 0) !important
+		.div-result
+			font-size: $baseFontSize * 1.5
+		.choose-kind-and-date
+			flex-direction: column 
+			.menu
+				z-index: 1200 
+				a
+					// font-size: 18px !important
+			.input-date, .menu
+				width: 100% 
+				button
+					height: 50px 
+				input 
+					height: 50px 
+			.param-name
+				transform: translate3d(13px, 24px, 0) !important
+			.calc-input-date
+				height: 50px 
+		.calc-input
+			width: 100% 
+		.sum-container, .term-container, .rate-container
+			flex-direction: column 
+			.var-container
+				width: 100% 
+				.var
+					height: 50px 
+					padding: 14px 15px 
+		.calcblock-left
+			.top-text
+				p
+					width: 100%
+		.calcblock-right
+			margin-top: 20px 
+			.text-cover
+				width: 85% !important
+				.div-result
+					margin-top: 5px 
+					margin-bottom: 5px 
+
+		.calcblock-left, .calcblock-right
+			width: 100%
+			margin-bottom: 20px 
+		.sum, .term, .rate
+			margin-top: 0px !important 
+			input
+				margin-top: 5px 
+		.top-text
+			margin-bottom: 15px 
+			p
+				margin-top: 10px
+
+		.text-cover
+			width: 83% 
+			.p-top
+				font-size: 5.5vw 
+			.p-result
+				margin-top: 5px 
+				margin-bottom: 15px 
+		.cover
+			width: 100% 
+			height: 230px !important
+			border-radius: 20px 
+		.button
+			width: 62% 
+			a
+				padding: 12px 0 
+			svg
+				width: 21px 
+				padding: 1px 0 0 6px 
+		.ind-calc
+			img
+				display: none
+			margin-top: 50px 
+			margin-bottom: 40px 
+			a
+				font-size: 4vw 
+	
