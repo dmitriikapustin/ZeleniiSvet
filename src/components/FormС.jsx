@@ -10,7 +10,7 @@ import ScrollAnimation from '../components/animations/ScrollAnimation'
 
 import { useState, useEffect } from 'react';
 
-import Button from './Button';
+import Button from './atoms/Button';
 
 const styleForm = {
     width: "100%",

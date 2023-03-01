@@ -10,7 +10,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
 
 import Slider from '../components/Slider';
-import CalcBlock from '@/components/Calculator';
+import Calculator from '@/components/Calculator';
 import FormBlock from '@/components/Form';
 import PartnersBlock from '@/components/Partners';
 import FormС from '../components/FormС'
@@ -53,7 +53,6 @@ function App({dataGetPhones}) {
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
-      <PromoLine/>
       <div className='scroll-area'>
       {/* <Story
           fetchUrl={''} // Сюда отдаем юрл который надо разобрать
@@ -61,19 +60,22 @@ function App({dataGetPhones}) {
           fullsize={false}
           reverse={true}
       /> */}
-		  <div className='bc-white-container'>
-		  	<CalcBlock />
+		  {/* <div className='bc-white-container'>
         <ForWhat />
 		  </div>
-		  <FormBlock data={dataGetPhones}/>
+		  <FormBlock data={dataGetPhones}/> */}
         <Header/>
         <main>
           <HeroSection/>
           <Services/>
+          <div className='bc-white-container'>
+            <Calculator />
+          </div>
+		  	  
           <Help/>
           <MainProfits />
           <WeWork/>
-		  <PartnersBlock />
+		      <PartnersBlock />
           <MapBlock/>
           <Footer/>
         </main>

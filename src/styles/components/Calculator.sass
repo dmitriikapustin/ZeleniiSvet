@@ -11,12 +11,9 @@
 	.popup
 		display: none
 		&.active
-			display: flex
 			position: fixed
 			left: 0
 			top: 0
-			justify-content: center
-			align-items: center
 			width: 100%
 			height: 100vh
 			background-color: RGBA(0,0,0,0.7)
@@ -136,7 +133,8 @@
 					// font-size: 36px
 					font-weight: 600
 			.sum, .term, .rate
-				margin-top: 40px
+				margin-top: 0px
+				height: fit-content
 				.param-name
 					transform: translate3d(22px, 47px, 0)
 					width: fit-content
@@ -159,8 +157,8 @@
 						// padding: 0px 15px
 						justify-content: space-between !important
 						.var
-							background: #FBFBFB
-							padding: 18px 15px
+							background: #f7f7f7
+							padding: 20px 15px 18px 15px
 							border-radius: 10px
 							margin-top: 20px
 							height: 60px 

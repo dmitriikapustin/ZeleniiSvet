@@ -1,9 +1,14 @@
 import greenBg from './../assets/svg/work-card-bg.svg'
 
+import VideoBackground from './atoms/VideoBackground'
+
 export default function WeWorkCard(props){
     const {icon, title, text, isGreen} = props
     return(
-        <div className={`work-card flex flex-col h-full ${isGreen ? 'work-card--green' : ''}`} style={{backgroundImage: isGreen ? `url(${greenBg.src})` : 'f'}}>
+        <div className={`relative work-card flex flex-col h-full ${isGreen ? 'work-card--green' : ''}`}>
+            {isGreen 
+            ? <VideoBackground/>
+            : ''}
             <div>{icon && !isGreen &&  <img src={icon} className="work-card__icon block w-auto h-auto" />}</div>
             <h3 className="work-card__title">{title}</h3>
             {text.map((t, i) => <p className="work-card__text" key={i}>{t}</p>)}

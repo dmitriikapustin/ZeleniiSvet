@@ -1,6 +1,9 @@
+import VideoBackground from "./atoms/VideoBackground"
+
 export default function HeroSection(){
     return(
-        <section className="hero">
+        <section className="hero relative">
+            <VideoBackground />
             <div className='container'>
                 <div>
                     <h1 className="hero__title">
@@ -15,6 +18,7 @@ export default function HeroSection(){
                     </button>
                 </div>
             </div>
+            
         </section>
     )
 }

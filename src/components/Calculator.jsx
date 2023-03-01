@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { motion, animate } from "framer-motion";
-import Button from './Button'
+import Button from './atoms/Button'
 // import { Range } from 'react-range';
 import * as Yup from "yup";
 import MaskedInput from "react-text-mask";
 import axios from 'axios';
 import FormС from '@/components/FormС';
+
+import VideoBackground from './atoms/VideoBackground';
 
 import ScrollAnimation from './animations/ScrollAnimation'
 
@@ -96,7 +98,7 @@ const RangeSlider = ({onChange, value, ...sliderProps}) => {
 }
 
 
-const CalcBlock = ({rtl}) => {
+const Calculator = ({rtl}) => {
 
 	const dateC = new Date();
 
@@ -474,7 +476,7 @@ const CalcBlock = ({rtl}) => {
 	}
 
   return (
-	<div className='calcblock flex flex-row'>
+	<div className='calcblock flex flex-row bc-white-container'>
 		<div className="calcblock-left cd7 cm4 flex flex-col">
 			<div className='top-text cd12 cd4 flex flex-col'>
 				<h2 className=''>Узнайте свой будущий платёж.</h2>
@@ -506,9 +508,9 @@ const CalcBlock = ({rtl}) => {
 							/>
 						</div>
 						<div className="var-container cd6 cm4 flex flex-row justify-between">
-							<a className={'var' + (sum === 1000000 ? ' active' : '')} onClick={() => setSum(1000000)}>1 млн</a>
-							<a className={'var' + (sum === 3000000 ? ' active' : '')} onClick={() => setSum(3000000)}>3 млн</a>
-							<a className={'var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
+							<a className={'text-center cd3 var' + (sum === 1000000 ? ' active' : '')} onClick={() => setSum(1000000)}>1 млн</a>
+							<a className={'text-center cd3 var' + (sum === 3000000 ? ' active' : '')} onClick={() => setSum(3000000)}>3 млн</a>
+							<a className={'text-center cd3 var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
 						</div>
 					</div>
 
@@ -618,93 +620,97 @@ const CalcBlock = ({rtl}) => {
 						</div>
 					</div>
 				</div>
-				<div className="ind-calc flex flex-row cd6 cm4">
-					<img src="/images/ind-calc.svg" alt="" />
-					<Link 
-						href={'/indcalc'}					
-						className='' 
-						as={`indcalc?sum=${sum}&term=${term}&rate=${rate}`}
-						>
-							Перейти в индивидуальный калькулятор
-					</Link>
-				</div>
-				<div className="choose-kind-and-date flex flex-row w-full">
-					<motion.nav
-								initial={false}
-								ref={wrapperRef}
-								animate={isOpen ? "open" : "closed"}
-								className="menu cd6 cm4"
-							>
-								<p className='param-name'>Вид платежа</p>
-								<motion.button
-								whileTap={{ scale: 0.97 }}
-								onClick={() => setIsOpen(!isOpen)}
+				<div className="flex flex-row">
+
+					
+					<div className="cd6 cm4 choose-kind-and-date flex flex-row w-full">
+						<motion.nav
+									initial={false}
+									ref={wrapperRef}
+									animate={isOpen ? "open" : "closed"}
+									className="menu cd12 cm4"
 								>
-								<a className=''>{kindOfPayment}</a>
-								<motion.div
+									<p className='param-name'>Вид платежа</p>
+									<motion.button
+									whileTap={{ scale: 0.97 }}
+									onClick={() => setIsOpen(!isOpen)}
+									>
+									<a className=''>{kindOfPayment}</a>
+									<motion.div
+										variants={{
+										open: { rotate: 180 },
+										closed: { rotate: 0 }
+										}}
+										transition={{ duration: 0.2 }}
+										style={{ originY: 0.55 }}
+									>
+										<svg width="19" height="9" viewBox="0 0 19 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M9.98681 8.92392C10.1193 8.91019 10.2446 8.85592 10.3467 8.76852L18.7619 1.53126L18.7618 1.5311C18.8974 1.41515 18.9822 1.24887 18.9975 1.06888C19.0128 0.888886 18.9573 0.709974 18.8432 0.571921C18.7292 0.43388 18.5659 0.347744 18.3896 0.332913C18.2134 0.317926 18.0385 0.375194 17.9037 0.492251L9.91753 7.362L1.93139 0.49225C1.79654 0.375193 1.62168 0.317925 1.44542 0.332912C1.26917 0.347741 1.10589 0.433878 0.991881 0.57192C0.877726 0.70996 0.822268 0.88886 0.837563 1.06888C0.85286 1.24889 0.937659 1.41516 1.07329 1.5311L9.48849 8.76836C9.62706 8.88731 9.80698 8.94348 9.98681 8.92392Z" fill="white"/>
+										</svg>
+
+									</motion.div>
+									</motion.button>
+									<motion.ul
+									className=''
 									variants={{
-									open: { rotate: 180 },
-									closed: { rotate: 0 }
+										open: {
+										clipPath: "inset(0% 0% 0% 0% round 10px)",
+										transition: {
+											type: "spring",
+											bounce: 0,
+											duration: 0.7,
+											delayChildren: 0.3,
+											staggerChildren: 0.05
+										}
+										},
+										closed: {
+										clipPath: "inset(10% 50% 90% 50% round 10px)",
+										transition: {
+											type: "spring",
+											bounce: 0,
+											duration: 0.3
+										}
+										}
 									}}
-									transition={{ duration: 0.2 }}
-									style={{ originY: 0.55 }}
-								>
-									<svg width="19" height="9" viewBox="0 0 19 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M9.98681 8.92392C10.1193 8.91019 10.2446 8.85592 10.3467 8.76852L18.7619 1.53126L18.7618 1.5311C18.8974 1.41515 18.9822 1.24887 18.9975 1.06888C19.0128 0.888886 18.9573 0.709974 18.8432 0.571921C18.7292 0.43388 18.5659 0.347744 18.3896 0.332913C18.2134 0.317926 18.0385 0.375194 17.9037 0.492251L9.91753 7.362L1.93139 0.49225C1.79654 0.375193 1.62168 0.317925 1.44542 0.332912C1.26917 0.347741 1.10589 0.433878 0.991881 0.57192C0.877726 0.70996 0.822268 0.88886 0.837563 1.06888C0.85286 1.24889 0.937659 1.41516 1.07329 1.5311L9.48849 8.76836C9.62706 8.88731 9.80698 8.94348 9.98681 8.92392Z" fill="white"/>
-									</svg>
+									style={{ pointerEvents: isOpen ? "auto" : "none" }}
+									>
+									{services.map((service, index) => {
+										return (
+											<motion.li key={service.id + index} id={service.id} variants={itemVariants} className={(kindOfPayment === service.name) ? 'active' : ''}>
+												<a onClick={() => kindOfPaymentHandler(service)}>{service.name}</a>
+											</motion.li>
+										)
+									})}
 
-								</motion.div>
-								</motion.button>
-								<motion.ul
-								className=''
-								variants={{
-									open: {
-									clipPath: "inset(0% 0% 0% 0% round 10px)",
-									transition: {
-										type: "spring",
-										bounce: 0,
-										duration: 0.7,
-										delayChildren: 0.3,
-										staggerChildren: 0.05
-									}
-									},
-									closed: {
-									clipPath: "inset(10% 50% 90% 50% round 10px)",
-									transition: {
-										type: "spring",
-										bounce: 0,
-										duration: 0.3
-									}
-									}
-								}}
-								style={{ pointerEvents: isOpen ? "auto" : "none" }}
-								>
-								{services.map((service, index) => {
-									return (
-										<motion.li key={service.id + index} id={service.id} variants={itemVariants} className={(kindOfPayment === service.name) ? 'active' : ''}>
-											<a onClick={() => kindOfPaymentHandler(service)}>{service.name}</a>
-										</motion.li>
-									)
-								})}
-
-								</motion.ul>
-					</motion.nav>
-					<div className="input-date cd6 cm4">
-						<p className='param-name'>Дата получения кредита</p>
-						<input
-								className='calc-input-date'
-								type="text"
-								value={date}
-								onClick={(e) => {e.target.value = date}}
-								onChange={dateHandler}
-						/>
+									</motion.ul>
+						</motion.nav>
+						<div className="input-date cd6 cm4 hidden">
+							<p className='param-name'>Дата получения кредита</p>
+							<input
+									className='calc-input-date'
+									type="text"
+									value={date}
+									onClick={(e) => {e.target.value = date}}
+									onChange={dateHandler}
+							/>
+						</div>
+					</div>
+					<div className="ind-calc flex flex-row cd6 cm4">
+						<img src="/images/ind-calc.svg" alt="" />
+						<Link 
+							href={'/indcalc'}					
+							className='' 
+							as={`indcalc?sum=${sum}&term=${term}&rate=${rate}`}
+							>
+								Перейти в индивидуальный калькулятор
+						</Link>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div className="calcblock-right cd5 cd4 flex flex-col">
-			<div className="cover">
-
+		<div className="calcblock-right cd5 cd4 flex flex-col mtl">
+			<div className="cover relative">
+				<VideoBackground />
 			</div>
 			<div className="text-cover">
 				<h3 className='p-top'>Ежемесячный платёж</h3>
@@ -733,4 +739,4 @@ const CalcBlock = ({rtl}) => {
   )
 }
 
-export default CalcBlock
+export default Calculator

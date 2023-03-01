@@ -2,9 +2,12 @@ import logo from '../assets/svg/logo-light.svg'
 import wa from '../assets/svg/socials/wa.svg'
 import tg from '../assets/svg/socials/tg.svg'
 
+import VideoBackground from './atoms/VideoBackground'
+
 export default function Footer(){
     return(
-        <footer className="footer">
+        <footer className="footer relative">
+            <VideoBackground />
             <div className="container">
                 <div className="footer__top flex justify-between">
                     <h2 className="footer__title font-5-light">Поможем с кредитом на любые цели</h2>

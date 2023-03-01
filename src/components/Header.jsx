@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import logo from '../assets/svg/logo.svg'
 
+import PromoLine from '@/components/PromoLine'
+
 export default function Header(){
     const [show, setShow] = useState(false)
     return(
+        <>
         <header className="header">
-            <div className='container flex justify-between items-center'>
+            <PromoLine></PromoLine>
+            <div className='container flex justify-between items-center mts'>
                 <img src={logo.src} className='header__logo' />
                 <HeaderContent/>
                 <div className={`header__burger ${show && 'header__burger--open'}`} onClick={() => setShow(!show)}>
@@ -18,12 +22,14 @@ export default function Header(){
                 </div>
             </div>
         </header>
+        </>
     )
 }
 
 const HeaderContent = ({isMob}) => {
     return(
         <>
+        
             <nav className="header__menu flex justify-between">
                 <a href="#" className="header__menu-item">Про рынок</a>
                 <a href="#" className="header__menu-item">Брокерские услуги</a>
