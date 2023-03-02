@@ -34,19 +34,19 @@ export default function MapBlock() {
                         <div className="map__group">
                             <div className="map__group-title">Мессенджеры и социальные сети</div>
                             <div className="map__group-socials flex">
-                                <a classname="" href="">
+                                <a className="" href="">
                                     <img src={fb.src} />
                                 </a>
-                                <a classname="" href="">
+                                <a className="" href="">
                                     <img src={inst.src}/>
                                 </a>
-                                <a classname="" href="">
+                                <a className="" href="">
                                     <img src={tg.src}/>
                                 </a>
-                                <a classname="" href="">
+                                <a className="" href="">
                                     <img src={vk.src} />
                                 </a>
-                                <a classname="" href="">
+                                <a className="" href="">
                                     <img src={wa.src} />
                                 </a>
                             </div>

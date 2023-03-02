@@ -425,29 +425,26 @@ const Calculator = ({rtl}) => {
 
 		console.log(len, rateC, rateInput)
 
+		/// rateInput.match возвращает null, хотя должен пропускать числа недробные и дробные
+		/// дебаг выше полезен. rateC не становится дробным числом, даже если вводить с самого начала, в то время как rateInput такой, какой и должен быть
+
 		if (!rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)) rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)
 
 		console.log(rateC)
 
 
 
-		// console.log(dotInInput)
-
-		// if (rateInput.infexOf('.') > -1 && len === 4) {
-
-		// }
 
 
-		// len === 4 ? rateC = rateInput.match(/\d/g) : rateC = rateInput.match(/\d./g)
 
 
-		// if ( parseInt(rateC) > 50 ) {
-		// 	setRate('50')
-		// } else if ( parseInt(rateC) < 0) {
-		// 	setRate('0')
-		// } else {
-		// 	setRate(rateC)
-		// }
+		if ( parseInt(rateC) > 50 ) {
+			setRate('50')
+		} else if ( parseInt(rateC) < 0) {
+			setRate('0')
+		} else {
+			setRate(rateC)
+		}
 
 	}
 
