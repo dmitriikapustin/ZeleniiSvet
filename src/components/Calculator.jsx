@@ -210,7 +210,7 @@ const Calculator = ({rtl}) => {
 		// 	return calcResult
 		// } 
 		
-		console.log(calcResult, n, S)
+		// console.log(calcResult, n, S)
 
 		let overpayment = calcResult * n - S
 
@@ -320,7 +320,7 @@ const Calculator = ({rtl}) => {
 			setSum(sum)
 		}
 
-		// console.log(sum, sumInputRef)
+		console.log(sum)
 
 	}
 
@@ -423,14 +423,14 @@ const Calculator = ({rtl}) => {
 		var len = e.target.value.length;
 		var dotInInput = rateInput.split(".").length - 1
 
-		console.log(len, rateC, rateInput)
+		// console.log(len, rateC, rateInput)
 
 		/// rateInput.match возвращает null, хотя должен пропускать числа недробные и дробные
 		/// дебаг выше полезен. rateC не становится дробным числом, даже если вводить с самого начала, в то время как rateInput такой, какой и должен быть
 
 		if (!rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)) rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)
 
-		console.log(rateC)
+		// console.log(rateC)
 
 
 

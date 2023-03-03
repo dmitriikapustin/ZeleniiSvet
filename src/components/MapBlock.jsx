@@ -5,16 +5,22 @@ import vk from '../assets/svg/socials/vk.svg'
 import wa from '../assets/svg/socials/wa.svg'
 import mark from '../assets/svg/map-icon.svg'
 import mask from '../assets/svg/map-mask.svg'
-import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
+// import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import ScrollAnimation from './animations/ScrollAnimation'
 
-const MAP_POINT = [59.9651155, 30.3156276]
+
 
 export default function MapBlock() {
+    const defaultState = {
+		center: [59.9651155, 30.3156276],
+		zoom: 17,
+		controls: []
+	}
     return (
         <section className="map relative">
-            <div className="container flex items-center">
-                <ScrollAnimation delay={0} triggerOnce={true} className={'map__info'}>
+            <div className="container flex items-center flex-row w-full justify-between">
+                <ScrollAnimation delay={0} triggerOnce={true} className={'map__info cd5 cm4'}>
                         <h2 className="map__title">Мы всегда на связи 24/7</h2>
                         <p className="map__text">Вы всегда сможете дозвониться до нас и узнать ответы на все свои вопросы. </p>
                         <div className="map__group">
@@ -52,27 +58,20 @@ export default function MapBlock() {
                             </div>
                     </div>
                 </ScrollAnimation>
-                <ScrollAnimation delay={0.7} triggerOnce={true} className={'map__map relative w-full'}>
-                        <img src={mask.src} className='map__mask block absolute' />
-                    <YMaps
-                        width='100%'
-                        height='100%'
-                    >
-                        <YMap 
-                            width='100%'
-                            height='100%'
-                            defaultState={{ center: MAP_POINT, zoom: 17 }} 
-                        >
-                            <Placemark
-                                    geometry={MAP_POINT}
+                <ScrollAnimation delay={0.7} triggerOnce={true} className={'map__map relative w-full cd7 cm4'}>
+                        {/* <img src={mask.src} className='map__mask block absolute' /> */}
+                        <YMaps height={'440px'} query={{ apikey: 'fe365efb-ab51-440e-a7d1-c6b999dd3f87' }}>
+                            <Map height={'440px'} defaultState={defaultState}>
+                                <Placemark 
+                                    geometry={[59.9651155, 30.3156276]}  
                                     options={{
                                         iconLayout: 'default#image',
                                         iconImageSize: [46, 69],
                                         iconImageHref: mark.src
-                                    }}
-                                />
-                        </YMap>
-                    </YMaps>
+                                    }}/>
+                                <ZoomControl options={{ float: "right" }} />
+                            </Map>
+                        </YMaps>
                 </ScrollAnimation>
             </div>
         </section>
