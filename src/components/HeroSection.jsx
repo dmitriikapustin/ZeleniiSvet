@@ -6,7 +6,7 @@ export default function HeroSection(){
             <VideoBackground />
             <div className='container'>
                 <div>
-                    <h1 className="hero__title">
+                    <h1 className="hero__title mtl">
                         С нами вам одобрят кредит на
                     </h1>
                     <span className="">любые цели</span>

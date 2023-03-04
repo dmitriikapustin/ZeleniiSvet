@@ -175,7 +175,6 @@
 				img
 					width: 25px
 					height: 25px
-					margin-right: 5px
 				a	
 					color: $Main
 					height: fit-content
@@ -222,11 +221,9 @@
 			width: 100%
 			height: 320px
 		.text-cover
-			width: 63%
 			position: absolute
 
 			.button
-				background-color: $White
 				a
 					color: $DarkedMain
 				svg path
@@ -234,20 +231,17 @@
 			.p-top
 				color: $White
 				// font-size: 28px
-				width: 80%
 				font-weight: 300 !important
 			.div-result-payment
 				font-size: $baseFontSize * 2.5 
+				p 
+					font-size: $baseFontSize * 2.5 
 			.div-result-payment, .p-result-payment
 				display: flex 
 				align-items: baseline
 				color: $White!important
 				font-weight: 600
 				// font-size: 42px
-			.p-result-payment
-				margin-top: 10px
-				margin-right: 10px
-				margin-bottom: 25px
 
 @media ( max-width: 800px )
 
@@ -260,7 +254,9 @@
 		.param-name
 			transform: translate3d(16px, 43px, 0) !important
 		.div-result-payment
-			font-size: $baseFontSize * 1.5 !important
+			font-size: $baseFontSize * 2 !important
+			p 
+				font-size: $baseFontSize * 2 !important
 		.choose-kind-and-date
 			flex-direction: column 
 			.menu
@@ -293,7 +289,6 @@
 		.calcblock-right
 			margin-top: 20px 
 			.text-cover
-				width: 85% !important
 				.div-result
 					margin-top: 5px 
 					margin-bottom: 5px 
@@ -311,18 +306,14 @@
 				margin-top: 10px
 
 		.text-cover
-			width: 83% 
-			.p-top
-				font-size: 5.5vw 
 			.p-result
 				margin-top: 5px 
 				margin-bottom: 15px 
 		.cover
 			width: 100% 
 			height: 230px !important
-			border-radius: 20px 
+			border-radius: 20px  !important
 		.button
-			width: 62% 
 			a
 				padding: 12px 0 
 			svg
@@ -330,9 +321,6 @@
 				padding: 1px 0 0 6px 
 		.ind-calc
 			img
-				display: none
 			margin-top: 50px 
 			margin-bottom: 40px 
-			a
-				font-size: 4vw 
 	

@@ -11,7 +11,7 @@ export default function Footer(){
             <div className="container">
                 <div className="footer__top flex justify-between">
                     <h2 className="footer__title font-5-light">Поможем с кредитом на любые цели</h2>
-                    <div className="footer__menu">
+                    <div className="footer__menu mbm">
                         <a href="">Work</a>
                         <a href="">About us</a>
                         <a href="">Engagements</a>

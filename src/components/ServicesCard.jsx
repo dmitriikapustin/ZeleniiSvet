@@ -8,7 +8,7 @@ export default function ServicesCard(props){
             <img src={src} srcSet={`${srcSet} 2x`} className="services-card__img" />
             <div className="services-card__body">
                 <div className="services-card__title" dangerouslySetInnerHTML={{__html: title}} />
-                <div className="services-card__desc">{desc}</div>
+                <p className="services-card__desc">{desc}</p>
             </div>
         </div>
     )

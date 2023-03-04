@@ -29,15 +29,10 @@
 			b
 				color: var(--light-green)
 
-		&__desc
-			color: var(--gray)
-			font-size: 14px
-			line-height: 17px
-
-	@media(max-width: 1000px)
+@media(max-width: 1000px)
+	.services
 		margin-bottom: 40px
-		&-card
-			&__desc
-				font-size: 12px
 		.container
 			flex-direction: column
+		.services-card__body
+			height: fit-content !important

@@ -55,7 +55,7 @@ function Counter({ from, to, className}) {
 		return () => controls.stop();
 	}, [from, to]);
 	// return <p ref={nodeRef}/>
-	return <div className={'div-result-' + (className) + ' font-5-bold'}><h2 className={'p-result-' + (className)} ref={nodeRef}/> ₽</div>
+	return <div className={'div-result-' + (className) + ' font-5-bold'}><p className={'p-result-' + (className)} ref={nodeRef}/> &nbsp;руб / мес</div>
 }
 
 const RangeSlider = ({onChange, value, ...sliderProps}) => {
@@ -631,7 +631,7 @@ const Calculator = ({rtl}) => {
 				<div className="flex flex-row">
 
 					
-					<div className="cd6 cm4 choose-kind-and-date flex flex-row w-full">
+					<div className="cd5 cm4 choose-kind-and-date flex flex-row w-full">
 						<motion.nav
 									initial={false}
 									ref={wrapperRef}
@@ -703,8 +703,8 @@ const Calculator = ({rtl}) => {
 							/>
 						</div>
 					</div>
-					<div className="ind-calc flex flex-row cd6 cm4">
-						<img src="/images/ind-calc.svg" alt="" />
+					<div className="ind-calc flex flex-row cd7 cm4 justify-end">
+						<img className='mrs' src="/images/ind-calc.svg" alt="" />
 						<Link 
 							href={'/indcalc'}					
 							className='' 
@@ -720,12 +720,12 @@ const Calculator = ({rtl}) => {
 			<div className="cover relative">
 				<VideoBackground />
 			</div>
-			<div className="text-cover">
-				<h3 className='p-top'>Ежемесячный платёж</h3>
+			<div className="text-cover cd10 cm4 pxm">
+				<h3 className='cd8 cm3 p-top'>Ежемесячный платёж</h3>
 				<Counter from={prevCountResult} to={result} className={'payment'} /> 
 				{/* <p className='p-top font-4-regular'>Переплата по процентам за кредит</p>
 				<Counter from={prevCountOverpayment} to={overpayment} text={'руб'} />  */}
-				<div style={{width: '70%'}} className='button bc-white flex flex-row' onClick={() => setTogglePopup(true)}>
+				<div className='button bc-white flex flex-row action--light' onClick={() => setTogglePopup(true)}>
 					<a className=''>Нужна консультация</a>
 					<svg width="18" height="19"  fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.5 13.6299L9.45 12.5424L12.1125 9.87988H3V8.37988H12.1125L9.45 5.71738L10.5 4.62988L15 9.12988L10.5 13.6299Z" fill="#fff"/>

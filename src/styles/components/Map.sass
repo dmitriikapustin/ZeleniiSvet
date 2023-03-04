@@ -1,6 +1,7 @@
 .ymaps-2-1-79-map, .map, .map__map
-    border-radius: $baseRadius / 2
+    border-radius: $baseRadius
     overflow: hidden
+    
 
 
 .map
@@ -80,21 +81,29 @@
                     height: auto
     
 
-    @media(max-width: 1000px)
+@media(max-width: 1000px)
+    .map
         padding: 70px 0 0
 
+    .map
         .container
             padding: 0
             flex-direction: column
             gap: 0px
 
-        &__info
+        .map__info
             max-width: none
-            padding: 0 20px 70px !important
+            padding: 20px 20px 70px !important
         
-        &__mask
+        .map__mask
             display: none
         
-        &__map
+        .map__map
             border-radius: 36px 36px 0px 0px 
             height: 375px
+
+    .ymaps-2-1-79-map, .map, .map__map
+        padding: 0 !important
+        width: 100vw !important
+        margin: 0 !important
+        border-radius: $baseRadius/2 $baseRadius/2 0 0 !important

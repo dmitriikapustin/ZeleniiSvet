@@ -7,7 +7,7 @@ export default function Help(){
         <section className="help">
             <div className="container flex items-center">
                 <ScrollAnimation delay={0} triggerOnce={false}>
-                    <img src={src.src} srcSet={srcSet.src} className="help__img" />
+                    <img src={src.src} srcSet={srcSet.src} className="help__img mbm" />
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.4} triggerOnce={false}>
                     <div className='help__content'>

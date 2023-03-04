@@ -1,6 +1,5 @@
 .header  
     background: $White
-    padding-bottom: 17px
     position: fixed
     z-index: 1000 
     top: 0
@@ -32,7 +31,7 @@
         &__burger
             display: flex
             flex-direction: column
-            gap: 6px
+            gap: 5px
             width: 40px
             cursor: pointer
             span
@@ -59,15 +58,18 @@
 
         &-mob
             display: block
-            position: absolute
+            // position: absolute
             visibility: hidden
             z-index: 100
             opacity: 0
             transition: all .7s
-            top: 34px
+            top: 115px
             min-height: calc(100vh - 48px)
             right: 0
             left: 0
+            // margin-top: 84px
+            &.false
+                display: none
 
             &--open
                 opacity: 1
@@ -94,7 +96,7 @@
                     
 
                 &-mob__menu
-                    min-height: calc(100vh - 49px)
+                    min-height: calc(100vh - 60px)
                     margin-left: auto
                     padding: 62px 20px 
                     flex-direction: column

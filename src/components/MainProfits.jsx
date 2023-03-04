@@ -5,7 +5,7 @@ export default function MainProfits(){
         <section className="mainProfits">
             <div className="container flex flex-row">
                 {/* <div className="cards flex w-full"> */}
-                <ScrollAnimation delay={0} triggerOnce={false} className={"cd6 cm4 scroll-container"}>
+                <ScrollAnimation delay={0} triggerOnce={false} className={"cd6 cm4 scroll-container mb"}>
                     <div className="card flex flex-col items-center round">
                         <img src="/images/image1.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>

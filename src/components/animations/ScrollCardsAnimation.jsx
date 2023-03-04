@@ -17,7 +17,7 @@ const ScrollCardsAnimation = ({children, className}) => {
 
     const { ref, inView, entry } = useInView({
         threshold: 1,
-        triggerOnce: false,
+        triggerOnce: true,
       });
 
 

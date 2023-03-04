@@ -33,7 +33,7 @@
             background-size: cover
             .action
                 span
-                    color: $DarkedMain !important
+                    color: $DarkedMain
                     font-weight: 400
             .work-card
                 &__title
@@ -51,7 +51,12 @@
             span
                 color: $White
                 font-weight: 400
-
+        .action--white 
+            span
+                color: $DarkedMain
+            &:hover span
+                color: $White
+                
         &__title
             color: $DarkedMain
 

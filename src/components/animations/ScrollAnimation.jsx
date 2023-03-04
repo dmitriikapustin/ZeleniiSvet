@@ -22,7 +22,7 @@ const ScrollAnimation = ({children, delay, triggerOnce, className}) => {
 
     const { ref, inView, entry } = useInView({
         threshold: .3,
-        triggerOnce: triggerOnce,
+        triggerOnce: true,
       });
 
     // useEffect(() => {
