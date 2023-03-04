@@ -1,4 +1,5 @@
 import logo from '../assets/svg/logo-light.svg'
+import logoW from '../assets/svg/logo-white-bc.svg'
 import wa from '../assets/svg/socials/wa.svg'
 import tg from '../assets/svg/socials/tg.svg'
 
@@ -24,7 +25,7 @@ export default function Footer(){
                 </div>
                 <div className="footer__bottom flex items-center justify-between">
                     <div className='flex item-center'>
-                        <img src={logo.src} className='footer__logo' />
+                        <img src={logoW.src} className='footer__logo' />
                         <span>&copy;&nbsp;{new Date().getFullYear()}</span>
                     </div>
                     <div className='footer__bottom-social flex item-center'>

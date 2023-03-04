@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useInView } from "react-intersection-observer";
 import { motion, useScroll } from "framer-motion";
 
-const ScrollAnimation = ({children, delay, triggerOnce, className}) => {
+const ScrollAnimation = ({children, delay, className}) => {
     // const ref = useRef(null);
     // const options = useScroll({
     //   target: ref,
@@ -23,7 +23,7 @@ const ScrollAnimation = ({children, delay, triggerOnce, className}) => {
     const { ref, inView, entry } = useInView({
         threshold: .3,
         triggerOnce: true,
-      });
+      })
 
     // useEffect(() => {
     //     console.log(scrollY, scrollYProgress)

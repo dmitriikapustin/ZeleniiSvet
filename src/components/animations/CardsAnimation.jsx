@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const CardsAnimation = ({children, className}) => {
 
     const initial = {
-        opacity: 1,
-        scale: 1
+        opacity: 0,
+        scale: .9
     }
     const animate = {
         opacity: 1,

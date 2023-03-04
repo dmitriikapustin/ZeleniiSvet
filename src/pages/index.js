@@ -23,7 +23,7 @@ import Help from '@/components/Help';
 import WeWork from '@/components/WeWork';
 import MapBlock from '@/components/MapBlock';
 import Footer from '@/components/Footer';
-import Story from '@/components/Story';
+import CreditStory from '@/components/CreditStory';
 
 
 import MainProfits from '@/components/MainProfits'
@@ -77,6 +77,7 @@ function App({dataGetPhones}) {
           <WeWork/>
 		      <PartnersBlock />
           <MapBlock/>
+          <CreditStory/>
           <Footer/>
         </main>
       </div>
