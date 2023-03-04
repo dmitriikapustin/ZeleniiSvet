@@ -26,6 +26,7 @@ const ScrollCardsAnimation = ({children, className}) => {
     <div ref={ref} className={className}>
         {children.map((child, index) => {
             return <motion.div
+                key={index}
                 initial={initial}
                 whileInView={animate}
                 transition={{

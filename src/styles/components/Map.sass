@@ -10,9 +10,9 @@
     
 
     &__info
-        max-width: 410px
+        // max-width: 410px
         flex-shrink: 0
-        margin-right: 90px
+        padding-left: 0px !important
 
     &__mask
         width: calc(100% + 2px)
@@ -28,12 +28,20 @@
             z-index: 0
 
     &__map
+        padding-right: 0px !important
         border-radius: $baseRadius
-        overflow: hidden
-        height: 455px
-
-        div > ymaps:first-child
-            display: none
+        overflow: visible !important
+        // width: 100% !important
+        height: 100% !important
+        // div > ymaps:first-child
+        //     display: none
+        // ymaps
+        //     height: 440px !important
+        div
+            width: 100% !important
+            height: 440px !important
+            & > div
+                height: 440px 
 
     &__title
         margin-bottom: 15px
@@ -82,7 +90,7 @@
 
         &__info
             max-width: none
-            padding: 0 20px 70px
+            padding: 0 20px 70px !important
         
         &__mask
             display: none
