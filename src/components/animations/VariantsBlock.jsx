@@ -175,7 +175,7 @@ const VariantsBlock = () => {
 				<div className="interest-rate">
 					<p id="p">{creditRate}%</p>
 				</div>
-				<div class="calculation__form-row">Платеж за месяц:
+				<div className="calculation__form-row">Платеж за месяц:
 					<div id="result">
 						{result}
 					</div>

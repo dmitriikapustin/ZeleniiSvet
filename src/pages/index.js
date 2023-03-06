@@ -25,30 +25,19 @@ import MapBlock from '@/components/MapBlock';
 import Footer from '@/components/Footer';
 import CreditStory from '@/components/CreditStory';
 
-
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
-
-export async function getStaticProps() {
-	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-	const dataPhonesResp = respPhones.data;
-	console.log(dataPhonesResp)
-	return { props: { dataGetPhones: dataPhonesResp } }
-}
-
-
-
-
+// export async function getStaticProps() {
+// 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+// 	const dataPhonesResp = respPhones.data;
+// 	console.log(dataPhonesResp)
+// 	return { props: { dataGetPhones: dataPhonesResp } }
+// }
 
 function App({dataGetPhones}) {
-
-
-
   return (
-
     <>
-
       <Head>
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
@@ -78,8 +67,8 @@ function App({dataGetPhones}) {
 		      <PartnersBlock />
           <MapBlock/>
           <CreditStory/>
-          <Footer/>
         </main>
+        <Footer/>
       </div>
     </>
 	// <Layout>
@@ -93,7 +82,5 @@ function App({dataGetPhones}) {
 	// </Layout>
   );
 }
-
-
 
 export default App;

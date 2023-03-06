@@ -16,7 +16,7 @@ const PartnersBlock = () => {
                     <p className='text-center'>Мы — группа брокерских компаний «Зелёный свет». Официально сотрудничаем с более чем 30 российскими банками, так как ценим честность и прозрачность в нашей работе.</p>
                 </ScrollAnimation>
         </div>
-        <div class="sliders_partners flex flex-col h-full relative">
+        <div className="sliders_partners flex flex-col h-full relative">
             <RunLine className={"slider_track"} fromX={"-50%"} toX={'0%'}>
                 <div className="slide">
                     <img className="slider_logo" src="/images/logo/partner_logo_1.svg" alt="" />

@@ -31,10 +31,11 @@ const HeaderContent = ({isMob}) => {
         <>
         
             <nav className="header__menu flex justify-between">
-                <a href="#" className="header__menu-item">Про рынок</a>
-                <a href="#" className="header__menu-item">Брокерские услуги</a>
-                <a href="#" className="header__menu-item">Управление активами</a>
+                <a href="#" className="header__menu-item">Главная</a>
+                <a href="#" className="header__menu-item">Кредитный калькулятор</a>
+                <a className="header__menu-item">Услуги</a>
                 <a href="#" className="header__menu-item">О компании</a>
+                <a href="#" className="header__menu-item">Контакты</a>
             </nav>
             <button className='action action--light'>
                 Оставить заявку

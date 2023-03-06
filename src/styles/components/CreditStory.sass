@@ -1,16 +1,13 @@
 .creditstory
-    .action
-        span 
-            color: $White 
-            font-weight: 400
-    .bottom
-        .bottom-text
-            p
-                color: $LightedBlack
-                width: 67%
-                font-size: 12px
-            span
-                color: $DarkedMain
+    .bottom-text
+        span
+            color: $DarkedMain
 
 @media(max-width: 1000px)
     .creditstory
+        .c-card
+            margin-bottom: $basePadding * 2
+        .bottom *
+            align-items: center
+            justify-content: center
+            text-align: center
