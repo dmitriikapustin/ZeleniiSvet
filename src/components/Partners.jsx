@@ -54,7 +54,7 @@ const PartnersBlock = () => {
                     <img className="slider_logo" src="/images/logo/partner_logo_6.svg"alt="" />
                 </div>
                 <div className="slide">
-                    <img clasName="slider_logo" src="/images/logo/partner_logo_7.svg" alt="" />
+                    <img className="slider_logo" src="/images/logo/partner_logo_7.svg" alt="" />
                 </div>
                 <div className="slide">
                     <img className="slider_logo" src="/images/logo/partner_logo_8.svg" alt="" />
@@ -69,7 +69,7 @@ const PartnersBlock = () => {
                     <img className="slider_logo" src="/images/logo/partner_logo_6.svg"alt="" />
                 </div>
                 <div className="slide">
-                    <img clasName="slider_logo" src="/images/logo/partner_logo_7.svg" alt="" />
+                    <img className="slider_logo" src="/images/logo/partner_logo_7.svg" alt="" />
                 </div>
                 <div className="slide">
                     <img className="slider_logo" src="/images/logo/partner_logo_8.svg" alt="" />
