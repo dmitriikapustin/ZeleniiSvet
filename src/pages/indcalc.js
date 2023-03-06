@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { motion } from "framer-motion";
-import Button from '../components/atoms/Button'
+import Button from '../components/atoms/Button_back'
 import { Range } from 'react-range';
 
 

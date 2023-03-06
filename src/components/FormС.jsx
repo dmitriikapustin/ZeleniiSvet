@@ -10,7 +10,7 @@ import ScrollAnimation from '../components/animations/ScrollAnimation'
 
 import { useState, useEffect } from 'react';
 
-import Button from './atoms/Button';
+import Button from './atoms/Button_back';
 
 const styleForm = {
     width: "100%",
@@ -205,7 +205,7 @@ const FormС = (data) => {
 	  })
 	return (
 		<div className="flex flex-col form" style={{ margin: '30px 0' }}>
-			<div className='form-top-text flex flex-col'>
+			<div className='form-top-text flex flex-col z-100'>
 				<h2 className='font-4-bold form-heading'>Мы хотим вам помочь, потому что знаем как.</h2>
 				<p className='font-2-regular form-text'>Если вам нужна помощь в кредитной проблеме, то оставьте заявку ниже. Как можно быстрее перезвоним и с пониманием выслушаем, а потом предложим решение.</p>
 			</div>
@@ -306,7 +306,7 @@ const FormС = (data) => {
 							</div>
 						</ScrollAnimation>
 					</div>
-					<div className='button form-button'>
+					<div className='button form-button px0'>
 						<button disabled={isSchemaValid === true ? false : true} type='submit' className={isSchemaValid === true ? "" : "disabled"}>
 							<a className='font-1-bold'>
 								Оставить заявку

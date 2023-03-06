@@ -2,6 +2,7 @@ import { useState } from 'react'
 import logo from '../assets/svg/logo.svg'
 
 import PromoLine from '@/components/PromoLine'
+import VideoBackground from '@/components/atoms/VideoBackground'
 
 export default function Header(){
     const [show, setShow] = useState(false)
@@ -37,8 +38,11 @@ const HeaderContent = ({isMob}) => {
                 <a href="#" className="header__menu-item">О компании</a>
                 <a href="#" className="header__menu-item">Контакты</a>
             </nav>
-            <button className='action action--light'>
-                Оставить заявку
+            <button className='action action--light relative ov-hidden'>
+                <a className='z-100'>Оставить заявку</a>
+                <div style={{opacity: 0.69}}>
+                    <VideoBackground />
+                </div>
             </button>
         </>
     )

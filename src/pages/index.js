@@ -11,11 +11,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import Slider from '../components/Slider';
 import Calculator from '@/components/Calculator';
-import FormBlock from '@/components/Form';
+import Form from '@/components/Form';
 import PartnersBlock from '@/components/Partners';
-import FormС from '../components/FormС'
 import Head from 'next/head'
-import PromoLine from '@/components/PromoLine';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import Services from '@/components/Services';
@@ -49,24 +47,22 @@ function App({dataGetPhones}) {
           fullsize={false}
           reverse={true}
       /> */}
-		  {/* <div className='bc-white-container'>
-        <ForWhat />
-		  </div>
-		  <FormBlock data={dataGetPhones}/> */}
         <Header/>
         <main>
           <HeroSection/>
           <Services/>
           <div className='bc-white-container'>
             <Calculator />
+            <ForWhat />
           </div>
 		  	  
           <Help/>
           <MainProfits />
+		      <Form data={dataGetPhones}/>
           <WeWork/>
+          <CreditStory/>
 		      <PartnersBlock />
           <MapBlock/>
-          <CreditStory/>
         </main>
         <Footer/>
       </div>

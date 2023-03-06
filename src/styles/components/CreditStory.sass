@@ -2,12 +2,19 @@
     .bottom-text
         span
             color: $DarkedMain
+        p
+            font-size: $baseFontSize - 2px
 
-@media(max-width: 1000px)
+@media (max-width: 800px)
     .creditstory
         .c-card
             margin-bottom: $basePadding * 2
         .bottom *
             align-items: center
             justify-content: center
+            text-align: center
+
+@media (min-width: 800px)
+    .creditstory
+        .title h2
             text-align: center

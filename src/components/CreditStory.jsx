@@ -18,8 +18,8 @@ const CreditStory = (props) => {
     <section className='creditstory'>
         <div className='container flex flex-col'>
             <ScrollAnimation delay={0}>
-                <div className="title">
-                    <h2>Кредитная история</h2>
+                <div className="title mbl">
+                    <h2>Проверьте кредитную историю</h2>
                 </div>
             </ScrollAnimation>
             <div className="flex flex-row items-start">
@@ -40,7 +40,7 @@ const CreditStory = (props) => {
                                     </svg>
                                 </button>
                             </div>
-                            <div className="flex flex-col bottom-text cd7 cm4">
+                            <div className="flex flex-col bottom-text cd7 cm4 mb">
                                 <span className='mb0'>Решение за 20 минут</span>
                                 <p className='mb0'>услуга предоставляется в офисе компании</p>
                             </div>
@@ -64,7 +64,7 @@ const CreditStory = (props) => {
                                     </svg>
                                 </button>
                             </div>
-                            <div className="flex flex-col bottom-text cd7 cm4">
+                            <div className="flex flex-col bottom-text cd7 cm4 mb">
                                 <span className='mb0'>Стоимость</span>
                                 <p className='mb0'>Необходимо письменное согласие</p>
                             </div>
