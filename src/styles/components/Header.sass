@@ -14,6 +14,8 @@
         max-width: 156px
 
     &__menu
+        &.sevices-open
+
         gap: 10px
         max-width: 575px
         width: 100%
@@ -23,11 +25,34 @@
             &:hover
                 opacity: .8
 
+        button
+            -webkit-appearance: button
+            // height: 60px
+            color: $Main
+            background-color: transparent
+            border-radius: 10px
+            outline: none
+            border: none
+            // padding: 10px 15px
+            cursor: pointer
+            width: 96%
+            text-align: left
+            display: flex
+            justify-content: space-between
+            align-items: center
+            svg
+                width: 90%
+            a
+                text-decoration: none
+                color: $DarkedMain
+                margin-right: 10px
 
+        button path
+            fill: $DarkedMain
 
         .sub-menu 
             position: absolute
-            top: 30px
+            top: 50px
             padding: 15px
             background-color: $White
             border-radius: 6px
@@ -116,19 +141,48 @@
                     display: flex
                     flex-direction: column
                     gap: 40px
+                    &-item
+                        transition: all .2 ease
+                        
+                    &.services-open
+                        gap: 15px
                     .sub-menu-background 
                         box-shadow: none 
                     .sub-menu
+                        padding-top: 15px
+                        padding-bottom: 0
                         top: 0
                         position: relative
                         a
                             text-align: left
-                            font-weight: 400 
+                            font-weight: 400
+                            font-size: 18px 
                     a
                         color: $Main
                         font-size: 20px
                         font-weight: bold
                         text-align: center
+                    button
+                        -webkit-appearance: button
+                        // height: 60px
+                        color: $Main
+                        background-color: transparent
+                        border-radius: 10px
+                        outline: none
+                        border: none
+                        // padding: 10px 15px
+                        cursor: pointer
+                        width: 30%
+                        text-align: left
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        a
+                            text-decoration: none
+                            color: $Main
+
+                    button path
+                        fill: $Main
 
                     
 
@@ -140,5 +194,7 @@
                     display: flex
                     justify-content: space-between
                     background-color: $White
+                    &.services-open
+                        padding: 15px 20px
 
                 
