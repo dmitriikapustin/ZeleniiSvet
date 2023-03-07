@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Link from "next/link";
 
 
@@ -26,6 +26,8 @@ import CreditStory from '@/components/CreditStory';
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
+import { PopupFormContext } from '@/components/contexts/PopupFormContext'
+
 // export async function getStaticProps() {
 // 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
 // 	const dataPhonesResp = respPhones.data;
@@ -34,38 +36,45 @@ import ForWhat from '@/components/ForWhat'
 // }
 
 function App({dataGetPhones}) {
+
+  
+  const { popupForm, setPopupForm } = useContext(PopupFormContext)
+
   return (
     <>
+    <PopupFormContext.Provider value={popupForm}>
       <Head>
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
       <div className='scroll-area'>
-      {/* <Story
-          fetchUrl={''} // Сюда отдаем юрл который надо разобрать
-          type={1}
-          fullsize={false}
-          reverse={true}
-      /> */}
         <Header/>
-        <main>
-          <HeroSection/>
-          <Services/>
-          <div className='bc-white-container'>
-            <Calculator />
-            <ForWhat />
-          </div>
-		  	  
-          <Help/>
-          <MainProfits />
-		      <Form data={dataGetPhones}/>
-          <WeWork/>
-          <CreditStory/>
-		      <PartnersBlock />
-          <MapBlock/>
-        </main>
+          <main>
+            {popupForm === true && <h1>:JDIAJDOIAJDIAJDOIADJOIADJO</h1>}
+            <HeroSection/>
+            <Services/>
+            <div className='bc-white-container'>
+              <Calculator />
+              <ForWhat />
+            </div>
+            
+            <Help/>
+            <MainProfits />
+            <Form data={dataGetPhones}/>
+            <WeWork/>
+            <CreditStory/>
+            <PartnersBlock />
+            <MapBlock/>
+          </main>
         <Footer/>
       </div>
+    </PopupFormContext.Provider>
+    {/* <Story
+        fetchUrl={''} // Сюда отдаем юрл который надо разобрать
+        type={1}
+        fullsize={false}
+        reverse={true}
+    /> */}
     </>
 	// <Layout>
 		// <div>
