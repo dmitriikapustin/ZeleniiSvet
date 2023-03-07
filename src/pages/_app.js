@@ -3,11 +3,15 @@ import '../styles/App.sass';
 
 import { AnimatePresence } from 'framer-motion'
 
+import ButtonContext from '../context/buttonContext'
+
 export default function MyApp({ Component, pageProps }) {
 
   return (
-    // <AnimatePresence mode="wait" initial={false}>
-      <Component {...pageProps} />
-    // </AnimatePresence>
+
+        <ButtonContext>
+          <Component {...pageProps} />
+        </ButtonContext>
+
   )
 }

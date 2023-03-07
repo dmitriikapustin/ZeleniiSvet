@@ -1,6 +1,17 @@
 import VideoBackground from "./atoms/VideoBackground"
 
+import { useEffect, useState, useContext } from 'react'
+
+import {PopupState} from '../context/buttonContext'
+
+
+
 export default function HeroSection(){
+
+    const {popupState, setPopupState} = useContext(PopupState)
+
+    console.log(popupState)
+
     return(
         <section className="hero relative">
             <VideoBackground />
@@ -13,7 +24,10 @@ export default function HeroSection(){
                     <h3>
                         Мы не берём предоплату и не просим миллиона документов.                 
                     </h3>
-                    <button className="action">
+                    <button 
+                        className="action"
+                        onClick={() => setPopupState(!popupState)}
+                        >
                         Оставить заявку
                     </button>
                 </div>

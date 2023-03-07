@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import logo from '../assets/svg/logo.svg'
 import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
 import useMediaQuery from '../components/hooks/useDebounce'
 import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
+import {PopupState} from '../context/buttonContext'
+
+
 
 
 import PromoLine from '@/components/PromoLine'
-
 
 
 export default function Header(){
@@ -24,30 +26,7 @@ export default function Header(){
     }, [isServicesOpen])
 
 
-    // const dimensions = ;
-
-    // function useWindowDimensions() {
-    //     // the 3rd parameter is optional and only needed for server side rendering
-    //     return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-    // }
-    
-    // function subscribe(callback) {
-    //     window.addEventListener('resize', callback);
-    //     return () => window.removeEventListener('resize', callback);
-    // }
-    
-    // function getSnapshot() {
-    //     return { width: window.innerWidth, height: window.innerHeight };
-    // }
-    
-    // function getServerSnapshot() {
-    //     return {
-    //         width: 0,
-    //         height: 0,
-    //     };
-    // }
-
-    // console.log(useWindowDimensions())
+ 
 
     return(
         <>
@@ -71,6 +50,10 @@ export default function Header(){
 }
 
 const HeaderContent = (props) => {
+
+    const {popupState, setPopupState} = useContext(PopupState)
+
+    // console.log(popupState)
 
     const [isTab, toggleTab] = useState(false)
     const [isHover, toggleHover] = useState(false)
@@ -211,9 +194,13 @@ const HeaderContent = (props) => {
                 <a href="#" className="header__menu-item">О компании</a>
                 <a href="#" className="header__menu-item">Контакты</a>
             </nav>
-            <button className='action action--light'>
+            <button 
+                className='action action--light'
+                onClick={() => setPopupState(!popupState)}
+            >
                 Оставить заявку
             </button>
+            <div className={"popup" + (popupState === true ? ' open' : '')}>POPUP</div>
         </>
     )
 }

@@ -28,14 +28,18 @@ import CreditStory from '@/components/CreditStory';
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
-// export async function getStaticProps() {
-// 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-// 	const dataPhonesResp = respPhones.data;
-// 	console.log(dataPhonesResp)
-// 	return { props: { dataGetPhones: dataPhonesResp } }
-// }
+import {PopupState} from '../context/buttonContext'
 
-function App({dataGetPhones}) {
+import { Provider } from 'react';
+
+import ButtonContext from '../context/buttonContext'
+
+function App() {
+  
+
+  const [popupState, setPopupState] = useState(false)
+
+
   return (
     <>
       <Head>
@@ -53,9 +57,13 @@ function App({dataGetPhones}) {
         <ForWhat />
 		  </div>
 		  <FormBlock data={dataGetPhones}/> */}
-        <Header/>
+        <PopupState.Provider value={{ popupState, setPopupState }}>
+          <Header/>
+        </PopupState.Provider>
         <main>
-          <HeroSection/>
+          <PopupState.Provider value={{ popupState, setPopupState }}>
+            <HeroSection/>
+          </PopupState.Provider>
           <Services/>
           <div className='bc-white-container'>
             <Calculator />
