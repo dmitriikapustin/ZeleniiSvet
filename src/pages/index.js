@@ -26,19 +26,19 @@ import CreditStory from '@/components/CreditStory';
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
-import { PopupFormContext } from '@/components/contexts/PopupFormContext'
 
-// export async function getStaticProps() {
-// 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-// 	const dataPhonesResp = respPhones.data;
-// 	console.log(dataPhonesResp)
-// 	return { props: { dataGetPhones: dataPhonesResp } }
-// }
+import {PopupState} from '../context/buttonContext'
 
-function App({dataGetPhones}) {
+import { Provider } from 'react';
 
+import ButtonContext from '../context/buttonContext'
+
+function App() {
   
-  const { popupForm, setPopupForm } = useContext(PopupFormContext)
+
+  const [popupState, setPopupState] = useState(false)
+
+
 
   return (
     <>
@@ -48,10 +48,13 @@ function App({dataGetPhones}) {
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
       <div className='scroll-area'>
-        <Header/>
+        <PopupState.Provider value={{ popupState, setPopupState }}>
+          <Header/>
+        </PopupState.Provider>
           <main>
-            {popupForm === true && <h1>:JDIAJDOIAJDIAJDOIADJOIADJO</h1>}
-            <HeroSection/>
+            <PopupState.Provider value={{ popupState, setPopupState }}>
+              <HeroSection/>
+            <PopupState.Provider value={{ popupState, setPopupState }}>
             <Services/>
             <div className='bc-white-container'>
               <Calculator />

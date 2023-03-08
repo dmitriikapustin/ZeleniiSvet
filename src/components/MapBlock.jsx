@@ -13,7 +13,7 @@ import ScrollAnimation from './animations/ScrollAnimation'
 
 export default function MapBlock() {
     const defaultState = {
-		center: [59.9651155, 30.3156276],
+		center: [55.710129, 37.654610],
 		zoom: 17,
 		controls: []
 	}
@@ -63,7 +63,7 @@ export default function MapBlock() {
                         <YMaps height={'440px'} query={{ apikey: 'fe365efb-ab51-440e-a7d1-c6b999dd3f87' }}>
                             <Map height={'440px'} defaultState={defaultState}>
                                 <Placemark 
-                                    geometry={[59.9651155, 30.3156276]}  
+                                    geometry={[55.710129, 37.654610]}  
                                     options={{
                                         iconLayout: 'default#image',
                                         iconImageSize: [46, 69],
