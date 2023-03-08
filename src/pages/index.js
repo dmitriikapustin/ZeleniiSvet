@@ -28,7 +28,15 @@ import { Provider } from 'react';
 
 import ButtonContext from '../context/buttonContext'
 
-function App() {
+
+export async function getStaticProps() {
+	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+	const dataPhonesResp = respPhones.data;
+	console.log(dataPhonesResp)
+	return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+function App({dataGetPhones}) {
   
 
   const [popupState, setPopupState] = useState(false)
@@ -57,8 +65,9 @@ function App() {
             
             <Help/>
             <MainProfits />
-            <Form/>
-            {/* data={dataGetPhones} */}
+            <Form
+              data={dataGetPhones}
+            />
             <WeWork/>
             <CreditStory/>
             <PartnersBlock />

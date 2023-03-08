@@ -1,7 +1,7 @@
 .hero
     // background: var(--bg-pic)
     background-size: cover
-    span
+    span:not(.span-param)
         font-size: $baseFontSize * 3.5
         background: $White
         color: $DarkedMain
@@ -21,8 +21,18 @@
         margin-bottom: 34px
         color: $White
 
+    .params
+        h3
+            margin-bottom: 15px
+        h3, span
+            color: $White
+        span
+            font-size: $baseFontSize * 2
+
     .container
         padding: 80px 20px 230px 120px
+        &.uslugi
+            padding: 80px 20px 115px 120px
 
 @media (max-width: 800px)
     .hero 

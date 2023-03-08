@@ -1,11 +1,20 @@
+import { useEffect, useState } from 'react'
 import greenBg from './../assets/svg/work-card-bg.svg'
 
 import VideoBackground from './atoms/VideoBackground'
 
 export default function WeWorkCard(props){
-    const {icon, title, text, isGreen} = props
+    const {icon, title, text, isGreen, index, i} = props
+
+    const [hiddenCard, setHiddenCard] = useState(false)
+
+    useEffect(() => {
+        console.log(i, index.index)
+        i === index.index ? setHiddenCard(true) : setHiddenCard(false)
+    }, [])
+
     return(
-        <div className={`relative work-card flex flex-col h-full ${isGreen ? 'work-card--green' : ''}`}>
+        <div className={`relative work-card flex flex-col h-full ${hiddenCard === true ? 'hidden' : ''} ${isGreen ? 'work-card--green' : ''}`}>
             {isGreen 
             ? <VideoBackground/>
             : ''}
