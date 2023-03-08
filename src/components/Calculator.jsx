@@ -725,7 +725,7 @@ const Calculator = ({rtl}) => {
 				</div> */}
 				<Button
 					mode='white'
-					text='Бесплатная консультация'
+					text='Оставить заявку'
 					icon={true}
 				/>
 			</div>

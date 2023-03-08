@@ -22,10 +22,10 @@ function Story(props, {children}) {
     const imageWidth = 2000
     const imageHeight = 2000
     
-    const title = 'Увеличиваем прибыль вашего бизнеса'
-    const subtitle = 'Делаем это быстро и надежно'
-    const text = 'Какой то длинный текст'
-    const photo = 'LINK'
+    const title = props.title
+    const subtitle = props.subtitle
+    const text = props.text
+    const photo = props.photo
 
     // TYPE 1
     if ( type === 1 ) {
@@ -48,7 +48,7 @@ function Story(props, {children}) {
                     photo 
                     && 
                     <div className={'photoWrapper ' + (fullSize === false && ' container')}>    
-                        <Image quality={100} width={imageWidth} height={imageHeight} className={'cd12 cm4'} src='/images/image.jpg' alt={title}></Image>
+                        <Image quality={100} width={imageWidth} height={imageHeight} className={'cd12 cm4'} src={photo} alt={title}></Image>
                     </div>
                 }
             </section>
@@ -62,7 +62,7 @@ function Story(props, {children}) {
                 
                 <div className={"items-center " + (fullSize !== true && ' container')}>
                     <div className="cd-s-1"></div>
-                    <Image quality={100} width={imageWidth} height={imageHeight} className={fullSize !== true && 'cd10 cm4'} src='/images/image.jpg' alt={title}></Image>
+                    <Image quality={100} width={imageWidth} height={imageHeight} className={fullSize !== true && 'cd10 cm4'} src={photo} alt={title}></Image>
                 </div>
                 <div className="container items-center">
                     <div className="cd-s-3"></div>
@@ -83,7 +83,7 @@ function Story(props, {children}) {
     if ( type === 5 ) {
         return (
             <section className={'story story-5 flex flex-col ' + (reverse && ' reverse')}>
-                <div className="container items-center">
+                <div className="container flex flex-row items-center">
                     <div className="cd6 cm4 flex-col h-fit text">
                         <div className="subtitle">
                             <h4>{subtitle}</h4>
@@ -92,7 +92,9 @@ function Story(props, {children}) {
                         <p>{text}</p>
                         {children}
                     </div>
-                    <Image quality={100} width={imageWidth} height={imageHeight} className={'cd6 cm4'} src='/images/image.jpg' alt={title}></Image>
+                    <div className={'cd6 cm4'}>
+                        <Image quality={100} width={imageWidth} height={imageHeight}  src={photo} alt={title}></Image>
+                    </div>
                 </div>  
             </section>
         )

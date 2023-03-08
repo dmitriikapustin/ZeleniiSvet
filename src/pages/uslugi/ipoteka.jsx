@@ -47,26 +47,29 @@ function ipoteka ({dataGetPhones}) {
 
     return (
         <>
+            <PopupState.Provider value={{ popupState, setPopupState }}>
           <Head>
             <title>Зелёный свет</title>
             <meta property="og:title" content="Заголовок" key="title" />
           </Head>
           <div className='scroll-area'>
-            <PopupState.Provider value={{ popupState, setPopupState }}>
               <Header/>
-            </PopupState.Provider>
+            
               <main>
-                <PopupState.Provider value={{ popupState, setPopupState }}>
                   <HeroSection
                     type={1}
+                    newTitle='Поможем получить ипотеку на выгодных условиях'
                   />
-                </PopupState.Provider>
 
                 <div className='bc-white-container'>
                   <Calculator />
                   <Story 
-                    type={2}
+                    type={5}
                     reverse={true}
+                    title='подзаголовк Заголовок'
+                    subtitle='Заголовок'
+                    text='Заголовок'
+                    photo='/images/avto.jpg'
                   />
                   {/* <ForWhat /> */}
                 </div>
@@ -86,21 +89,7 @@ function ipoteka ({dataGetPhones}) {
               </main>
             <Footer/>
           </div>
-        {/* <Story
-            fetchUrl={''} // Сюда отдаем юрл который надо разобрать
-            type={1}
-            fullsize={false}
-            reverse={true}
-        /> */}
-        {/* // <Layout>
-            // <div>
-            // 	<div className='container'>
-            // 		<Link href={`/animation`}>Animation</Link>
-            // 		<CalcBlock />
-            // 		<FormBlock data={dataGetPhones}/>
-            // 	</div>
-            // </div>
-        // </Layout> */}
+        </PopupState.Provider>
         </>
       );
 }
