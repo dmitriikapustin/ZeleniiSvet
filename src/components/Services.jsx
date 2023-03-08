@@ -10,12 +10,12 @@ import CardsAnimation from './animations/CardsAnimation'
 
 const mock = [
     {
-        src: 'potreb',
+        src: 'refin',
         title: 'Потребительский <b>кредит</b>',
         desc: 'Поможем! Проконсультируем и доведём до подписания договора в банке.'
     },
     {
-        src: 'refin',
+        src: 'potreb',
         title: 'Рефинансирование',
         desc: 'Мы всё сделаем сами, включая сбор ваших документов и одобрение кредита. А вы сэкономите свои время и силы.'
     },

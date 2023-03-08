@@ -13,17 +13,17 @@ export default function Footer(){
             <VideoBackground />
             <div className="container">
                 <div className="footer__top flex justify-between">
-                    <h2 className="footer__title font-5-light">Поможем с кредитом на любые цели</h2>
+                    <h2 className="footer__title font-5-light">Поможем лучить кредит на выгодных условиях</h2>
                     <div className="footer__menu mbm">
                         <Link href="/">Главная</Link>
                         <Link href="/kreditniy-kalkulyator">Кредитный калькулятор</Link>
-                        <Link href={`uslugi/potrebitelskiy-kredit`} >Потребительский кредит</Link>
-                        <Link href={`uslugi/refinansirovanie`} >Рефинансирование</Link>
-                        <Link href={`uslugi/ipoteka`} >Ипотека</Link>
-                        <Link href={`uslugi/kredit-pod-zalog-nedvizhimosti`} >Кредит под залог недвижимости</Link>
-                        <Link href={`uslugi/kredit-pod-zalog-avtomobilya`} >Кредит под залог автомобиля</Link>
-                        <Link href={`uslugi/kredit-dlya-yuridicheskikh-lits`} >Кредит для юридических лиц</Link>
-                        <Link href={`uslugi/lizing`} >Лизинг</Link>
+                        <Link href="/uslugi/potrebitelskiy-kredit" >Потребительский кредит</Link>
+                        <Link href="/uslugi/refinansirovanie" >Рефинансирование</Link>
+                        <Link href="/uslugi/ipoteka" >Ипотека</Link>
+                        <Link href="/uslugi/kredit-pod-zalog-nedvizhimosti" >Кредит под залог недвижимости</Link>
+                        <Link href="/uslugi/kredit-pod-zalog-avtomobilya" >Кредит под залог автомобиля</Link>
+                        <Link href="/uslugi/kredit-dlya-yuridicheskikh-lits" >Кредит для юридических лиц</Link>
+                        <Link href="/uslugi/lizing" >Лизинг</Link>
                         <Link href="/o-kompanii">О компании</Link>
                         <Link href="/kontakty">Контакты</Link>
                     </div>

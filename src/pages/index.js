@@ -30,10 +30,7 @@ import ButtonContext from '../context/buttonContext'
 
 function App() {
   
-
   const [popupState, setPopupState] = useState(false)
-
-
 
   return (
     <>
@@ -41,14 +38,11 @@ function App() {
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
+      <PopupState.Provider value={{ popupState, setPopupState }}>
       <div className='scroll-area'>
-        <PopupState.Provider value={{ popupState, setPopupState }}>
           <Header/>
-        </PopupState.Provider>
           <main>
-            <PopupState.Provider value={{ popupState, setPopupState }}>
-              <HeroSection/>
-            </PopupState.Provider>
+            <HeroSection/>
             <Services/>
             <div className='bc-white-container'>
               <Calculator />
@@ -66,6 +60,7 @@ function App() {
           </main>
         <Footer/>
       </div>
+      </PopupState.Provider>
     {/* <Story
         fetchUrl={''} // Сюда отдаем юрл который надо разобрать
         type={1}

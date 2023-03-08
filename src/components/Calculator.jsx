@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useMemo, useCallback, useContext } from 'react'
 import ReactDOM from 'react-dom';
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { motion, animate } from "framer-motion";
-import Button from './atoms/Button'
+import Button from '@/components/atoms/Button'
 // import { Range } from 'react-range';
 import * as Yup from "yup";
 import MaskedInput from "react-text-mask";
@@ -17,6 +17,7 @@ import ScrollAnimation from './animations/ScrollAnimation'
 import { Range, getTrackBackground } from 'react-range';
 
 import useDebounce from '../components/hooks/useDebounce'
+
 
 const MIN = 500000
 const MAX = 20000000
@@ -458,15 +459,6 @@ const Calculator = ({rtl}) => {
 
 
 
-
-
-
-
-
-
-
-
-
 	const dateHandler = (e) => {
 		const newDate = e.target.value;
 		setDate(newDate)
@@ -733,9 +725,8 @@ const Calculator = ({rtl}) => {
 				</div> */}
 				<Button
 					mode='white'
+					text='Бесплатная консультация'
 					icon={true}
-					onClick={() => setTogglePopup(true)}
-					text='Нужна консультация'
 				/>
 			</div>
 			<motion.div

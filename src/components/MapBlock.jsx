@@ -21,7 +21,7 @@ export default function MapBlock() {
         <section className="map relative">
             <div className="container flex items-center flex-row w-full justify-between">
                 <ScrollAnimation delay={0} triggerOnce={true} className={'map__info cd5 cm4'}>
-                        <h2 className="map__title">Мы всегда на связи 24/7</h2>
+                        <h2 className="map__title">Мы всегда на связи</h2>
                         <p className="map__text">Вы всегда сможете дозвониться до нас и узнать ответы на все свои вопросы. </p>
                         <div className="map__group">
                             <div className="map__group-title">Телефон</div>

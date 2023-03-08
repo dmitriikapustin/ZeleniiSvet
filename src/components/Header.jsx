@@ -7,8 +7,7 @@ import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
 import { PopupState } from '../context/buttonContext'
 
-
-
+import PopupLayout from '@/components/atoms/PopupLayout'
 
 import PromoLine from '@/components/PromoLine'
 import VideoBackground from '@/components/atoms/VideoBackground'
@@ -27,7 +26,7 @@ export default function Header(){
     }, [isServicesOpen])
 
 
- 
+    const {popupState, setPopupState} = useContext(PopupState)
 
     return(
         <>
@@ -46,6 +45,8 @@ export default function Header(){
                     </div>
                 </div>
             </header>
+            <div className='block myl'></div>
+            {popupState === true && <PopupLayout/> }
         </>
     )
 }
@@ -132,13 +133,13 @@ const HeaderContent = (props) => {
                         >
                             <div className="sub-menu-background" />
                             <div className="sub-menu-container flex flex-col">
-                                <Link href={`uslugi/potrebitelskiy-kredit`} className="sub-menu-item mbs">Потребительский кредит</Link>
-                                <Link href={`uslugi/refinansirovanie`} className="sub-menu-item mbs">Рефинансирование</Link>
-                                <Link href={`uslugi/ipoteka`} className="sub-menu-item mbs">Ипотека</Link>
-                                <Link href={`uslugi/kredit-pod-zalog-nedvizhimosti`} className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
-                                <Link href={`uslugi/kredit-pod-zalog-avtomobilya`} className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
-                                <Link href={`uslugi/kredit-dlya-yuridicheskikh-lits`} className="sub-menu-item mbs">Кредит для юридических лиц</Link>
-                                <Link href={`uslugi/lizing`} className="sub-menu-item">Лизинг</Link>
+                                <Link href="/uslugi/potrebitelskiy-kredit" className="sub-menu-item mbs">Потребительский кредит</Link>
+                                <Link href="/uslugi/refinansirovanie" className="sub-menu-item mbs">Рефинансирование</Link>
+                                <Link href="/uslugi/ipoteka" className="sub-menu-item mbs">Ипотека</Link>
+                                <Link href="/uslugi/kredit-pod-zalog-nedvizhimosti" className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
+                                <Link href="/uslugi/kredit-pod-zalog-avtomobilya" className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
+                                <Link href="/uslugi/kredit-dlya-yuridicheskikh-lits" className="sub-menu-item mbs">Кредит для юридических лиц</Link>
+                                <Link href="/uslugi/lizing" className="sub-menu-item">Лизинг</Link>
                             </div>
                         </motion.div>
                     </motion.div> :
@@ -182,13 +183,13 @@ const HeaderContent = (props) => {
                         >
                             <div className="sub-menu-background" />
                             <div className="sub-menu-container flex flex-col">
-                                <Link href={`services/potrebitelskiy-kredit`} className="sub-menu-item mbs">Потребительский кредит</Link>
-                                <Link href={`services/refinansirovanie`} className="sub-menu-item mbs">Рефинансирование</Link>
-                                <Link href={`services/ipoteka`} className="sub-menu-item mbs">Ипотека</Link>
-                                <Link href={`services/kredit-pod-zalog-nedvizhimosti`} className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
-                                <Link href={`services/kredit-pod-zalog-avtomobilya`} className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
-                                <Link href={`services/kredit-dlya-yuridicheskikh-lits`} className="sub-menu-item mbs">Кредит для юридических лиц</Link>
-                                <Link href={`services/lizing`} className="sub-menu-item">Лизинг</Link>
+                                <Link href="/uslugi/potrebitelskiy-kredit" className="sub-menu-item mbs">Потребительский кредит</Link>
+                                <Link href="/uslugi/refinansirovanie" className="sub-menu-item mbs">Рефинансирование</Link>
+                                <Link href="/uslugi/ipoteka" className="sub-menu-item mbs">Ипотека</Link>
+                                <Link href="/uslugi/kredit-pod-zalog-nedvizhimosti" className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
+                                <Link href="/uslugi/kredit-pod-zalog-avtomobilya" className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
+                                <Link href="/uslugi/kredit-dlya-yuridicheskikh-lits" className="sub-menu-item mbs">Кредит для юридических лиц</Link>
+                                <Link href="/uslugi/lizing" className="sub-menu-item">Лизинг</Link>
                             </div>
                         </motion.div>
                     </motion.div>}
@@ -202,7 +203,7 @@ const HeaderContent = (props) => {
                     <VideoBackground />
                 </div>
             </button>
-            <div className={"popup" + (popupState === true ? ' open' : '')}>POPUP</div>
+            
         </>
     )
 }

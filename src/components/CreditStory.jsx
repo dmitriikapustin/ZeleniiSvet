@@ -26,9 +26,9 @@ const CreditStory = (props) => {
                 <ScrollAnimation delay={0} className={'cd6 cm4'}>
                     <div className="c-card flex flex-col">
                         <div className="top flex flex-col mb items-center">
-                            <Image className='mb' width={imageWidth} height={imageHeight} src='/images/image1.png'/>
                             <h3 className='text-center mbs cd9'>Экспертное заключение по вашей кредитной истории</h3>
                             <p className='text-center w-full'>но основе данных из двух бюро</p>
+                            <Image className='my' width={imageWidth} height={imageHeight} src='/images/image1.png'/>
                         </div>
                         <div className="middle"></div>
                         <div className="bottom flex flex-row w-full justify-center items-center">
@@ -50,9 +50,9 @@ const CreditStory = (props) => {
                 <ScrollAnimation delay={0.4} className={'cd6 cm4'}>
                     <div className="c-card flex flex-col">
                         <div className="top flex flex-col mb items-center">
-                            <Image className='mb' width={imageWidth} height={imageHeight} src='/images/image1.png'/>
                             <h3 className='text-center mbs cd9'>Проверить кредитную историю онлайн</h3>
                             <p className='text-center w-full'>расширенная версия из НБКИ</p>
+                            <Image className='my' width={imageWidth} height={imageHeight} src='/images/image1.png'/>
                         </div>
                         <div className="middle"></div>
                         <div className="bottom flex flex-row w-full justify-center items-center">
