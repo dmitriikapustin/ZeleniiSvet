@@ -31,29 +31,18 @@ const CreditStory = (props) => {
                             <p className='text-center w-full'>но основе данных из двух бюро</p>
                         </div>
                         <div className="middle"></div>
-<<<<<<< Updated upstream
                         <div className="bottom flex flex-row w-full justify-center items-center">
                             <div className="cd5 cm4">
                                 <button className='action action--light w-fit mb'>
                                     Получить выписку
-=======
-                        <div className="bottom flex flex-row w-full justify-center">
-                            <div className="cd6 cm4 mb">
-                                <button className='action action--light w-fit'>
-                                    <span>Получить выписку</span>
->>>>>>> Stashed changes
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.5 13.5L9.45 12.4125L12.1125 9.75H3V8.25H12.1125L9.45 5.5875L10.5 4.5L15 9L10.5 13.5Z" fill="#FBFBFB"/>
                                     </svg>
                                 </button>
                             </div>
-<<<<<<< Updated upstream
                             <div className="flex flex-col bottom-text cd7 cm4 mb">
-=======
-                            <div className="flex flex-col bottom-text cd6 cm4">
->>>>>>> Stashed changes
-                                <span className='mb0'>Решение за 20 минут</span>
-                                <p className='mb'>услуга предоставляется в офисе компании</p>
+                                    <span className='mb0'>Решение за 20 минут</span>
+                                    <p className='mb0'>услуга предоставляется в офисе компании</p>
                             </div>
                         </div>
                     </div>
@@ -66,27 +55,16 @@ const CreditStory = (props) => {
                             <p className='text-center w-full'>расширенная версия из НБКИ</p>
                         </div>
                         <div className="middle"></div>
-<<<<<<< Updated upstream
                         <div className="bottom flex flex-row w-full justify-center items-center">
                             <div className="cd5 cm4">
                                 <button className='action action--light w-fit mb'>
                                     Получить выписку
-=======
-                        <div className="bottom flex flex-row w-full justify-center">
-                            <div className="cd6 cm4 mb">
-                                <button className='action action--light w-fit'>
-                                    <span>Получить выписку</span>
->>>>>>> Stashed changes
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.5 13.5L9.45 12.4125L12.1125 9.75H3V8.25H12.1125L9.45 5.5875L10.5 4.5L15 9L10.5 13.5Z" fill="#FBFBFB"/>
                                     </svg>
                                 </button>
                             </div>
-<<<<<<< Updated upstream
                             <div className="flex flex-col bottom-text cd7 cm4 mb">
-=======
-                            <div className="flex flex-col bottom-text cd6 cm4">
->>>>>>> Stashed changes
                                 <span className='mb0'>Стоимость</span>
                                 <p className='mb0'>Необходимо письменное согласие</p>
                             </div>
