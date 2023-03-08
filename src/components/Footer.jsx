@@ -3,6 +3,8 @@ import logoW from '../assets/svg/logo-white-bc.svg'
 import wa from '../assets/svg/socials/wa.svg'
 import tg from '../assets/svg/socials/tg.svg'
 
+import Link from 'next/link'
+
 import VideoBackground from './atoms/VideoBackground'
 
 export default function Footer(){
@@ -13,14 +15,17 @@ export default function Footer(){
                 <div className="footer__top flex justify-between">
                     <h2 className="footer__title font-5-light">Поможем с кредитом на любые цели</h2>
                     <div className="footer__menu mbm">
-                        <a href="">Work</a>
-                        <a href="">About us</a>
-                        <a href="">Engagements</a>
-                        <a href="">Career</a>
-                        <a href="">Privacy Policy</a>
-                        <a href="">Terms of Service</a>
-                        <a href="">Customer Terms</a>
-                        <a href="">Designer Terms</a>
+                        <Link href="/">Главная</Link>
+                        <Link href="/kreditniy-kalkulyator">Кредитный калькулятор</Link>
+                        <Link href={`uslugi/potrebitelskiy-kredit`} >Потребительский кредит</Link>
+                        <Link href={`uslugi/refinansirovanie`} >Рефинансирование</Link>
+                        <Link href={`uslugi/ipoteka`} >Ипотека</Link>
+                        <Link href={`uslugi/kredit-pod-zalog-nedvizhimosti`} >Кредит под залог недвижимости</Link>
+                        <Link href={`uslugi/kredit-pod-zalog-avtomobilya`} >Кредит под залог автомобиля</Link>
+                        <Link href={`uslugi/kredit-dlya-yuridicheskikh-lits`} >Кредит для юридических лиц</Link>
+                        <Link href={`uslugi/lizing`} >Лизинг</Link>
+                        <Link href="/o-kompanii">О компании</Link>
+                        <Link href="/kontakty">Контакты</Link>
                     </div>
                 </div>
                 <div className="footer__bottom flex items-center justify-between">

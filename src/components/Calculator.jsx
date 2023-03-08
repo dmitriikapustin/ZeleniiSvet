@@ -706,9 +706,9 @@ const Calculator = ({rtl}) => {
 					<div className="ind-calc flex flex-row cd7 cm4 justify-end">
 						<img className='mrs' src="/images/ind-calc.svg" alt="" />
 						<Link 
-							href={'/indcalc'}					
+							href={'/kreditniy-kalkulyator'}					
 							className='' 
-							as={`indcalc?sum=${sum}&term=${term}&rate=${rate}`}
+							as={`kreditniy-kalkulyator?sum=${sum}&term=${term}&rate=${rate}`}
 							>
 								Перейти в индивидуальный калькулятор
 						</Link>

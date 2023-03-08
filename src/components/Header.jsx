@@ -5,7 +5,7 @@ import Link from "next/link";
 import useMediaQuery from '../components/hooks/useDebounce'
 import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
-import {PopupState} from '../context/buttonContext'
+import { PopupState } from '../context/buttonContext'
 
 
 
@@ -95,8 +95,8 @@ const HeaderContent = (props) => {
         <>
 
             <nav className={"header__menu flex justify-between" + (isTab === true ? " services-open" : "")}>
-                <a href="#" className="header__menu-item">Главная</a>
-                <a href="#" className="header__menu-item">Кредитный калькулятор</a>
+                <Link href="/" className="header__menu-item">Главная</Link>
+                <Link href="/kreditniy-kalkulyator" className="header__menu-item">Кредитный калькулятор</Link>
                 { props.width > 800 ?
                     <motion.div
                         onHoverStart={toggleHoverMenu}
@@ -107,7 +107,7 @@ const HeaderContent = (props) => {
                             // whileTap={{ scale: 0.97 }}
                             animate={isHover ? "open" : "closed"}
                             >
-                            <a href="" className="header__menu-item">
+                            <a id="services" className="header__menu-item">
                                 Услуги
                             </a>
                             <motion.div
@@ -132,13 +132,13 @@ const HeaderContent = (props) => {
                         >
                             <div className="sub-menu-background" />
                             <div className="sub-menu-container flex flex-col">
-                                <Link href={`services/potrebitelskiy-kredit`} className="sub-menu-item mbs">Потребительский кредит</Link>
-                                <Link href={`services/refinansirovanie`} className="sub-menu-item mbs">Рефинансирование</Link>
-                                <Link href={`services/ipoteka`} className="sub-menu-item mbs">Ипотека</Link>
-                                <Link href={`services/kredit-pod-zalog-nedvizhimosti`} className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
-                                <Link href={`services/kredit-pod-zalog-avtomobilya`} className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
-                                <Link href={`services/kredit-dlya-yuridicheskikh-lits`} className="sub-menu-item mbs">Кредит для юридических лиц</Link>
-                                <Link href={`services/lizing`} className="sub-menu-item">Лизинг</Link>
+                                <Link href={`uslugi/potrebitelskiy-kredit`} className="sub-menu-item mbs">Потребительский кредит</Link>
+                                <Link href={`uslugi/refinansirovanie`} className="sub-menu-item mbs">Рефинансирование</Link>
+                                <Link href={`uslugi/ipoteka`} className="sub-menu-item mbs">Ипотека</Link>
+                                <Link href={`uslugi/kredit-pod-zalog-nedvizhimosti`} className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
+                                <Link href={`uslugi/kredit-pod-zalog-avtomobilya`} className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
+                                <Link href={`uslugi/kredit-dlya-yuridicheskikh-lits`} className="sub-menu-item mbs">Кредит для юридических лиц</Link>
+                                <Link href={`uslugi/lizing`} className="sub-menu-item">Лизинг</Link>
                             </div>
                         </motion.div>
                     </motion.div> :
@@ -192,8 +192,8 @@ const HeaderContent = (props) => {
                             </div>
                         </motion.div>
                     </motion.div>}
-                <a href="#" className="header__menu-item">О компании</a>
-                <a href="#" className="header__menu-item">Контакты</a>
+                <Link href="/o-kompanii" className="header__menu-item">О компании</Link>
+                <Link href="/kontakty" className="header__menu-item">Контакты</Link>
             </nav>
             <button className='action action--light relative ov-hidden'
             onClick={() => setPopupState(!popupState)}>

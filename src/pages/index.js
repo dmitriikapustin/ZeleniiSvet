@@ -1,11 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Link from "next/link";
 
-
-
-
-
-
 import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,7 +37,6 @@ function App() {
 
   return (
     <>
-    <PopupFormContext.Provider value={popupForm}>
       <Head>
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
@@ -54,7 +48,7 @@ function App() {
           <main>
             <PopupState.Provider value={{ popupState, setPopupState }}>
               <HeroSection/>
-            <PopupState.Provider value={{ popupState, setPopupState }}>
+            </PopupState.Provider>
             <Services/>
             <div className='bc-white-container'>
               <Calculator />
@@ -63,7 +57,8 @@ function App() {
             
             <Help/>
             <MainProfits />
-            <Form data={dataGetPhones}/>
+            <Form/>
+            {/* data={dataGetPhones} */}
             <WeWork/>
             <CreditStory/>
             <PartnersBlock />
@@ -71,15 +66,13 @@ function App() {
           </main>
         <Footer/>
       </div>
-    </PopupFormContext.Provider>
     {/* <Story
         fetchUrl={''} // Сюда отдаем юрл который надо разобрать
         type={1}
         fullsize={false}
         reverse={true}
     /> */}
-    </>
-	// <Layout>
+	{/* // <Layout>
 		// <div>
 		// 	<div className='container'>
 		// 		<Link href={`/animation`}>Animation</Link>
@@ -87,7 +80,8 @@ function App() {
 		// 		<FormBlock data={dataGetPhones}/>
 		// 	</div>
 		// </div>
-	// </Layout>
+	// </Layout> */}
+    </>
   );
 }
 
