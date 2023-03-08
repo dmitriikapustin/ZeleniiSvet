@@ -725,12 +725,18 @@ const Calculator = ({rtl}) => {
 				<Counter from={prevCountResult} to={result} className={'payment'} /> 
 				{/* <p className='p-top font-4-regular'>Переплата по процентам за кредит</p>
 				<Counter from={prevCountOverpayment} to={overpayment} text={'руб'} />  */}
-				<div className='button bc-white flex flex-row action--light' onClick={() => setTogglePopup(true)}>
+				{/* <div className='button bc-white flex flex-row action--light' onClick={() => setTogglePopup(true)}>
 					<a className=''>Нужна консультация</a>
 					<svg width="18" height="19"  fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.5 13.6299L9.45 12.5424L12.1125 9.87988H3V8.37988H12.1125L9.45 5.71738L10.5 4.62988L15 9.12988L10.5 13.6299Z" fill="#fff"/>
 					</svg>
-				</div>
+				</div> */}
+				<Button
+					mode='white'
+					icon={true}
+					onClick={() => setTogglePopup(true)}
+					text='Нужна консультация'
+				/>
 			</div>
 			<motion.div
 				className={"flex flex-col popup " + (togglePopup === true ? 'active' : '')}

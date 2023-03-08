@@ -11,6 +11,7 @@ import {PopupState} from '../context/buttonContext'
 
 
 import PromoLine from '@/components/PromoLine'
+import VideoBackground from '@/components/atoms/VideoBackground'
 
 
 export default function Header(){
@@ -194,11 +195,12 @@ const HeaderContent = (props) => {
                 <a href="#" className="header__menu-item">О компании</a>
                 <a href="#" className="header__menu-item">Контакты</a>
             </nav>
-            <button 
-                className='action action--light'
-                onClick={() => setPopupState(!popupState)}
-            >
-                Оставить заявку
+            <button className='action action--light relative ov-hidden'
+            onClick={() => setPopupState(!popupState)}>
+                <a className='z-100'>Оставить заявку</a>
+                <div style={{opacity: 0.69}}>
+                    <VideoBackground />
+                </div>
             </button>
             <div className={"popup" + (popupState === true ? ' open' : '')}>POPUP</div>
         </>

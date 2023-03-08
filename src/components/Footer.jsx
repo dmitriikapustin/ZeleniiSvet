@@ -24,9 +24,9 @@ export default function Footer(){
                     </div>
                 </div>
                 <div className="footer__bottom flex items-center justify-between">
-                    <div className='flex item-center'>
+                    <div className='flex items-center'>
                         <img src={logoW.src} className='footer__logo' />
-                        <span>&copy;&nbsp;{new Date().getFullYear()}</span>
+                        <p className='h-fit mb0 mlm'>&copy;&nbsp;{new Date().getFullYear()}</p>
                     </div>
                     <div className='footer__bottom-social flex item-center'>
                         <a href="">
