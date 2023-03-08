@@ -6,7 +6,7 @@ import {PopupState} from '../context/buttonContext'
 
 import Button from "./atoms/Button"
 
-export default function HeroSection(){
+export default function HeroSection(props){
 
     const {popupState, setPopupState} = useContext(PopupState)
 
@@ -15,7 +15,7 @@ export default function HeroSection(){
     return(
         <section className="hero relative">
             <VideoBackground />
-            <div className='container'>
+            <div className={'container' + (props.type === 1 ? ' uslugi' : '')}>
                 <div className="block mym">
                     <h1 className="hero__title">
                         Поможем получить кредит
@@ -29,6 +29,21 @@ export default function HeroSection(){
                         text='Бесплатная консультация'
                         icon='true'
                     />
+                    {props.type === 1 ? (                   
+                        <div className="params flex flex-row mtl">
+                            <div className="flex flex-col mrm">
+                                <h3>Ставка от</h3>
+                                <span className="span-param">4.4%</span>
+                            </div>
+                            <div className="flex flex-col mrm">
+                                <h3>Сумма кредита до</h3>
+                                <span className="span-param">200 млн</span>
+                            </div>
+                            <div className="flex flex-col">
+                                <h3>Срок одобрения</h3>
+                                <span className="span-param">1 день</span>
+                            </div>
+                    </div>) : ''}
                 </div>
             </div>
         </section>

@@ -56,7 +56,7 @@ const mock = [
 
 
 
-export default function WeWork(){
+export default function WeWork(index, title){
     return(
         <section className="work">
             <div className="container">
@@ -70,9 +70,10 @@ export default function WeWork(){
                 </ScrollAnimation>
 
                 <ScrollCardsAnimation
+                    i={index}
                     className={"work__cards items-stretch"}
                 >
-                    {mock.map((m, i) => <WeWorkCard key={i} {...m} isGreen={i === 7}/>)}
+                    {mock.map((m, i) => <WeWorkCard key={i} {...m} index={index} i={i} isGreen={i === 7}/>)}
                 </ScrollCardsAnimation>
                 {/* <div className="work__cards">
                     {mock.map((m, i) => <WeWorkCard key={i} {...m} isGreen={i === 7}/>)}

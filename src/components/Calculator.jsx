@@ -700,7 +700,7 @@ const Calculator = ({rtl}) => {
 						<Link 
 							href={'/kreditniy-kalkulyator'}					
 							className='' 
-							as={`kreditniy-kalkulyator?sum=${sum}&term=${term}&rate=${rate}`}
+							as={`/kreditniy-kalkulyator?sum=${sum}&term=${term}&rate=${rate}`}
 							>
 								Перейти в индивидуальный калькулятор
 						</Link>
