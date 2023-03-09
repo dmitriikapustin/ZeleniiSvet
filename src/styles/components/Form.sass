@@ -17,8 +17,6 @@
 		font-weight: 500 !important
 	h2, p, span
 		color: $White
-	.form-heading
-		margin-bottom: 15px
 	.popup
 		display: none
 		&.active
@@ -38,45 +36,17 @@
 				margin: auto auto
 				width: 350px
 				border-radius: 9px
-				.popup-text
-					margin-bottom: 15px
-				.ok-button-container
-					display: flex
-					justify-content: flex-end !important
-					.ok-button
-						width: fit-content
-						a
-							padding: 4px 8px
-							font-weight: 300 !important
-
-
+				a
+					padding: 4px 8px
+					font-weight: 300 !important
 
 	.input-field
-		position: relative
-		overflow: visible
-		margin-top: 15px
-
-		// &:not(:placeholder-shown)
-		// 	label
-		// 		top: -16px
-		// 		font-size: 90%
-		// &:focus
-		// 	label
-		// 		top: -16px
-		// 		font-size: 90%
 		.input-container
 			height: 50px
 			background-color: #f5f4f433
 			border-radius: 1000px
-			width: 65% 
-			.label
+			.label, .label2
 				&.animate
-					transform: translate3d(200%, 0, 0)
-					opacity: 0
-					transition: all .2s ease 
-			.label2
-				&.animate
-					transform: translate3d(200%, 0, 0)
 					opacity: 0
 					transition: all .2s ease 
 		input
@@ -91,41 +61,16 @@
 			margin-left: 30px
 			background-color: transparent
 			width: 100%
-			// position: absolute
-			// left: 30px
-			// top: 15px
-			// &:focus
-			// 	&+label
-			// 		top: -16px
-			// 		font-size: 90%
-			// &:-webkit-autofill
-			// 	&+label
-			// 		top: -16px
-			// 		font-size: 90%
-			// &:not(:placeholder-shown)
-			// 	&+label
-			// 		top: -16px
-			// 		font-size: 90%
-			// &:focus
-			// 	outline: none
-			// 	border-bottom: 1px solid #70BC24
-			// 	transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
 		.error-container
-			width: fit-content
-			height: fit-content
-			padding: 5px
-			// transition: all .2s ease-in-out
-			border-radius: 5px
+			top: 2px
+			left: 66%
+			padding: 7px
+			border-radius: 30px
 			background-color: #FBFBFB
 			.error-message
-				display: block
 				font-size: 1vw
-
 				color: #9da0a8 !important
-				width: 100% !important
-				
-
-
 
 		label
 			position: absolute
@@ -141,19 +86,11 @@
 
 	.button.form-button
 		width: 50% !important
-		height: auto
 		button
 			transition: all 0.2s ease-out
 			border-radius: 1000px
-			outline: none
-			border: none
-			width: 100%
-			padding: 0 !important
-			height: fit-content !important
 			background-color: $White
-			display: flex
-			justify-content: center
-			align-items: center
+			z-index: 50
 			a 
 				color: $Main
 			&:hover
@@ -162,6 +99,7 @@
 					color: $White
 			&.disabled
 				opacity: 0.75
+				z-index: 50
 
 
 
@@ -184,6 +122,11 @@
 	background: var(--bg-pic)
 	background-size: cover
 	overflow: hidden
+	.woman
+		z-index: 1000 !important
+		width: 450px
+		left: 650px
+		top: 100px
 	// transform-style: preserve-3d
 	// transform: skew(1deg) perspective(100px) rotateY(-0.5deg) 
 	.formblock-container
@@ -194,3 +137,8 @@
 @media (max-width: 800px)
 	.formblock
 		border-radius: 0
+		.woman
+			width: 300px
+			position: relative
+			left: 0 
+			top: 0
