@@ -213,7 +213,7 @@ const FormС = (data) => {
 				delay={0}
 			>
 				<form onSubmit={formik.handleSubmit} id="tg">
-					<div style={styleInput} className='input-field'>
+					<div style={styleInput} className='input-field relative'>
 						<div style={styleInnerInput} className='input-container'>
 
 							<input
@@ -252,12 +252,12 @@ const FormС = (data) => {
 									}}
 									initial={{opacity: 0, scale: 0.9}}
 									animate={{opacity: 1, scale: 1}}
-									className="error-container">
+									className="error-container absolute flex items-center">
 									<span className='error-message'>{formik.errors.name}</span>
 								</motion.div>
 							)}
 					</div>
-					<div style={styleInput} className='input-field'>
+					<div style={styleInput} className='input-field relative'>
 						<ScrollAnimation
 							delay={0}
 						>
@@ -289,6 +289,7 @@ const FormС = (data) => {
 									for="phone">Телефон
 								</label>
 								<br />
+							</div>
 								{formik.errors.mobilephone && (
 									<motion.div 
 										transition={{
@@ -299,11 +300,10 @@ const FormС = (data) => {
 										initial={{opacity: 0, scale: 0.9}}
 										animate={{opacity: 1, scale: 1}}
 										exit={{ opacity: 0 }}
-										className="error-container">
+										className="error-container absolute flex items-center">
 										<span className='error-message'>{formik.errors.mobilephone}</span>
 									</motion.div>
 								)}
-							</div>
 						</ScrollAnimation>
 					</div>
 					<div className='button form-button px0'>

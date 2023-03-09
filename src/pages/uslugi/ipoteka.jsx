@@ -38,12 +38,12 @@ import { Provider } from 'react';
 
 
 
-// export async function getStaticProps() {
-// 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-// 	const dataPhonesResp = respPhones.data;
-// 	console.log(dataPhonesResp)
-// 	return { props: { dataGetPhones: dataPhonesResp } }
-// }
+export async function getStaticProps() {
+	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+	const dataPhonesResp = respPhones.data;
+	console.log(dataPhonesResp)
+	return { props: { dataGetPhones: dataPhonesResp } }
+}
 
 function ipoteka ({dataGetPhones}) {
 
