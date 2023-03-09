@@ -67,6 +67,7 @@ const FormС = (data) => {
 	const onBlur = () => setFocused(false)
 	const onBlur2 = () => setFocused2(false)
 	const [error, setError] = useState(null)
+	const [url, setUrl] = useState('')
 
 	// console.log(data)
 
@@ -80,7 +81,10 @@ const FormС = (data) => {
 
 
 	
-
+	useEffect(() => {
+		console.log(window.location.href)
+		setUrl(window.location.href)
+	}, [])
 
 
 	const animateInput = {
