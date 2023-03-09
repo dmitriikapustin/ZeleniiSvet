@@ -14,7 +14,7 @@ export default function WeWorkCard(props){
     }, [])
 
     return(
-        <div className={`relative work-card flex flex-col h-full ${i && isGreen && ' green-x2 '} ${hiddenCard === true ? 'hidden' : ''} ${isGreen ? 'work-card--green' : ''}`}>
+        <div className={`relative work-card flex flex-col h-full ${index.index && isGreen && ' green-x2 '} ${hiddenCard === true ? 'hidden' : ''} ${isGreen ? 'work-card--green' : ''}`}>
             {isGreen 
             ? <VideoBackground/>
             : ''}

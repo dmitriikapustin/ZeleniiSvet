@@ -10,7 +10,7 @@ import Image from 'next/image'
 // Надо добавить возможность вставлять кнопку
 // - Просто делать это через проброс children внутрь нужного места
 
-function Story(props, {children}) {
+const Story = (props) => {
 
     // Fetch кладется внутрь тела компонента и вызывается универсально для любого типа
     // После фетчей подключаем все в переменные ниже
@@ -41,7 +41,7 @@ function Story(props, {children}) {
                     <div className="cd8 cm4 flex-col">
                         <h2>{title}</h2>
                         <p>{text}</p>
-                        {children}
+                        {props.children}
                     </div>
                 </div>
                 {
@@ -72,7 +72,7 @@ function Story(props, {children}) {
                         </div>
                             <h2>{title}</h2>
                             <p>{text}</p>
-                            {children}
+                            {props.children}
                     </div>
                 </div>  
             </section>
@@ -89,8 +89,8 @@ function Story(props, {children}) {
                             <h4>{subtitle}</h4>
                         </div>
                         <h2>{title}</h2>
-                        <p>{text}</p>
-                        {children}
+                        <p className='mbm'>{text}</p>
+                        {props.children}
                     </div>
                     <div className={'cd6 cm4'}>
                         <Image quality={100} width={imageWidth} height={imageHeight}  src={photo} alt={title}></Image>

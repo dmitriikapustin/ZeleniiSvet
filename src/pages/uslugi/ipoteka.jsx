@@ -17,9 +17,13 @@ import MapBlock from '@/components/MapBlock';
 import Footer from '@/components/Footer';
 import CreditStory from '@/components/CreditStory';
 import Story from '@/components/Story';
+import Text from '@/components/Text'
 
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
+
+
+import Button from '@/components/atoms/Button'
 
 
 
@@ -34,12 +38,12 @@ import { Provider } from 'react';
 
 
 
-export async function getStaticProps() {
-	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-	const dataPhonesResp = respPhones.data;
-	console.log(dataPhonesResp)
-	return { props: { dataGetPhones: dataPhonesResp } }
-}
+// export async function getStaticProps() {
+// 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+// 	const dataPhonesResp = respPhones.data;
+// 	console.log(dataPhonesResp)
+// 	return { props: { dataGetPhones: dataPhonesResp } }
+// }
 
 function ipoteka ({dataGetPhones}) {
 
@@ -66,12 +70,30 @@ function ipoteka ({dataGetPhones}) {
                   <Story 
                     type={5}
                     reverse={true}
-                    title='подзаголовк Заголовок'
-                    subtitle='Заголовок'
-                    text='Заголовок'
+                    title='Заголовок'
+                    subtitle='Подзаголовок'
+                    text='Текст'
                     photo='/images/avto.jpg'
                   />
-                  {/* <ForWhat /> */}
+                  <Story 
+                    type={5}
+                    title='Заголовок'
+                    subtitle='Подзаголовок'
+                    text='Текст'
+                    photo='/images/avto.jpg'
+                  >
+                    <Button 
+                        mode='light'
+                        text='Бесплатная консультация'
+                        icon='true'
+                    />
+                  </Story>
+                  <Text
+                    type={1}
+                    title='Оформи ипотеку'
+                    text1='Помогаем оформить имущество для использования в вашем бизнесе с последующим правом выкупа. Предложим надёжную лизинговую компанию и банк для успешной сделки.'
+                    text2='Бизнес это сложная и «живая» структура, а кредиты — распространённое явление. Мы знаем, как раздобыть для вас лучший вариант займа у банка.'
+                  />
                 </div>
                 
                 <Help/>
