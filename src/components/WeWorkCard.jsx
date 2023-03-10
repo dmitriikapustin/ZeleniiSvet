@@ -16,8 +16,8 @@ export default function WeWorkCard(props){
     return(
         <div className={`relative work-card flex flex-col h-full ${index.index && isGreen && ' green-x2 '} ${hiddenCard === true ? 'hidden' : ''} ${isGreen ? 'work-card--green' : ''}`}>
             {isGreen 
-            ? <VideoBackground/>
-            : ''}
+                ? <VideoBackground/>
+                : '' }
             <div>{icon && !isGreen &&  <img src={icon} className="work-card__icon block w-auto h-auto" />}</div>
             <h3 className="work-card__title">{title}</h3>
             {text.map((t, i) => <p className="work-card__text" key={i}>{t}</p>)}

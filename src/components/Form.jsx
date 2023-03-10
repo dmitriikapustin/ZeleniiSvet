@@ -10,10 +10,13 @@ const Form = () => {
 	const { phonesData } = useContext(PhonesData)
 
 	return (
-		<div className='flex flex-col container form-card px0 ov-visible'>
+		<div className='flex flex-row flex-wrap container form-card px0 ov-visible'>
 			<VideoBackground />
-			<div className="formblock formblock-container relative">
+			<div className="formblock formblock-container relative cd6 cm4">
 				<FormС data={phonesData} />
+			</div>
+			<div className="woman cd6 cm4">
+				<img src="/images/woman.png" alt="" />
 			</div>
 		</div>
 	)
