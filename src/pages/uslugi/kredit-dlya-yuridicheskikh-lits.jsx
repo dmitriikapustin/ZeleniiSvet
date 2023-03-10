@@ -18,6 +18,7 @@ import Story from '@/components/Story';
 
 import {PopupState} from '@/context/buttonContext'
 
+
 export async function getStaticProps() {
 	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
 	const dataPhonesResp = respPhones.data;
@@ -25,9 +26,9 @@ export async function getStaticProps() {
 	return { props: { dataGetPhones: dataPhonesResp } }
 }
 
-const lizing = () => {
-  const [popupState, setPopupState] = useState(false)
+const kreditdlyayuridicheskikhlits = ({dataGetPhones}) => {
 
+  const [popupState, setPopupState] = useState(false)
 
   return (
     <>
@@ -42,7 +43,7 @@ const lizing = () => {
           <main>
             <HeroSection
               type={1}
-              newTitle='Поможем получить лизинг на выгодных условиях'
+              newTitle='Поможем получить кредит для юридических лиц на выгодных условиях'
             />
 
             <div className='bc-white-container'>
@@ -70,7 +71,7 @@ const lizing = () => {
               </Story>
               <Text
                 type={1}
-                title='Оформи лизинг'
+                title='Оформи кредит для юридических лиц'
                 text1='Помогаем оформить имущество для использования в вашем бизнесе с последующим правом выкупа. Предложим надёжную лизинговую компанию и банк для успешной сделки.'
                 text2='Бизнес это сложная и «живая» структура, а кредиты — распространённое явление. Мы знаем, как раздобыть для вас лучший вариант займа у банка.'
               />
@@ -82,7 +83,7 @@ const lizing = () => {
               data={dataGetPhones}
             />
             <WeWork
-              index={6}
+              index={5}
               title={''}
             />
             <CreditStory />
@@ -96,4 +97,4 @@ const lizing = () => {
   )
 }
 
-export default lizing
+export default kreditdlyayuridicheskikhlits

@@ -7,8 +7,9 @@ import axios from 'axios';
 import { motion } from "framer-motion";
 import ScrollAnimation from '../components/animations/ScrollAnimation'
 
+import { PopupState } from '@/context/buttonContext'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import Button from './atoms/Button_back';
 
@@ -46,9 +47,12 @@ const FormС = (data) => {
 	const onFocus2 = () => setFocused2(true)
 	const onBlur = () => setFocused(false)
 	const onBlur2 = () => setFocused2(false)
-	const [error, setError] = useState(null)
+
 
 	// console.log(data)
+
+
+	const {currentPage, currentComponent} = useContext(PopupState)
 
 
 	useEffect(() => {
@@ -60,6 +64,23 @@ const FormС = (data) => {
 
 
 	
+	useEffect(() => {
+		console.log(currentPage, currentComponent)
+	}, [])
+
+
+	const animateInput = {
+		x: [100, 200],
+		opacity: [0.5, 0],
+		transition: {
+			// type: 'spring',
+			duration: 0.08,
+			ease: [0.075, 0.82, 0.165, 1],
+			stiffness: 1000 ,
+			repeatType: 'reverse'
+			// damping: 24
+		}
+	}
 
 	// const transition = {
 	// 	type: 'spring',
@@ -151,7 +172,7 @@ const FormС = (data) => {
 			const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
 
-			let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone}`;
+			let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone} <b> Страница:</b> ${currentPage} <b> Страница:</b> ${currentComponent}`;
 
 			axios.post(URI_API, {
 				chat_id: CHAT_ID,
@@ -178,8 +199,8 @@ const FormС = (data) => {
 				delay={0}
 			>
 				<form onSubmit={formik.handleSubmit} id="tg">
-					<div className='input-field relative mbs ov-visible mtm'>
-						<div className='input-container w-full relative'>
+					<div style={styleInput} className='input-field relative'>
+						<div style={styleInnerInput} className='input-container'>
 
 							<input
 								disabled={disableInputs}
@@ -216,12 +237,12 @@ const FormС = (data) => {
 									}}
 									initial={{opacity: 0, scale: 0.9}}
 									animate={{opacity: 1, scale: 1}}
-									className="error-container flex items-center w-fit h-fit absolute">
-									<span className='error-message block w-full'>{formik.errors.name}</span>
+									className="error-container absolute flex items-center">
+									<span className='error-message'>{formik.errors.name}</span>
 								</motion.div>
 							)}
 					</div>
-					<div className='input-field relative mbm ov-visible mts'>
+					<div style={styleInput} className='input-field relative'>
 						<ScrollAnimation
 							delay={0}
 						>
@@ -264,22 +285,22 @@ const FormС = (data) => {
 										initial={{opacity: 0, scale: 0.9}}
 										animate={{opacity: 1, scale: 1}}
 										exit={{ opacity: 0 }}
-										className="error-container flex items-center w-fit h-fit absolute">
-										<span className='error-message block w-full'>{formik.errors.mobilephone}</span>
+										className="error-container absolute flex items-center">
+										<span className='error-message'>{formik.errors.mobilephone}</span>
 									</motion.div>
 								)}
 						</ScrollAnimation>
 					</div>
-					<div className='button form-button px0 h-auto'>
-						<button disabled={isSchemaValid === true ? false : true} type='submit' className={"flex justify-center items-center w-full b-none o-none"  + (isSchemaValid === true ? " " : " disabled")}>
-							<a>
+					<div className='button form-button px0'>
+						<button disabled={isSchemaValid === true ? false : true} type='submit' className={isSchemaValid === true ? "" : "disabled"}>
+							<a className=''>
 								Оставить заявку
 							</a>
 						</button>
 					</div>
-					<div>
+					{/* <div>
 						<h1>{error}</h1>
-					</div>
+					</div> */}
 					<motion.div
 						className={"flex flex-col popup " + (togglePopup === true ? 'active' : '')}
 

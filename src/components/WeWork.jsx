@@ -56,29 +56,38 @@ const mock = [
 
 
 
-export default function WeWork(index, title){
+export default function WeWork(props){
     return(
         <section className="work">
-            <div className="container">
-                <ScrollAnimation delay={0} triggerOnce={false}>
-                    <h2 className="work__title text-center"><span>Работаем</span> с физическими и юридическими лицами</h2>
-                </ScrollAnimation>
-                <ScrollAnimation delay={0} triggerOnce={false}>
-                    <p className="work__text text-center">
-                        Группа Компаний <span>«Зеленый свет»</span> создана, чтобы оказывать качественные финансовые услуги.
-                    </p>
-                </ScrollAnimation>
-
-                <ScrollCardsAnimation
-                    i={index}
+            {props.title === true? (
+                <div className="container">
+                    <ScrollAnimation delay={0} triggerOnce={false}>
+                        <h2 className="work__title text-center"><span>Работаем</span> с физическими и юридическими лицами</h2>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0} triggerOnce={false}>
+                        <p className="work__text text-center">
+                            Группа Компаний <span>«Зеленый свет»</span> создана, чтобы оказывать качественные финансовые услуги.
+                        </p>
+                    </ScrollAnimation>
+    
+                    <ScrollCardsAnimation
+                        i={props.index}
+                        className={"work__cards items-stretch"}
+                    >
+                        {mock.map((m, i) => <WeWorkCard key={i} {...m} index={props.index} i={i} isGreen={i === 7}/>)}
+                    </ScrollCardsAnimation>
+    
+                </div>
+            ) : (
+                <div className="container">
+                    <ScrollCardsAnimation
+                    i={props.index}
                     className={"work__cards items-stretch"}
                 >
-                    {mock.map((m, i) => <WeWorkCard key={i} {...m} index={index} i={i} isGreen={i === 7}/>)}
-                </ScrollCardsAnimation>
-                {/* <div className="work__cards">
-                    {mock.map((m, i) => <WeWorkCard key={i} {...m} isGreen={i === 7}/>)}
-                </div> */}
-            </div>
+                    {mock.map((m, i) => <WeWorkCard key={i} {...m} index={props.index} i={i} isGreen={i === 7}/>)}
+                    </ScrollCardsAnimation> 
+                </div>
+                )}
         </section>
     )
 }

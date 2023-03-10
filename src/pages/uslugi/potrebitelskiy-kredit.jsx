@@ -27,6 +27,7 @@ export async function getStaticProps() {
 
 
 const potrebitelskiykredit = () => {
+  
   const [popupState, setPopupState] = useState(false)
 
 
@@ -43,7 +44,7 @@ const potrebitelskiykredit = () => {
           <main>
             <HeroSection
               type={1}
-              newTitle='Поможем получить ипотеку на выгодных условиях'
+              newTitle='Поможем получить потребительский кредит на выгодных условиях'
             />
 
             <div className='bc-white-container'>
@@ -51,12 +52,30 @@ const potrebitelskiykredit = () => {
               <Story
                 type={5}
                 reverse={true}
-                title='подзаголовк Заголовок'
-                subtitle='Заголовок'
-                text='Заголовок'
+                title='Заголовок'
+                subtitle='Подзаголовок'
+                text='Текст'
                 photo='/images/avto.jpg'
               />
-              {/* <ForWhat /> */}
+              <Story
+                type={5}
+                title='Заголовок'
+                subtitle='Подзаголовок'
+                text='Текст'
+                photo='/images/avto.jpg'
+              >
+                <Button
+                  mode='light'
+                  text='Бесплатная консультация'
+                  icon='true'
+                />
+              </Story>
+              <Text
+                type={1}
+                title='Оформи потребительский кредит'
+                text1='Помогаем оформить имущество для использования в вашем бизнесе с последующим правом выкупа. Предложим надёжную лизинговую компанию и банк для успешной сделки.'
+                text2='Бизнес это сложная и «живая» структура, а кредиты — распространённое явление. Мы знаем, как раздобыть для вас лучший вариант займа у банка.'
+              />
             </div>
 
             <Help />
