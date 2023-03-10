@@ -4,7 +4,14 @@ import Form from '@/components/Form'
 
 import { PopupState } from '@/context/buttonContext'
 
-const PopupLayout = () => {
+export async function getStaticProps() {
+	const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+	const dataPhonesResp = respPhones.data;
+	console.log(dataPhonesResp)
+	return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+const PopupLayout = ({dataGetPhones}) => {
 
     const {popupState, setPopupState} = useContext(PopupState)
 

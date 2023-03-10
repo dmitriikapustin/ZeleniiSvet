@@ -7,8 +7,9 @@ import axios from 'axios';
 import { motion } from "framer-motion";
 import ScrollAnimation from '../components/animations/ScrollAnimation'
 
+import { PopupState } from '@/context/buttonContext'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import Button from './atoms/Button_back';
 
@@ -66,10 +67,12 @@ const FormС = (data) => {
 	const onFocus2 = () => setFocused2(true)
 	const onBlur = () => setFocused(false)
 	const onBlur2 = () => setFocused2(false)
-	const [error, setError] = useState(null)
-	const [url, setUrl] = useState('')
+
 
 	// console.log(data)
+
+
+	const {currentPage, currentComponent} = useContext(PopupState)
 
 
 	useEffect(() => {
@@ -82,8 +85,7 @@ const FormС = (data) => {
 
 	
 	useEffect(() => {
-		console.log(window.location.href)
-		setUrl(window.location.href)
+		console.log(currentPage, currentComponent)
 	}, [])
 
 
@@ -190,7 +192,7 @@ const FormС = (data) => {
 			const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
 
-			let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone}`;
+			let message = `<b> Отправитель:</b> ${values.name}  <b> Телефон:</b> ${values.mobilephone} <b> Страница:</b> ${currentPage} <b> Страница:</b> ${currentComponent}`;
 
 			axios.post(URI_API, {
 				chat_id: CHAT_ID,
@@ -312,14 +314,14 @@ const FormС = (data) => {
 					</div>
 					<div className='button form-button px0'>
 						<button disabled={isSchemaValid === true ? false : true} type='submit' className={isSchemaValid === true ? "" : "disabled"}>
-							<a className='font-1-bold'>
+							<a className=''>
 								Оставить заявку
 							</a>
 						</button>
 					</div>
-					<div>
+					{/* <div>
 						<h1>{error}</h1>
-					</div>
+					</div> */}
 					<motion.div
 						className={"flex flex-col popup " + (togglePopup === true ? 'active' : '')}
 

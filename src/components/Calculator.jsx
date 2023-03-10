@@ -724,6 +724,7 @@ const Calculator = ({rtl}) => {
 					</svg>
 				</div> */}
 				<Button
+					component="Calculator"
 					mode='white'
 					text='Оставить заявку'
 					icon={true}

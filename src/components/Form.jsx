@@ -7,7 +7,7 @@ const Form = ({data}) => {
   return (
 	<div className='flex flex-col container px0' style={{'overflow': 'visible'}}>
 		<div className="formblock formblock-container relative">
-			<VideoBackground />
+			{/* <VideoBackground /> */}
 			<FormС data={data}/>
 		</div>
 	</div>

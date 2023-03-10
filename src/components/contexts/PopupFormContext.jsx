@@ -5,6 +5,10 @@ import React, { createContext, useState } from 'react';
 
 export const PopupFormContext = createContext({
     popupForm: false,
-    setPopupForm: () => {}
+    setPopupForm: () => {},
+    url: '',
+    setPageUrl: () => {},
+    name: '',
+    setComponentName: () => {}
 })
 

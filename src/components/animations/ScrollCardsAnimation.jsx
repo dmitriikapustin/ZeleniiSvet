@@ -18,7 +18,6 @@ const Item = ({children, i, index, inView}) => {
     }
 
     useEffect(() => {
-        console.log(i, index)
         i.index === index ? setHiddenCard(true) : setHiddenCard(false)
     }, [])  
 

@@ -39,6 +39,8 @@ export async function getStaticProps() {
 function App({dataGetPhones}) {
   
   const [popupState, setPopupState] = useState(false)
+  const [currentPage, setCurrentPage] = useState('')
+  const [currentComponent, setCurrentComponent] = useState('')
 
   return (
     <>
@@ -46,7 +48,7 @@ function App({dataGetPhones}) {
         <title>Зелёный свет</title>
         <meta property="og:title" content="Заголовок" key="title" />
       </Head>
-      <PopupState.Provider value={{ popupState, setPopupState }}>
+      <PopupState.Provider value={{popupState, setPopupState, currentPage, setCurrentPage, currentComponent, setCurrentComponent}}>
       <div className='scroll-area'>
           <Header/>
           <main>
@@ -62,7 +64,10 @@ function App({dataGetPhones}) {
             <Form
               data={dataGetPhones}
             />
-            <WeWork/>
+            <WeWork
+              title={true}
+              index={-1}
+            />
             <CreditStory/>
             <PartnersBlock />
             <MapBlock/>

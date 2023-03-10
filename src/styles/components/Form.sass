@@ -145,9 +145,10 @@
 			pointer-events: none
 			transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)
 
-	.button.form-button
+	.form-button
 		width: 50% !important
 		height: auto
+		z-index: 1000 !important
 		button
 			transition: all 0.2s ease-out
 			border-radius: 1000px
@@ -160,14 +161,15 @@
 			display: flex
 			justify-content: center
 			align-items: center
+			z-index: 1000 !important
 			a 
 				color: $Main
-			&:hover
-				background-color: $DarkedMain
-				a 
-					color: $White
-			&.disabled
-				opacity: 0.75
+			// &:hover
+			// 	background-color: $DarkedMain
+			// 	a 
+			// 		color: $White
+			// &.disabled
+			// 	opacity: 0.75
 
 
 
