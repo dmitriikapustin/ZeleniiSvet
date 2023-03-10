@@ -14,6 +14,9 @@ import MapBlock from '@/components/MapBlock';
 import CreditStory from '@/components/CreditStory';
 import Story from '@/components/Story';
 
+import Button from '@/components/atoms/Button'
+import Text from '@/components/Text'
+
 const kreditdlyayuridicheskikhlits = () => {
 
   return (
@@ -59,9 +62,7 @@ const kreditdlyayuridicheskikhlits = () => {
 
       <Help />
       <MainProfits />
-      <Form
-        data={dataGetPhones}
-      />
+      <Form/>
       <WeWork
         index={5}
         title={''}
