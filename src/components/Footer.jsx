@@ -34,10 +34,10 @@ export default function Footer(){
                         <p className='h-fit mb0 mlm'>&copy;&nbsp;{new Date().getFullYear()}</p>
                     </div>
                     <div className='footer__bottom-social flex item-center'>
-                        <a href="">
+                        <a href="https://wa.clck.bar/79381333311">
                             <img src={wa.src} />
                         </a>
-                        <a href="">
+                        <a href="https://t.me/GreenLight61">
                             <img src={tg.src} style={{marginRight: 2}} />
                         </a>
                     </div>

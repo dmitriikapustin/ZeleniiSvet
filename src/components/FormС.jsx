@@ -12,26 +12,6 @@ import { useState, useEffect } from 'react';
 
 import Button from './atoms/Button_back';
 
-const styleForm = {
-    width: "100%",
-    justifyContent: "space-between",
-    marginBottom: "50px"
-}
-
-const styleInnerInput = {
-    margin: "0",
-    width: '100%',
-    maxWidth: '100%',
-    transition: "all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19)"
-}
-
-const styleInput = {
-    display: "inline-block",
-    width: '100%',
-    maxWidth: '100%',
-    height: '35px',
-	marginBottom: '40px'
-}
 
 
 
@@ -80,21 +60,6 @@ const FormС = (data) => {
 
 
 	
-
-
-
-	const animateInput = {
-		x: [100, 200],
-		opacity: [0.5, 0],
-		transition: {
-			// type: 'spring',
-			duration: 0.08,
-			ease: [0.075, 0.82, 0.165, 1],
-			stiffness: 1000 ,
-			repeatType: 'reverse'
-			// damping: 24
-		}
-	}
 
 	// const transition = {
 	// 	type: 'spring',
@@ -204,17 +169,17 @@ const FormС = (data) => {
 		}
 	  })
 	return (
-		<div className="flex flex-col form" style={{ margin: '30px 0' }}>
+		<div className="flex flex-col form mtm mbm relative">
 			<div className='form-top-text flex flex-col z-100'>
-				<h2 className='font-4-bold form-heading'>Мы хотим вам помочь, потому что знаем как.</h2>
-				<p className='font-2-regular form-text'>Если вам нужна помощь в кредитной проблеме, то оставьте заявку ниже. Как можно быстрее перезвоним и с пониманием выслушаем, а потом предложим решение.</p>
+				<h2 className='mbs'>Мы хотим вам помочь, потому что знаем как.</h2>
+				<p className='mb0'>Если вам нужна помощь в кредитной проблеме, то оставьте заявку ниже. Как можно быстрее перезвоним и с пониманием выслушаем, а потом предложим решение.</p>
 			</div>
 			<ScrollAnimation
 				delay={0}
 			>
 				<form onSubmit={formik.handleSubmit} id="tg">
-					<div style={styleInput} className='input-field'>
-						<div style={styleInnerInput} className='input-container'>
+					<div className='input-field relative mbs ov-visible mtm'>
+						<div className='input-container w-full relative'>
 
 							<input
 								disabled={disableInputs}
@@ -222,7 +187,6 @@ const FormС = (data) => {
 								name="name"
 								id="name"
 								placeholder=" "
-								className='font-1-bold'
 								onFocus={onFocus}
 								onChange={(e) => {
 									formik.handleChange(e)
@@ -252,16 +216,16 @@ const FormС = (data) => {
 									}}
 									initial={{opacity: 0, scale: 0.9}}
 									animate={{opacity: 1, scale: 1}}
-									className="error-container">
-									<span className='error-message'>{formik.errors.name}</span>
+									className="error-container flex items-center w-fit h-fit absolute">
+									<span className='error-message block w-full'>{formik.errors.name}</span>
 								</motion.div>
 							)}
 					</div>
-					<div style={styleInput} className='input-field'>
+					<div className='input-field relative mbm ov-visible mts'>
 						<ScrollAnimation
 							delay={0}
 						>
-							<div style={styleInnerInput} className='input-container'>
+							<div className='input-container w-full relative'>
 
 								<MaskedInput
 									disabled={disableInputs}
@@ -289,6 +253,7 @@ const FormС = (data) => {
 									for="phone">Телефон
 								</label>
 								<br />
+							</div>
 								{formik.errors.mobilephone && (
 									<motion.div 
 										transition={{
@@ -299,16 +264,15 @@ const FormС = (data) => {
 										initial={{opacity: 0, scale: 0.9}}
 										animate={{opacity: 1, scale: 1}}
 										exit={{ opacity: 0 }}
-										className="error-container">
-										<span className='error-message'>{formik.errors.mobilephone}</span>
+										className="error-container flex items-center w-fit h-fit absolute">
+										<span className='error-message block w-full'>{formik.errors.mobilephone}</span>
 									</motion.div>
 								)}
-							</div>
 						</ScrollAnimation>
 					</div>
-					<div className='button form-button px0'>
-						<button disabled={isSchemaValid === true ? false : true} type='submit' className={isSchemaValid === true ? "" : "disabled"}>
-							<a className='font-1-bold'>
+					<div className='button form-button px0 h-auto'>
+						<button disabled={isSchemaValid === true ? false : true} type='submit' className={"flex justify-center items-center w-full b-none o-none"  + (isSchemaValid === true ? " " : " disabled")}>
+							<a>
 								Оставить заявку
 							</a>
 						</button>
@@ -321,10 +285,10 @@ const FormС = (data) => {
 
 					>
 						<div className="popup-container flex flex-col">
-							<p className='font-1 popup-text'>Заявка успешно отправлена!</p>
-							<div className='ok-button-container'>
-								<div className='button ok-button' onClick={() => setTogglePopup(!togglePopup)}>
-									<a className='font-1'>ОК</a>
+							<p className='popup-text'>Заявка успешно отправлена!</p>
+							<div className='ok-button-container flex justify-end'>
+								<div className='button ok-button w-fit' onClick={() => setTogglePopup(!togglePopup)}>
+									<a className=''>ОК</a>
 								</div>
 							</div>
 						</div>
@@ -338,40 +302,6 @@ const FormС = (data) => {
 export default FormС
 
 
-//   <div className="flex flex-col" style={{ width: '362px', margin: '30px 0' }}>
-//   <form onSubmit={values.handleSubmit}>
-// 	  <div style={styleInput} className='input-field'>
-// 		  <div style={styleInnerInput}>
-// 			  <label for="name">First Name</label>
-// 			  <input
-// 				  type="text"
-// 				  name="name"
-// 				  id="name"
-// 				  onChange={values.handleChange}
-// 				  onBlur={values.handleBlur}
-// 				  value={values.name} />
-// 			  {touched.name && errors.name && (
-// 				  <span>{errors.name}</span>
-// 			  )}
-// 		  </div>
-// 	  </div>
-// 	  <div style={styleInput} className='input-field'>
-// 		  <div style={styleInnerInput}>
-// 			  <label for="phone">Your phone</label>
-// 			  <input
-// 				  type="numer"
-// 				  name="mobilephone"
-// 				  id="mobilephone"
-// 				  onChange={values.handleChange}
-// 				  onBlur={values.handleBlur}
-// 				  value={values.mobilephone} />
-// 			  {touched.mobilephone && errors.mobilephone && (
-// 				  <span>{errors.mobilephone}</span>
-// 			  )}
-// 		  </div>
-// 	  </div>
-//   </form>
-// </div>
 
 
 

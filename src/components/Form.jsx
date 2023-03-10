@@ -10,7 +10,7 @@ const Form = () => {
 	const { phonesData } = useContext(PhonesData)
 
 	return (
-		<div className='flex flex-col container form-card px0' style={{ 'overflow': 'hidden' }}>
+		<div className='flex flex-col container form-card px0 ov-visible'>
 			<VideoBackground />
 			<div className="formblock formblock-container relative">
 				<FormС data={phonesData} />

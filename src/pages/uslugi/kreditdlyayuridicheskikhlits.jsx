@@ -25,8 +25,8 @@ export async function getStaticProps() {
 	return { props: { dataGetPhones: dataPhonesResp } }
 }
 
+const kreditdlyayuridicheskikhlits = ({dataGetPhones}) => {
 
-const potrebitelskiykredit = () => {
   const [popupState, setPopupState] = useState(false)
 
 
@@ -65,7 +65,7 @@ const potrebitelskiykredit = () => {
               data={dataGetPhones}
             />
             <WeWork
-              index={0}
+              index={5}
               title={''}
             />
             <CreditStory />
@@ -79,4 +79,4 @@ const potrebitelskiykredit = () => {
   )
 }
 
-export default potrebitelskiykredit
+export default kreditdlyayuridicheskikhlits
