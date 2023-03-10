@@ -7,7 +7,7 @@ import axios from 'axios';
 import { motion } from "framer-motion";
 import ScrollAnimation from '../components/animations/ScrollAnimation'
 
-import { PopupState } from '@/context/buttonContext'
+import { AllContexts } from '@/context/Context'
 
 import { useState, useEffect, useContext } from 'react';
 
@@ -52,7 +52,7 @@ const FormС = (data) => {
 	// console.log(data)
 
 
-	const {currentPage, currentComponent} = useContext(PopupState)
+	const {currentPage, currentComponent} = useContext(AllContexts)
 
 
 	useEffect(() => {
@@ -199,11 +199,12 @@ const FormС = (data) => {
 				delay={0}
 			>
 				<form onSubmit={formik.handleSubmit} id="tg">
-					<div style={styleInput} className='input-field relative'>
-						<div style={styleInnerInput} className='input-container'>
+					<div className='input-field relative mb ov-visible mtm'>
+						<div className='input-container w-full relative'>
 
 							<input
 								disabled={disableInputs}
+								autocomplete="off"
 								type="text"
 								name="name"
 								id="name"
@@ -242,7 +243,7 @@ const FormС = (data) => {
 								</motion.div>
 							)}
 					</div>
-					<div style={styleInput} className='input-field relative'>
+					<div className='input-field relative mbm ov-visible mts'>
 						<ScrollAnimation
 							delay={0}
 						>
@@ -250,6 +251,7 @@ const FormС = (data) => {
 
 								<MaskedInput
 									disabled={disableInputs}
+									autocomplete="off"
 									mask={phoneNumberMask}
 									type="tel"
 									name="mobilephone"
@@ -291,9 +293,14 @@ const FormС = (data) => {
 								)}
 						</ScrollAnimation>
 					</div>
-					<div className='button form-button px0'>
-						<button disabled={isSchemaValid === true ? false : true} type='submit' className={isSchemaValid === true ? "" : "disabled"}>
-							<a className=''>
+					<div className='form-button px0 justify-center'>
+						<button 
+							disabled={isSchemaValid === true ? false : true} 
+							type='submit' 
+							className={'button ' + (isSchemaValid === true ? "" : "disabled") }
+							onClick={()=>setTogglePopup(!togglePopup)}
+						>
+							<a className='py'>
 								Оставить заявку
 							</a>
 						</button>

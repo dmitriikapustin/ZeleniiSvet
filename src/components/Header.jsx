@@ -5,7 +5,7 @@ import Link from "next/link";
 import useMediaQuery from '../components/hooks/useDebounce'
 import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
-import { PopupState } from '../context/Context'
+import { AllContexts } from '../context/Context'
 
 import PopupLayout from '@/components/atoms/PopupLayout'
 
@@ -26,7 +26,7 @@ export default function Header(){
     }, [isServicesOpen])
 
 
-    const {popupState, setPopupState} = useContext(PopupState)
+    const {popupState, setPopupState} = useContext(AllContexts)
 
     return(
         <>
@@ -53,7 +53,7 @@ export default function Header(){
 
 const HeaderContent = (props) => {
 
-    const {popupState, setPopupState} = useContext(PopupState)
+    const {popupState, setPopupState} = useContext(AllContexts)
 
     // console.log(popupState)
 

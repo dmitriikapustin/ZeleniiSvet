@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-import { PopupState } from '@/context/Context'
+import { AllContexts } from '@/context/Context'
 
 import Link from 'next/link'
 
 function Button(props) {
 
-    const {setPopupState, setCurrentPage, setCurrentComponent} = useContext(PopupState)
+    const {setPopupState, setCurrentPage, setCurrentComponent} = useContext(AllContexts)
 
     useEffect(() => {
 		console.log(window.location.href)

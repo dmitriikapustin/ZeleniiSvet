@@ -2,15 +2,9 @@ import VideoBackground from "./atoms/VideoBackground"
 
 import { useEffect, useState, useContext } from 'react'
 
-import {PopupState} from '../context/Context'
-
 import Button from "./atoms/Button"
 
 export default function HeroSection(props){
-
-    const {popupState, setPopupState} = useContext(PopupState)
-
-    console.log(popupState)
 
     return(
         <section className="hero relative">

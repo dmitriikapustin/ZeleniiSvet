@@ -48,7 +48,7 @@ $mob-gutter: (
         @include col-props($i, $columns, $gutter);
       }
       &#{$name}-s-#{$i} {
-        margin-left: col-width($i, $columns);
+        margin-left: col-width($i, $columns) !important; 
       }
     }
   }
