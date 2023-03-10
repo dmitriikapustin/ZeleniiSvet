@@ -2,7 +2,7 @@ import VideoBackground from "./atoms/VideoBackground"
 
 import { useEffect, useState, useContext } from 'react'
 
-import {PopupState} from '../context/buttonContext'
+import {PopupState} from '../context/Context'
 
 import Button from "./atoms/Button"
 

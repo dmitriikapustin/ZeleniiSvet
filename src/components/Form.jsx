@@ -1,17 +1,22 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import FormС from './FormС'
 
 import VideoBackground from '@/components/atoms/VideoBackground'
 
-const Form = ({data}) => {
-  return (
-	<div className='flex flex-col container px0' style={{'overflow': 'visible'}}>
-		<div className="formblock formblock-container relative">
+import { PhonesData } from '@/context/Context'
+
+const Form = () => {
+
+	const { phonesData } = useContext(PhonesData)
+
+	return (
+		<div className='flex flex-col container form-card px0' style={{ 'overflow': 'hidden' }}>
 			<VideoBackground />
-			<FormС data={data}/>
+			<div className="formblock formblock-container relative">
+				<FormС data={phonesData} />
+			</div>
 		</div>
-	</div>
-  )
+	)
 }
 
 export default Form

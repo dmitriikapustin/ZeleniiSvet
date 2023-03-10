@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { PopupState } from '@/context/buttonContext'
+import { PopupState } from '@/context/Context'
 
 import Link from 'next/link'
 

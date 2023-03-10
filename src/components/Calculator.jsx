@@ -14,15 +14,9 @@ import VideoBackground from './atoms/VideoBackground';
 
 import ScrollAnimation from './animations/ScrollAnimation'
 
-import { Range, getTrackBackground } from 'react-range';
-
-import useDebounce from '../components/hooks/useDebounce'
-
-
 const MIN = 500000
 const MAX = 20000000
 const STEP = 100000
-
 
 const itemVariants = {
 	open: {
@@ -32,8 +26,6 @@ const itemVariants = {
 	},
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   };
-
-
 
 const handleInputFocus = () => {
 
@@ -59,46 +51,6 @@ function Counter({ from, to, className}) {
 	return <div className={'div-result-' + (className) + ' font-5-bold'}><p className={'p-result-' + (className)} ref={nodeRef}/> &nbsp;руб / мес</div>
 }
 
-const RangeSlider = ({onChange, value, ...sliderProps}) => {
-
-
-
-     //set initial value to 0 this will change inside useEffect in first render also| or you can directly set useState(value)
-	 const [sliderVal, setSliderVal] = useState(0);
-
-	 // keep mouse state to determine whether i should call parent onChange or not.
-	 // so basically after dragging the slider and then release the mouse then we will call the parent onChange, otherwise parent function will get call each and every change
-	 const [mouseState, setMouseState] = useState(null);
- 
-	 useEffect(() => {
-	   setSliderVal(value); // set new value when value gets changed, even when first render
-	 }, [value]);
- 
-	 const changeCallback = (e) => {
-	   setSliderVal(e.target.value); // update local state of the value when changing
-	 }
- 
-	 useEffect(() => {
-	   if (mouseState === "up") {
-		 onChange(sliderVal)// when mouse is up then call the parent onChange
-	   }
-	 }, [mouseState])
-
-    return (
-        <div className="range-slider">
-            <motion.input 
-				value={sliderVal} 
-				// style={{color: 'black !important'}}
-				onChange={changeCallback}
-				{...sliderProps}
-				onMouseDown={() => setMouseState("down")} // When mouse down set the mouseState to 'down'
-				onMouseUp={() => setMouseState("up")} // When mouse down set the mouseState to 'up' | now we can call the parent onChnage
-			/>
-        </div>
-    );
-}
-
-
 const Calculator = ({rtl}) => {
 
 	const dateC = new Date();
@@ -122,8 +74,6 @@ const Calculator = ({rtl}) => {
 
 	]
 
-
-
 	const [togglePopup, setTogglePopup] = useState(false)
 	const [isOpen, setIsOpen] = useState(false);
 	const [choosenService, setChoosenService] = useState(1)
@@ -140,10 +90,7 @@ const Calculator = ({rtl}) => {
 	// const [sliderValue, setSliderValue] = useState(5)
 	const wrapperRef = useRef(null);
 
-
-
 	useOutsideAlerter(wrapperRef, isOpen);
-
 
 	function usePrevious(value) {
 		const ref = useRef();
@@ -156,8 +103,6 @@ const Calculator = ({rtl}) => {
 	const prevCountResult = usePrevious(result)
 
 	const prevCountOverpayment = usePrevious(overpayment)
-
-
 
 	const sliderValueChanged = useCallback(val => {
 		// console.log("NEW VALUE", val);
@@ -197,24 +142,7 @@ const Calculator = ({rtl}) => {
 
 		kind === "Дифференцированный" ? calcResult = Math.round((S/n) + ((S - S/n) * p/12/100)) : calcResult = S * (p/12/100 + ((p/12/100)/(Math.pow(1 + p/12/100, n) - 1)))
 
-		// let calcResult = Math.round((S/n) + ((S - S/n) * p/12/100))
-
-
-
-		
-		// if (kind === "Аннуитетный") {
-		// 	let calcResult = Math.round((S * n / (1 - Math.pow(1 + n, -p)))/12);
-		// 	return calcResult
-		// } else if (kind === "Дифференцированный") {
-		// 	n = n / 12
-		// 	let calcResult = Math.round((S * (n + (n / Math.pow(1 + n, p) - 1))));
-		// 	return calcResult
-		// } 
-		
-		// console.log(calcResult, n, S)
-
 		let overpayment = calcResult * n - S
-
 
 		if (isNaN(calcResult)) {
 			setResult(0)
@@ -225,9 +153,6 @@ const Calculator = ({rtl}) => {
 		}
 
 	}
-
-
-	
 	
 	function useOutsideAlerter(ref) {
 		useEffect(() => {
@@ -247,8 +172,6 @@ const Calculator = ({rtl}) => {
 			};
 		}, [ref]);
 	}
-
-
 	
 	useEffect(() => {
 		valueSumHandler(sum)
@@ -262,18 +185,12 @@ const Calculator = ({rtl}) => {
 		valueRateHandler(rate)
 	}, [rate])
 
-
-
 	useEffect(() => {
-
 		const timer = setTimeout(() => {
 			calc(sum, term, rate, kindOfPayment)
 		  }, 200);
 		  return () => clearTimeout(timer);
 	}, [sum, term, rate, kindOfPayment])
-
-
-
 
 
 	//// --- ФУНКЦИЯ BACKSPACE --- ////
@@ -301,8 +218,7 @@ const Calculator = ({rtl}) => {
 	const sumHandler = (e) => {
 
 		/// ЗДЕСЬ УБИРАЮТСЯ ПРОБЕЛЫ И ВСЕ КРОМЕ ЦИФР ИЗ SUM, УСТАНАВЛИВАЕТСЯ МИНИМАЛЬНОЕ ЗНАЧЕНИЕ SUM
-
-		
+	
 		var sumInput = e.target.value
 
 		sumInput === ' ₽' ? sumInput = '0' : sumInput
@@ -330,11 +246,6 @@ const Calculator = ({rtl}) => {
 		sum === '0' ? setValueSum(' ₽') : setValueSum(sum + ' ₽')
 
 	}
-
-
-
-
-
 
 	function PosEndTerm(end) {
 
@@ -373,17 +284,17 @@ const Calculator = ({rtl}) => {
 
 		/// ЗДЕСЬ НЕТ МИНИМАЛЬНОГО ПОРОГА В 12 МЕС, ЕСЛИ ЭТО ПРИНИПИАЛЬНО, ТО НАДО ГДЕ-ТО ОТДЕЛЬНО ЕГО УСТАНАВЛИВАТЬ
 
-		// else if ( parseInt(term) < 12) {
-		// 	setTerm(term)
-		// 	const timer = setTimeout(() => {
-		// 		if (parseInt(term) < 12) {
-		// 			setTerm('12')
-		// 		} else {
-		// 			setTerm(term)
-		// 		}
-		// 	  }, 1000);
-		// 	  return () => clearTimeout(timer);
-		// } 
+		else if ( parseInt(term) < 12) {
+			setTerm(term)
+			const timer = setTimeout(() => {
+				if (parseInt(term) < 12) {
+					setTerm('12')
+				} else {
+					setTerm(term)
+				}
+			  }, 1000);
+			  return () => clearTimeout(timer);
+		} 
 		else {
 			setTerm(term)
 		}
@@ -433,12 +344,6 @@ const Calculator = ({rtl}) => {
 
 		// console.log(rateC)
 
-
-
-
-
-
-
 		if ( parseInt(rateC) > 50 ) {
 			setRate('50')
 		} else if ( parseInt(rateC) < 0) {
@@ -456,8 +361,6 @@ const Calculator = ({rtl}) => {
 		// setValueRate(rate + ' %')
 
 	}
-
-
 
 	const dateHandler = (e) => {
 		const newDate = e.target.value;
@@ -513,11 +416,6 @@ const Calculator = ({rtl}) => {
 							<a className={'text-center cd3 var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
 						</div>
 					</div>
-
-
-					
-
-
 				</div>
 				<div className="term flex flex-col">
 					<p className='param-name'>Срок кредита</p>
@@ -547,48 +445,7 @@ const Calculator = ({rtl}) => {
 							<a className={'var' + (term === 240 ? ' active' : '')} onClick={() => setTerm(240)}>20 лет</a>
 							<a className={'var' + (term === 360 ? ' active' : '')} onClick={() => setTerm(360)}>30 лет</a>
 						</div>
-
 				</div>
-
-				{/* <Range
-						step={0.1}
-						min={0}
-						max={100}
-						values={term}
-						onChange={(e) => setTerm(e.target.value)}
-						renderTrack={() => (
-						<div
-							style={{
-							height: '6px',
-							width: '100%',
-							backgroundColor: '#ccc'
-							}}
-						>
-						
-						</div>
-						)}
-						renderThumb={() => (
-						<div
-
-							style={{
-
-							height: '42px',
-							width: '42px',
-							backgroundColor: '#999'
-							}}
-						/>
-						)}
-					/> */}
-					{/* <div className="range-slider-2">
-						<Slider 
-						 	className="RANGE"
-							value={term}
-							onChange={() => handleSliderValue(term)}
-							min={0}
-							max={100000000}
-							step={10000}
-						/>
-					</div> */}
 				</div>
 				<div className="rate flex flex-col">
 					<p className='param-name'>Годовая ставка</p>
@@ -684,7 +541,7 @@ const Calculator = ({rtl}) => {
 
 									</motion.ul>
 						</motion.nav>
-						<div className="input-date cd6 cm4 hidden">
+						{/* <div className="input-date cd6 cm4 hidden">
 							<p className='param-name'>Дата получения кредита</p>
 							<input
 									className='calc-input-date'
@@ -693,7 +550,7 @@ const Calculator = ({rtl}) => {
 									onClick={(e) => {e.target.value = date}}
 									onChange={dateHandler}
 							/>
-						</div>
+						</div> */}
 					</div>
 					<div className="ind-calc flex flex-row cd7 cm4 justify-end">
 						<img className='mrs' src="/images/ind-calc.svg" alt="" />

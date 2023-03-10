@@ -5,7 +5,7 @@ import Link from "next/link";
 import useMediaQuery from '../components/hooks/useDebounce'
 import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
-import { PopupState } from '../context/buttonContext'
+import { PopupState } from '../context/Context'
 
 import PopupLayout from '@/components/atoms/PopupLayout'
 
