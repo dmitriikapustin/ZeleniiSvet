@@ -198,7 +198,7 @@ const FormС = (data) => {
 			<ScrollAnimation
 				delay={0}
 			>
-				<form onSubmit={formik.handleSubmit} id="tg">
+				<form onSubmit={formik.handleSubmit} id="tg" className='cd8 cm4 px0'>
 					<div className='input-field relative mb ov-visible mtm'>
 						<div className='input-container w-full relative'>
 
