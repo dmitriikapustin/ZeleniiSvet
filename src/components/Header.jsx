@@ -33,7 +33,9 @@ export default function Header(){
             <header className="header">
                 <PromoLine></PromoLine>
                 <div className='container flex justify-between items-center py'>
-                    <img src={logo.src} className='header__logo' />
+                    <Link href='/'>
+                        <img src={logo.src} className='header__logo' />
+                    </Link>
                     <HeaderContent width={width} />
                     <div className={`header__burger ${show && 'header__burger--open'} ${isServicesOpen && ' services-open'}`} onClick={() => setShow(!show)}>
                         <span></span><span></span><span></span>
