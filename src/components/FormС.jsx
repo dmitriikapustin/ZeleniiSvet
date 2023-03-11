@@ -282,6 +282,7 @@ const FormС = (data) => {
 
 								<MaskedInput
 									disabled={disableInput2}
+									guide={false}
 									autocomplete="off"
 									mask={phoneNumberMask}
 									type="tel"
