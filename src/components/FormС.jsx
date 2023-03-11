@@ -40,7 +40,8 @@ const phoneNumberMask = [
 const FormС = (data) => {
 	const [togglePopup, setTogglePopup] = useState(false)
 	const [isSchemaValid, setIsSchemaValid] = useState(false)
-	const [disableInputs, setDisableInputs] = useState(true)
+	const [disableInput1, setDisableInput1] = useState(true)
+	const [disableInput2, setDisableInput2] = useState(true)	
 	const [submitDelay, setSumbitDelay] = useState(true)
 	const [focused, setFocused] = useState(false)
 	const [focused2, setFocused2] = useState(false)
@@ -48,7 +49,8 @@ const FormС = (data) => {
 	const onFocus2 = () => setFocused2(true)
 	const onBlur = () => setFocused(false)
 	const onBlur2 = () => setFocused2(false)
-
+	const [onBlurOnce1, setOnBlurOnce1] = useState(false)
+	const [onBlurOnce2, setOnBlurOnce2] = useState(false)
 
 	// console.log(data)
 
@@ -60,10 +62,13 @@ const FormС = (data) => {
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			setDisableInputs(false)
-		}, 3000);
+			setDisableInput1(false)
+			setDisableInput2(false)
+		}, 1000);
 		return () => clearTimeout(timer);
 	}, [])
+
+
 
 
 	useEffect(() => {
@@ -115,7 +120,7 @@ const FormС = (data) => {
 
 
 
-	const schema = Yup.object().shape({
+	const schema = Yup.object({
 		name: Yup.string()
 				.min(3, 'Минимальное количество символов: 3.')
 				.required('Обязательное поле'),
@@ -219,13 +224,19 @@ const FormС = (data) => {
 						<div className='input-container w-full relative'>
 
 							<input
-								disabled={disableInputs}
+								disabled={disableInput1}
 								autocomplete="off"
 								type="text"
 								name="name"
 								id="name"
 								placeholder=" "
-								onFocus={onFocus}
+								onFocus={(e) => {
+									onFocus(e)
+									setDisableInput2(true)
+								}}
+								// onHover={() => {
+								// 	setDisableInput1(false)
+								// }}
 								onChange={(e) => {
 									formik.handleChange(e)
 									const timer = setTimeout(() => {
@@ -234,7 +245,11 @@ const FormС = (data) => {
 									return () => clearTimeout(timer);
 								}
 								}
-								onBlur={onBlur}
+								onBlur={(e) => {
+									onBlur(e)
+									setDisableInput2(false)
+									setOnBlurOnce1(true)
+								}}
 								value={formik.values.name}
 							/>
 							<label
@@ -245,8 +260,7 @@ const FormС = (data) => {
 								Имя
 							</label>
 							<br />
-						</div>
-							{formik.errors.name && (
+							{formik.errors.name && onBlurOnce1 === true ? (
 								<motion.div 
 									transition={{
 										duration: .2,
@@ -257,7 +271,8 @@ const FormС = (data) => {
 									className="error-container absolute flex items-center">
 									<span className='error-message'>{formik.errors.name}</span>
 								</motion.div>
-							)}
+							) : ''}
+						</div>
 					</div>
 					<div className='input-field relative mbm ov-visible mts'>
 						<ScrollAnimation
@@ -266,7 +281,7 @@ const FormС = (data) => {
 							<div className='input-container w-full relative'>
 
 								<MaskedInput
-									disabled={disableInputs}
+									disabled={disableInput2}
 									autocomplete="off"
 									mask={phoneNumberMask}
 									type="tel"
@@ -274,7 +289,10 @@ const FormС = (data) => {
 									id="mobilephone"
 									placeholder=" "
 									className=''
-									onFocus={onFocus2}
+									onFocus={(e) => {
+										onFocus2(e)
+										setDisableInput1(true)
+									}}
 									onChange={(e) => {
 										formik.handleChange(e)
 										const timer = setTimeout(() => {
@@ -283,7 +301,11 @@ const FormС = (data) => {
 										return () => clearTimeout(timer);
 									}
 									}
-									onBlur={onBlur2}
+									onBlur={(e) => {
+										onBlur2(e)
+										setDisableInput1(false)
+										setOnBlurOnce2(true)
+									}}
 									// onBlur={formik.handleBlur} 
 									value={formik.values.mobilephone.replace(/_/g, " ")}
 								/>
@@ -291,9 +313,8 @@ const FormС = (data) => {
 									className={(focused2 === false && formik.values.mobilephone === '' ? 'label2' : 'label2 animate')}
 									for="phone">Телефон
 								</label>
-								<br />
-							</div>
-								{formik.errors.mobilephone && (
+								<br /> 
+								{formik.errors.mobilephone && onBlurOnce2 === true ? (
 									<motion.div 
 										transition={{
 											duration: .2,
@@ -306,7 +327,8 @@ const FormС = (data) => {
 										className="error-container absolute flex items-center">
 										<span className='error-message'>{formik.errors.mobilephone}</span>
 									</motion.div>
-								)}
+								) : ''}
+							</div>
 						</ScrollAnimation>
 					</div>
 					<div className='form-button px0 justify-center'>
