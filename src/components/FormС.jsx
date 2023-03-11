@@ -41,6 +41,7 @@ const FormС = (data) => {
 	const [togglePopup, setTogglePopup] = useState(false)
 	const [isSchemaValid, setIsSchemaValid] = useState(false)
 	const [disableInputs, setDisableInputs] = useState(true)
+	const [submitDelay, setSumbitDelay] = useState(true)
 	const [focused, setFocused] = useState(false)
 	const [focused2, setFocused2] = useState(false)
 	const onFocus = () => setFocused(true)
@@ -52,7 +53,9 @@ const FormС = (data) => {
 	// console.log(data)
 
 
-	const {currentPage, currentComponent} = useContext(AllContexts)
+
+
+	const {currentPage, currentComponent, phonesData} = useContext(AllContexts)
 
 
 	useEffect(() => {
@@ -63,10 +66,18 @@ const FormС = (data) => {
 	}, [])
 
 
-	
 	useEffect(() => {
-		console.log(currentPage, currentComponent)
-	}, [])
+		const timer = setTimeout(() => {
+			setSumbitDelay(true)
+		}, 3000);
+		return () => clearTimeout(timer);
+	}, [submitDelay])
+
+
+	
+	// useEffect(() => {
+	// 	console.log(currentPage, currentComponent)
+	// }, [])
 
 
 	const animateInput = {
@@ -91,9 +102,10 @@ const FormС = (data) => {
 	// }
 
 
-	const fetchStrapiPhones = (data) => {
+	const fetchStrapiPhones = (phonesData) => {
 		const phonesArr = [];
-		data.data.data?.map((item) => {
+		console.log(phonesData)
+		phonesData.data.dataGetPhones.data?.map((item) => {
 			phonesArr.push(item.attributes.phonenumber)
 			return phonesArr
 		})
@@ -130,7 +142,7 @@ const FormС = (data) => {
 
 						const arr = fetchStrapiPhones(data)
 						const booleanResult = !arr.includes(value)
-						// console.log(arr)
+						console.log(arr)
 						return booleanResult === true ? true : this.createError({
 							message: `Такой номер уже есть в базе.`,
 							path: 'mobilephone', // Fieldname
@@ -155,7 +167,11 @@ const FormС = (data) => {
 
 	// console.log(e.value)
 	}
-	// const checkV = schema.validateSync()
+
+	const submitBtnHandler = () => {
+		setTogglePopup(!togglePopup)
+		setSumbitDelay(false)
+	}
 
 
 	const formik = useFormik({
@@ -295,10 +311,10 @@ const FormС = (data) => {
 					</div>
 					<div className='form-button px0 justify-center'>
 						<button 
-							disabled={isSchemaValid === true ? false : true} 
+							disabled={isSchemaValid && submitDelay ? false : true} 
 							type='submit' 
 							className={'button ' + (isSchemaValid === true ? "" : "disabled") }
-							onClick={()=>setTogglePopup(!togglePopup)}
+							onClick={()=>submitBtnHandler()}
 						>
 							<a className='py'>
 								Оставить заявку
@@ -313,11 +329,12 @@ const FormС = (data) => {
 
 					>
 						<div className="popup-container flex flex-col">
-							<p className='popup-text'>Заявка успешно отправлена!</p>
+							{isSchemaValid ? <p className=''>Заявка успешно отправлена!</p> : <p className=''>Заявка не отправлена! Повторите позже</p>}
 							<div className='ok-button-container flex justify-end'>
-								<div className='button ok-button w-fit' onClick={() => setTogglePopup(!togglePopup)}>
-									<a className=''>ОК</a>
-								</div>
+								<button 
+									className='action action--light '
+									onClick={() => setTogglePopup(!togglePopup)}
+								>OK</button>
 							</div>
 						</div>
 					</motion.div>

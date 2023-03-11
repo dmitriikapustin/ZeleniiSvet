@@ -4,17 +4,19 @@ import { createContext, useState } from 'react';
 
 export const AllContexts = createContext(null)
 
+export async function getStaticProps() {
+    const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+    const dataPhonesResp = respPhones.data;
+    console.log(dataPhonesResp)
+    return { props: { dataGetPhones: dataPhonesResp } }
+}
+
 export function Context({children}) {
     const [popupState, setPopupState] = useState(false)
     const [currentPage, setCurrentPage] = useState('')
     const [currentComponent, setCurrentComponent] = useState('')
-    const [phonesData, setPhonesData] = useState({})
-    // export async function getStaticProps() {
-        // const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
-        // const dataPhonesResp = respPhones.data;
-        // console.log(dataPhonesResp)
-        // return { props: { dataGetPhones: dataPhonesResp } }
-    // }
+    const [phonesData, setPhonesData] = useState([])
+
 
     return (
         <AllContexts.Provider value={{

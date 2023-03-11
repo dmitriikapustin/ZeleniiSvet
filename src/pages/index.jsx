@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState, useEffect, useContext } from 'react';
+
 
 import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,7 +19,33 @@ import CreditStory from '@/components/CreditStory';
 import MainProfits from '@/components/MainProfits'
 import ForWhat from '@/components/ForWhat'
 
-function App({dataGetPhones}) {
+import { AllContexts } from '@/context/Context'
+
+const dateC = new Date();
+
+let day = dateC.getDate();
+let month = dateC.getMonth();
+let year = dateC.getFullYear();
+
+console.log(day, month, year)
+
+export async function getStaticProps() {
+    const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*?created_at_gte=${year}-03-01`);
+    const dataPhonesResp = respPhones.data;
+    console.log(dataPhonesResp)
+    return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+function App(dataGetPhones) {
+
+
+	const {setPhonesData} = useContext(AllContexts)
+
+  useEffect(() => {
+    console.log(dataGetPhones)
+    setPhonesData(dataGetPhones)
+  }, [])
+
 
   return (
     <>
