@@ -219,7 +219,7 @@ const FormС = (data) => {
 
 							<input
 								disabled={disableInput1}
-								autocomplete="off"
+								autoComplete="off"
 								type="text"
 								name="name"
 								id="name"
@@ -250,7 +250,7 @@ const FormС = (data) => {
 								// initial={{x: 0, opacity: 1}}
 								// animate={focused === false && formik.values.name === '' ? '' : animateInput}
 								className={(focused === false && formik.values.name === '' ? 'label' : 'label animate')}
-								for="name">
+								htmlFor="name">
 								Имя
 							</label>
 							<br />
@@ -277,7 +277,7 @@ const FormС = (data) => {
 								<MaskedInput
 									disabled={disableInput2}
 									guide={false}
-									autocomplete="off"
+									autoComplete="off"
 									mask={phoneNumberMask}
 									type="tel"
 									name="mobilephone"
@@ -306,7 +306,7 @@ const FormС = (data) => {
 								/>
 								<label 
 									className={(focused2 === false && formik.values.mobilephone === '' ? 'label2' : 'label2 animate')}
-									for="phone">Телефон
+									htmlFor="phone">Телефон
 								</label>
 								<br /> 
 								{formik.errors.mobilephone && onBlurOnce2 === true ? (

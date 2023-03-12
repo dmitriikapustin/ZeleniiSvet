@@ -58,6 +58,7 @@ const ScrollCardsAnimation = ({children, className, i}) => {
         {children.map((child, index) => {
             return <Item 
                         i={i} 
+                        key={i}
                         index={index}
                         ref={ref}
                         inView={inView}
