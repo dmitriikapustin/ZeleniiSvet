@@ -37,14 +37,14 @@ const kreditdlyayuridicheskikhlits = () => {
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-urlic-1.jpg'
         />
         <Story
           type={5}
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-urlic-2.jpg'
         >
           <Button
             mode='light'

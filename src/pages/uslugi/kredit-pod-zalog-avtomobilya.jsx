@@ -38,14 +38,14 @@ const kreditpodzalogavtomobilya = () => {
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-avto-1.png'
         />
         <Story
           type={5}
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-avto-2.png'
         >
           <Button
             mode='light'

@@ -27,7 +27,7 @@ export default function HeroSection(props){
                         icon='true'
                     />
                     {props.type === 1 ? (                   
-                        <div className="params flex flex-row mtm">
+                        <div className="params flex flex-row mtm cd12">
                             <div className="flex flex-col mrl">
                                 <h3>Ставка от</h3>
                                 <h2 className="span-param">4.4%</h2>

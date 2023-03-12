@@ -38,14 +38,14 @@ const refinansirovanie = () => {
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-refin-1.jpg'
         />
         <Story
           type={5}
           title='Заголовок'
           subtitle='Подзаголовок'
           text='Текст'
-          photo='/images/avto.jpg'
+          photo='/images/story-refin-2.jpg'
         >
           <Button
             mode='light'

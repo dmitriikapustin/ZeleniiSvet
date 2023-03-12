@@ -37,14 +37,14 @@ function ipoteka () {
               title='Заголовок'
               subtitle='Подзаголовок'
               text='Текст'
-              photo='/images/avto.jpg'
+              photo='/images/story-ipoteka-1.png'
             />
             <Story 
               type={5}
               title='Заголовок'
               subtitle='Подзаголовок'
               text='Текст'
-              photo='/images/avto.jpg'
+              photo='/images/story-ipoteka-2.png'
             >
               <Button 
                   mode='light'
