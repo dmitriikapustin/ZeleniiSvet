@@ -11,12 +11,6 @@ import { AllContexts } from '@/context/Context'
 
 import { useState, useEffect, useContext } from 'react';
 
-import Button from './atoms/Button_back';
-
-
-
-
-
 const phoneNumberMask = [
 	"+", "7", " ",
 	/[1-9]/,
@@ -122,10 +116,10 @@ const FormС = (data) => {
 
 	const schema = Yup.object({
 		name: Yup.string()
-				.min(3, 'Минимальное количество символов: 3.')
+				.min(3, 'Минимальное количество символов: 3')
 				.required('Обязательное поле'),
 		mobilephone: Yup.string()
-				.min(10, 'Минимальное количество символов: 10.')
+				.min(16, 'Введите номер полностью')
 				.required('Обязательное поле')
 				// .test('обязательное поле ввода', (value, { createError, path }) => {
 				// 	if (!value) return createError({
@@ -149,7 +143,7 @@ const FormС = (data) => {
 						const booleanResult = !arr.includes(value)
 						console.log(arr)
 						return booleanResult === true ? true : this.createError({
-							message: `Такой номер уже есть в базе.`,
+							message: `Вы недавно уже отправляли заявку`,
 							path: 'mobilephone', // Fieldname
 						  })
 

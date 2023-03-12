@@ -8,6 +8,7 @@ import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
 import { AllContexts } from '../context/Context'
 import Button from "./atoms/Button"
+import axios from 'axios';
 
 import PopupLayout from '@/components/atoms/PopupLayout'
 
@@ -15,21 +16,17 @@ import PromoLine from '@/components/PromoLine'
 import VideoBackground from '@/components/atoms/VideoBackground'
 
 
+
 export default function Header(){
 
     const scrollDirection = useScrollDirection();
-
     const [show, setShow] = useState(false)
-
     const [width, height] = useWindowDimensions();
-
     const [isServicesOpen, setServicesOpen] = useState(false)
-
  
     useEffect(() => {
         console.log( isServicesOpen )
     }, [isServicesOpen])
-
 
     const {popupState, setPopupState} = useContext(AllContexts)
 

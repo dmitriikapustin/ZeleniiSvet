@@ -30,19 +30,15 @@ let year = dateC.getFullYear();
 console.log(day, month, year)
 
 export async function getStaticProps() {
-    const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*?created_at_gte=${year}-03-01`);
+    const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
     const dataPhonesResp = respPhones.data;
     console.log(dataPhonesResp)
     return { props: { dataGetPhones: dataPhonesResp } }
 }
 
 function App(dataGetPhones) {
-
-
 	const {setPhonesData} = useContext(AllContexts)
-
   useEffect(() => {
-    console.log(dataGetPhones)
     setPhonesData(dataGetPhones)
   }, [])
 

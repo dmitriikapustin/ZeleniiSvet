@@ -27,10 +27,6 @@ const itemVariants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   };
 
-const handleInputFocus = () => {
-
-}
-
 function Counter({ from, to, className}) {
 	const nodeRef = useRef();
 
@@ -62,24 +58,16 @@ const Calculator = ({rtl}) => {
 	let currentDate = `${day}.${month}.${year}`;
 
 	const services = [
-		{
-			id: 0,
-			name: 'Аннуитетный',
-		},
-		{
-			id: 1,
-			name: 'Дифференцированный',
-
-		}
-
+		{ id: 0, name: 'Аннуитетный' },
+		{ id: 1, name: 'Дифференцированный'}
 	]
 
 	const [togglePopup, setTogglePopup] = useState(false)
 	const [isOpen, setIsOpen] = useState(false);
 	const [choosenService, setChoosenService] = useState(1)
-	const [sum, setSum] = useState(1000000)
-	const [term, setTerm] = useState(60)
-	const [rate, setRate] = useState(4.4)
+	const [sum, setSum] = useState('1 000 000')
+	const [term, setTerm] = useState('60')
+	const [rate, setRate] = useState('4.4')
 	const [result, setResult] = useState(0)
 	const [overpayment, setOverpayment] = useState(0)
 	const [kindOfPayment, setKindOfPayment] = useState("Аннуитетный")
@@ -87,7 +75,6 @@ const Calculator = ({rtl}) => {
 	const [valueSum, setValueSum] = useState(sum)
 	const [valueTerm, setValueTerm] = useState(term)
 	const [valueRate, setValueRate] = useState(rate)
-	// const [sliderValue, setSliderValue] = useState(5)
 	const wrapperRef = useRef(null);
 
 	useOutsideAlerter(wrapperRef, isOpen);
@@ -104,39 +91,18 @@ const Calculator = ({rtl}) => {
 
 	const prevCountOverpayment = usePrevious(overpayment)
 
-	const sliderValueChanged = useCallback(val => {
-		// console.log("NEW VALUE", val);
-		setSum(val);
-	  });
-
-	const sliderProps = useMemo(
-		() => ({
-		  min: 0,
-		  max: 100000000,
-		  value: sum,
-		  step: 10000,
-		  onChange: e => sliderValueChanged(e),
-		  type: 'range',
-		  className: 'slider'
-		}),
-		// dependency array, this will call useMemo function only when parentVal gets changed,
-		// if you 100% confident parentVal only updated from Slider, then you can keep empty dependency array
-		// and it will not re-render for any configuration object change 
-		[sum]
-	  );
-
 	function calc(sum, term, rate, kind) {
 
 		let calcResult;
 
-		let sumString = sum.toString().replace(/\s/g, '')
-		let termString = term.toString().replace(/\s/g, '')
+		let sumString = sum?.toString().replace(/\s/g, '')
+		let termString = term?.toString().replace(/\s/g, '')
 		let S = parseInt(sumString)
 		let n = parseInt(termString)
-		let p = rate
+		let p = parseFloat(rate)
 
-		p = p;
-		n = n;
+		// p = p;
+		// n = n;
 
 		// console.log(S/n, (S - S/n) * p/12/100)
 
@@ -193,190 +159,29 @@ const Calculator = ({rtl}) => {
 	}, [sum, term, rate, kindOfPayment])
 
 
-	//// --- ФУНКЦИЯ BACKSPACE --- ////
-
-	function PosEndSum(end) {
-
-		var len = end.target.value.length;
-
-		// console.log(len, end.target)
-		
-		// Mostly for Web Browsers
-		if (end.target.setSelectionRange) {
-			end.target.focus();
-			end.target.setSelectionRange(len-2, len-2);
-		} else if (end.target.createTextRange) {
-			var t = end.target.createTextRange();
-			t.collapse(true);
-			t.moveEnd('character', len-2);
-			t.moveStart('character', len-2);
-			t.select();
-		}
-	}
-
-
 	const sumHandler = (e) => {
-
-		/// ЗДЕСЬ УБИРАЮТСЯ ПРОБЕЛЫ И ВСЕ КРОМЕ ЦИФР ИЗ SUM, УСТАНАВЛИВАЕТСЯ МИНИМАЛЬНОЕ ЗНАЧЕНИЕ SUM
-	
 		var sumInput = e.target.value
-
-		sumInput === ' ₽' ? sumInput = '0' : sumInput
-		
-		// console.log(sumInput)
-		
 		var sum = sumInput.match(/\d/g);
-		sum = sum.join("");		
-
-
-		if ( parseInt(sum) > 15000000 ) {
-			setSum('15000000')
-		} else if ( parseInt(sum) < 0) {
-			setSum('0')
-		} else {
-			setSum(sum)
-		}
-
-		console.log(sum)
-
+		sum = sum?.join("")
+		parseInt(sum) > 15000000 ? setSum('15 000 000')
+			: setSum(sum?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
 	}
 
-	const valueSumHandler = (sum) => {
-		// console.log(sum)
-		sum === '0' ? setValueSum(' ₽') : setValueSum(sum + ' ₽')
+	const valueSumHandler = (sum) => sum ? setValueSum(sum) : setValueSum('')
 
-	}
+	const termHandler = (e) => parseInt(e.target.value) > 360 ? setTerm('360') : setTerm(e.target.value)
 
-	function PosEndTerm(end) {
+	const valueTermHandler = (term) => term ? setValueTerm(term) : setValueTerm('')
 
-		var len = end.target.value.length;
+	const rateHandler = (e) => parseFloat(e.target.value) > 50 ? setRate('50') : setRate(e.target.value)
 
-		// console.log(len, end.target)
-		
-		// Mostly for Web Browsers
-		if (end.target.setSelectionRange) {
-			end.target.focus();
-			end.target.setSelectionRange(len-4, len-4);
-		} else if (end.target.createTextRange) {
-			var t = end.target.createTextRange();
-			t.collapse(true);
-			t.moveEnd('character', len-4);
-			t.moveStart('character', len-4);
-			t.select();
-		}
-	}
+	const valueRateHandler = (rate) => rate ? setValueRate(rate) : setValueRate('')
 
+	const dateHandler = (e) => { setDate(e.target.value) }
 
-	const termHandler = (e) => {
-		var termInput = e.target.value;
-
-		// termInput === ' мес' ? termInput = '1 мес' : termInput
-
-		termInput === ' мес' ? termInput = '0' : termInput
-
-		var term = termInput.match(/\d/g);
-
-		term = term.join("");	
-
-		if ( parseInt(term) > 360 ) {
-			setTerm('360')
-		} 
-
-		/// ЗДЕСЬ НЕТ МИНИМАЛЬНОГО ПОРОГА В 12 МЕС, ЕСЛИ ЭТО ПРИНИПИАЛЬНО, ТО НАДО ГДЕ-ТО ОТДЕЛЬНО ЕГО УСТАНАВЛИВАТЬ
-
-		else if ( parseInt(term) < 12) {
-			setTerm(term)
-			const timer = setTimeout(() => {
-				if (parseInt(term) < 12) {
-					setTerm('12')
-				} else {
-					setTerm(term)
-				}
-			  }, 1000);
-			  return () => clearTimeout(timer);
-		} 
-		else {
-			setTerm(term)
-		}
-
-	}
-
-	const valueTermHandler = (term) => {
-		// console.log(sum)
-		term === '0' ? setValueTerm(' мес') : setValueTerm(term + ' мес')
-
-	}
-
-
-
-	function PosEndRate(end) {
-
-		var len = end.target.value.length;
-
-		// console.log(len, end.target)
-		
-		// Mostly for Web Browsers
-		if (end.target.setSelectionRange) {
-			end.target.focus();
-			end.target.setSelectionRange(len-2, len-2);
-		} else if (end.target.createTextRange) {
-			var t = end.target.createTextRange();
-			t.collapse(true);
-			t.moveEnd('character', len-2);
-			t.moveStart('character', len-2);
-			t.select();
-		}
-	}
-
-	const rateHandler = (e) => {
-		var rateInput = e.target.value;
-		let rateC;
-		// rateInput === ' %' ? rateInput = '0' : rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g).join("").trim()
-		var len = e.target.value.length;
-		var dotInInput = rateInput.split(".").length - 1
-
-		// console.log(len, rateC, rateInput)
-
-		/// rateInput.match возвращает null, хотя должен пропускать числа недробные и дробные
-		/// дебаг выше полезен. rateC не становится дробным числом, даже если вводить с самого начала, в то время как rateInput такой, какой и должен быть
-
-		if (!rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)) rateC = rateInput.match(/^(0|[1-9]\d*)(\.\d+)?$/g)
-
-		// console.log(rateC)
-
-		if ( parseInt(rateC) > 50 ) {
-			setRate('50')
-		} else if ( parseInt(rateC) < 0) {
-			setRate('0')
-		} else {
-			setRate(rateC)
-		}
-
-	}
-
-	const valueRateHandler = (rate) => {
-
-		rate === '0' ? setValueRate(' %') : setValueRate(rate + ' %')
-		// console.log(sum)
-		// setValueRate(rate + ' %')
-
-	}
-
-	const dateHandler = (e) => {
-		const newDate = e.target.value;
-		setDate(newDate)
-	}
-
-	const kindOfPaymentHandler = (kind) => {
-		setKindOfPayment(kind.name)
-	}
+	const kindOfPaymentHandler = (kind) => setKindOfPayment(kind.name)
 
 	const [values, setValues] = useState([MIN])
-
-	const handleRange = (values) => {
-		setValues(values)
-		setSum(values)
-	}
 
   return (
 	<div className='calcblock flex flex-row bc-white-container'>
@@ -389,7 +194,11 @@ const Calculator = ({rtl}) => {
 				<div className="sum flex flex-col">
 					<p className='param-name'>Сумма кредита</p>
 					<div className="sum-container flex flex-row">
-						<div className="input-container cd6 cm4">
+						<div className="input-container cd6 cm4 relative">
+							<div className="fake-input absolute flex flex-row">
+								<div className="reset-input">{valueSum}</div>
+								<div className="after-input">&nbsp;руб</div>
+							</div>
 							<input
 								className='calc-input cd6 cm4 '
 								id='sum'
@@ -397,83 +206,69 @@ const Calculator = ({rtl}) => {
 								min="300000"
 								max="15000000"
 								value={valueSum}
-								onClick={(e) => {
-									PosEndSum(e)
-								}} 
 								onChange={(e) => {
 									sumHandler(e)
-									const timer = setTimeout(() => {
-										PosEndSum(e)
-									}, 150);
-									/// ПОЧЕМУ-ТО ЕСЛИ СТАВИТЬ МЕНЬШЕ 150, НЕ ВСЕГДА ОТРАБАТЫВАЕТ (ВОЗВРАЩАЕТСЯ В НУЖНОЕ МЕСТО - ПОСЛЕ ЧИСЛА)
-									return () => clearTimeout(timer);
 								}}
 							/>
 						</div>
 						<div className="var-container cd6 cm4 flex flex-row justify-between">
-							<a className={'text-center cd3 var' + (sum === 1000000 ? ' active' : '')} onClick={() => setSum(1000000)}>1 млн</a>
-							<a className={'text-center cd3 var' + (sum === 3000000 ? ' active' : '')} onClick={() => setSum(3000000)}>3 млн</a>
-							<a className={'text-center cd3 var' + (sum === 5000000 ? ' active' : '')} onClick={() => setSum(5000000)}>5 млн</a>
+							<a className={'text-center cd3 var' + (sum === '1 000 000' ? ' active' : '')} onClick={() => setSum('1 000 000')}>1 млн</a>
+							<a className={'text-center cd3 var' + (sum === '3 000 000' ? ' active' : '')} onClick={() => setSum('3 000 000')}>3 млн</a>
+							<a className={'text-center cd3 var' + (sum === '5 000 000' ? ' active' : '')} onClick={() => setSum('5 000 000')}>5 млн</a>
 						</div>
 					</div>
 				</div>
 				<div className="term flex flex-col">
 					<p className='param-name'>Срок кредита</p>
 					<div className="term-container flex flex-row w-full">
-						<div className="input-container cd6 cm4">
+						<div className="input-container cd6 cm4 relative">
+							<div className="fake-input absolute flex flex-row">
+								<div className="reset-input">{valueTerm}</div>
+								<div className="after-input">&nbsp;мес</div>
+							</div>
 							<input
 								className='calc-input'
 								type="text"
 								min="12"
 								max="360"
 								value={valueTerm}
-								onClick={(e) => {
-									PosEndTerm(e)
-								}} 
 								onChange={(e) => {
 									termHandler(e)
-									const timer = setTimeout(() => {
-										PosEndTerm(e)
-									}, 150);
-									return () => clearTimeout(timer);
 								}}
 							/>
 						</div>
 						<div className="var-container flex flex-row justify-between cd6 cm4">
-							<a className={'var' + (term === 60 ? ' active' : '')} onClick={() => setTerm(60)}>5 лет</a>
-							<a className={'var' + (term === 84 ? ' active' : '')} onClick={() => setTerm(84)}>7 лет</a>
-							<a className={'var' + (term === 240 ? ' active' : '')} onClick={() => setTerm(240)}>20 лет</a>
-							<a className={'var' + (term === 360 ? ' active' : '')} onClick={() => setTerm(360)}>30 лет</a>
+							<a className={'var ' + (term === '60' ? ' active' : '')} onClick={() => setTerm('60')}>5 лет</a>
+							<a className={'var ' + (term === '84' ? ' active' : '')} onClick={() => setTerm('84')}>7 лет</a>
+							<a className={'var ' + (term === '240' ? ' active' : '')} onClick={() => setTerm('240')}>20 лет</a>
+							<a className={'var ' + (term === '360' ? ' active' : '')} onClick={() => setTerm('360')}>30 лет</a>
 						</div>
 				</div>
 				</div>
 				<div className="rate flex flex-col">
 					<p className='param-name'>Годовая ставка</p>
 					<div className="rate-container flex flex-row">
-						<div className="input-container cd6 cm4">
+						<div className="input-container cd6 cm4 relative">
+							<div className="fake-input absolute flex flex-row">
+								<div className="reset-input">{valueRate}</div>
+								<div className="after-input">&nbsp;%</div>
+							</div>
 							<input
 								className='calc-input'
 								type="text"
 								// value={rate}
 								value={valueRate}
-								onClick={(e) => {
-									PosEndRate(e)
-								}} 
 								onChange={(e) => {
 									rateHandler(e)
-									const timer = setTimeout(() => {
-										PosEndRate(e)
-									}, 150);
-									return () => clearTimeout(timer);
 								}}
 							/>
 						</div>
 						<div className="var-container flex flex-row justify-between cd6 cm4">
-							<a className={'var' + (rate === 4.4 ? ' active' : '')} onClick={() => setRate(4.4)}>4.4%</a>
-							<a className={'var' + (rate === 8 ? ' active' : '')} onClick={() => setRate(8)}>8%</a>
-							<a className={'var' + (rate === 10 ? ' active' : '')} onClick={() => setRate(10)}>10%</a>
-							<a className={'var' + (rate === 12 ? ' active' : '')} onClick={() => setRate(12)}>12%</a>
-							<a className={'var' + (rate === 16 ? ' active' : '')} onClick={() => setRate(16)}>16%</a>
+							<a className={'var' + (rate === '4.4' ? ' active' : '')} onClick={() => setRate('4.4')}>4.4%</a>
+							<a className={'var' + (rate === '8' ? ' active' : '')} onClick={() => setRate('8')}>8%</a>
+							<a className={'var' + (rate === '10' ? ' active' : '')} onClick={() => setRate('10')}>10%</a>
+							<a className={'var' + (rate === '12' ? ' active' : '')} onClick={() => setRate('12')}>12%</a>
+							<a className={'var' + (rate === '16' ? ' active' : '')} onClick={() => setRate('16')}>16%</a>
 						</div>
 					</div>
 				</div>
