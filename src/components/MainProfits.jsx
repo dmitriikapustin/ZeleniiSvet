@@ -1,4 +1,5 @@
 import ScrollAnimation from './animations/ScrollAnimation'
+import Button from "./atoms/Button"
 
 export default function MainProfits(){
     return (
@@ -10,11 +11,12 @@ export default function MainProfits(){
                         <img src="/images/image1.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>
                         <p className='text-center'>Отправляйте деньги через ACH, Wire или SWIFT в США или по всему миру в несколько кликов.</p>
-                        <a className="action action--light" href="">Оставить заявку
-                            <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 9.5L6.95 8.4125L9.6125 5.75H0.5V4.25H9.6125L6.95 1.5875L8 0.5L12.5 5L8 9.5Z"s/>
-                            </svg>
-                        </a>
+                        <Button 
+                            component='Help'
+                            mode='light'
+                            text='Оставить заявку'
+                            icon='true'
+                        />
                     </div>
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.5} triggerOnce={false} className={"cd6 cm4 scroll-container"}>
@@ -22,11 +24,12 @@ export default function MainProfits(){
                         <img src="/images/image2.png" alt=""/>
                         <h2 className="title_card text-center">Получите <span>лучшие условия </span></h2>
                         <p className='text-center'>Отправляйте деньги через ACH, Wire или SWIFT в США или по всему миру в несколько кликов.</p>
-                        <a className="action action--light" href="">Оставить заявку
-                            <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 9.5L6.95 8.4125L9.6125 5.75H0.5V4.25H9.6125L6.95 1.5875L8 0.5L12.5 5L8 9.5Z"/>
-                            </svg>
-                        </a>
+                        <Button 
+                            component='Help'
+                            mode='light'
+                            text='Оставить заявку'
+                            icon='true'
+                        />
                     </div>
                 </ScrollAnimation>
                 {/* </div> */}

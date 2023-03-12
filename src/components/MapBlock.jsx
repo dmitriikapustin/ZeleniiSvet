@@ -14,7 +14,7 @@ import ScrollAnimation from './animations/ScrollAnimation'
 export default function MapBlock() {
     const defaultState = {
 		center: [55.710129, 37.654610],
-		zoom: 17,
+		zoom: 15,
 		controls: []
 	}
     return (

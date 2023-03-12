@@ -3,9 +3,11 @@ import logo from '../assets/svg/logo.svg'
 import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
 import useMediaQuery from '../components/hooks/useDebounce'
+import useScrollDirection from '../components/hooks/useScrollDirection'
 import useWindowDimensions from '../components/hooks/useWindowDimensions'
 import { useSyncExternalStore } from 'react';
 import { AllContexts } from '../context/Context'
+import Button from "./atoms/Button"
 
 import PopupLayout from '@/components/atoms/PopupLayout'
 
@@ -14,6 +16,9 @@ import VideoBackground from '@/components/atoms/VideoBackground'
 
 
 export default function Header(){
+
+    const scrollDirection = useScrollDirection();
+
     const [show, setShow] = useState(false)
 
     const [width, height] = useWindowDimensions();
@@ -30,7 +35,7 @@ export default function Header(){
 
     return(
         <>
-            <header className="header">
+            <header className={"header" + (scrollDirection === "down" ? " down" : " ")}>
                 <PromoLine></PromoLine>
                 <div className='container flex justify-between items-center py'>
                     <Link href='/'>

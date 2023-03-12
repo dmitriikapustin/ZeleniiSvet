@@ -11,6 +11,10 @@
     right: 0
     left: 0
     width: 100%
+    transition: all .2s linear
+    &.down
+        top: -130px
+    
 
     
 
@@ -56,8 +60,7 @@
             display: flex
             justify-content: space-between
             align-items: center
-            svg
-                width: 90%
+
             a
                 text-decoration: none
                 color: $DarkedMain
