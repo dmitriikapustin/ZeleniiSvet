@@ -201,7 +201,7 @@ const HeaderContent = (props) => {
             <button className='action action--light relative ov-hidden'
             onClick={() => setPopupState(!popupState)}>
                 <a className='z-100'>Оставить заявку</a>
-                <div style={{opacity: 0.69}}>
+                <div className="cover absolute ov-hidden">
                     <VideoBackground />
                 </div>
             </button>
