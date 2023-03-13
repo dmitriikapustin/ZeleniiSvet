@@ -45,7 +45,7 @@ export default function Header(){
                 </div>
                 <div className={`header-mob ${show && 'header-mob--open'} `}>
                     <div className={`header-mob__menu ${isServicesOpen && 'services-open'}` }>
-                        <HeaderContent setServicesOpen={setServicesOpen} width={width} />
+                        <HeaderContent setServicesOpen={setServicesOpen} setShow={setShow} show={show} width={width} />
                     </div>
                 </div>
             </header>
@@ -60,6 +60,9 @@ const HeaderContent = (props) => {
     const {popupState, setPopupState} = useContext(AllContexts)
 
     // console.log(popupState)
+
+
+
 
     const [isTab, toggleTab] = useState(false)
     const [isHover, toggleHover] = useState(false)
@@ -100,8 +103,8 @@ const HeaderContent = (props) => {
         <>
 
             <nav className={"header__menu flex justify-between" + (isTab === true ? " services-open" : "")}>
-                <Link href="/" className="header__menu-item">Главная</Link>
-                <Link href="/kreditniy-kalkulyator" className="header__menu-item">Кредитный калькулятор</Link>
+                <Link onClick={() => {props.setShow(false)}} href="/" className="header__menu-item">Главная</Link>
+                <Link onClick={() => {props.setShow(false)}} href="/kreditniy-kalkulyator" className="header__menu-item">Кредитный калькулятор</Link>
                 { props.width > 800 ?
                     <motion.div
                         onHoverStart={toggleHoverMenu}
@@ -187,18 +190,18 @@ const HeaderContent = (props) => {
                         >
                             <div className="sub-menu-background" />
                             <div className="sub-menu-container flex flex-col">
-                                <Link href="/uslugi/potrebitelskiy-kredit" className="sub-menu-item mbs">Потребительский кредит</Link>
-                                <Link href="/uslugi/refinansirovanie" className="sub-menu-item mbs">Рефинансирование</Link>
-                                <Link href="/uslugi/ipoteka" className="sub-menu-item mbs">Ипотека</Link>
-                                <Link href="/uslugi/kredit-pod-zalog-nedvizhimosti" className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
-                                <Link href="/uslugi/kredit-pod-zalog-avtomobilya" className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
-                                <Link href="/uslugi/kredit-dlya-yuridicheskikh-lits" className="sub-menu-item mbs">Кредит для юридических лиц</Link>
-                                <Link href="/uslugi/lizing" className="sub-menu-item">Лизинг</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/potrebitelskiy-kredit" className="sub-menu-item mbs">Потребительский кредит</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/refinansirovanie" className="sub-menu-item mbs">Рефинансирование</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/ipoteka" className="sub-menu-item mbs">Ипотека</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/kredit-pod-zalog-nedvizhimosti" className="sub-menu-item mbs">Кредит под залог недвижимости</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/kredit-pod-zalog-avtomobilya" className="sub-menu-item mbs">Кредит под залог автомобиля</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/kredit-dlya-yuridicheskikh-lits" className="sub-menu-item mbs">Кредит для юридических лиц</Link>
+                                <Link onClick={() => {props.setShow(false)}} href="/uslugi/lizing" className="sub-menu-item">Лизинг</Link>
                             </div>
                         </motion.div>
                     </motion.div>}
-                <Link href="/o-kompanii" className="header__menu-item">О компании</Link>
-                <Link href="/kontakty" className="header__menu-item">Контакты</Link>
+                <Link onClick={() => {setShow(false)}} href="/o-kompanii" className="header__menu-item">О компании</Link>
+                <Link onClick={() => {setShow(false)}} href="/kontakty" className="header__menu-item">Контакты</Link>
             </nav>
             <button className='action action--light relative ov-hidden'
             onClick={() => setPopupState(!popupState)}>

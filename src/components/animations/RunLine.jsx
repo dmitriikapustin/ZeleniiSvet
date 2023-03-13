@@ -4,7 +4,8 @@ import ScrollAnimation from '../animations/ScrollAnimation'
 
 
 
-const RunLine = ({children, className, fromX, toX}) => {
+const RunLine = ({children, className, fromX, toX, dur}) => {
+
 
 
 	const runLineVariants = {
@@ -14,7 +15,7 @@ const RunLine = ({children, className, fromX, toX}) => {
 			x: {
 				repeat: Infinity,
 				repeatType: "loop",
-				duration: 50,
+				duration: dur,
 				ease: "linear",
 			},
 			},
