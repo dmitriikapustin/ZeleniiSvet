@@ -13,7 +13,7 @@ const PartnersBlock = () => {
                     <h2 className="text_partners text-center">Наши <span>партнеры</span></h2>
                 </ScrollAnimation>
                 <ScrollAnimation delay={0.5} triggerOnce={false}>
-                    <p className='text-center'>Мы — группа брокерских компаний «Зелёный свет». Официально сотрудничаем с более чем 30 российскими банками, так как ценим честность и прозрачность в нашей работе.</p>
+                    <p className='text-center'>Гордимся тем, что официально сотрудничаем с более чем 30 российскими банками. Работая с банками-партнерами мы можем обеспечить нашим клиентам большую прозрачность и честность.</p>
                 </ScrollAnimation>
         </div>
         <div className="sliders_partners flex flex-col h-full relative">

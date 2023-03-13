@@ -6,7 +6,7 @@ import Button from "./atoms/Button"
 import VideoBackground from './atoms/VideoBackground'
 
 export default function WeWorkCard(props){
-    const {icon, title, text, isGreen, index, i} = props
+    const {icon, title, text, isGreen, index, i, href} = props
 
     const [hiddenCard, setHiddenCard] = useState(false)
 
@@ -26,8 +26,8 @@ export default function WeWorkCard(props){
             <Button 
                 component='WeWorkCard'
                 mode={`${isGreen ? 'white' : 'light'}`}
-                text='Оставить заявку'
-                icon='true'
+                text={`${isGreen ? 'Оставить заявку' : 'Подробнее'}`}
+                href={href}
             />
 
         </div>

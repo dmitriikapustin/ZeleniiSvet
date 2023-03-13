@@ -34,7 +34,7 @@ const CreditStory = (props) => {
                         </div>
                         <div className="middle"></div>
                         <div className="bottom flex flex-row w-full justify-center items-center">
-                            <div className="cd6 cm4">
+                            <div className="cd6 cm4 mb">
                                 <Button 
                                     className=''
                                     component='CreditStory'
@@ -59,7 +59,7 @@ const CreditStory = (props) => {
                         </div>
                         <div className="middle"></div>
                         <div className="bottom flex flex-row w-full justify-center items-center">
-                            <div className="cd6 cm4">
+                            <div className="cd6 cm4 mb">
                                 <Button 
                                     style={{width: 'fit-content !important'}}
                                     component='CreditStory'

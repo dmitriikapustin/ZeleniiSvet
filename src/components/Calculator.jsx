@@ -201,6 +201,7 @@ const Calculator = ({rtl}) => {
 							</div>
 							<input
 								className='calc-input cd6 cm4 '
+								autoComplete="off"
 								id='sum'
 								type="text"
 								min="300000"
@@ -228,6 +229,7 @@ const Calculator = ({rtl}) => {
 							</div>
 							<input
 								className='calc-input'
+								autoComplete="off"
 								type="text"
 								min="12"
 								max="360"
@@ -255,6 +257,7 @@ const Calculator = ({rtl}) => {
 							</div>
 							<input
 								className='calc-input'
+								autoComplete="off"
 								type="text"
 								// value={rate}
 								value={valueRate}
@@ -365,7 +368,7 @@ const Calculator = ({rtl}) => {
 				<VideoBackground />
 			</div>
 			<div className="text-cover cd10 cm4 pxm">
-				<h3 className='cd8 cm3 p-top'>Ежемесячный платёж</h3>
+				<h3 className='cd8 cm4 p-top'>Ежемесячный платёж</h3>
 				<Counter from={prevCountResult} to={result} className={'payment'} /> 
 				{/* <p className='p-top font-4-regular'>Переплата по процентам за кредит</p>
 				<Counter from={prevCountOverpayment} to={overpayment} text={'руб'} />  */}

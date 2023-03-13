@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import Calculator from '@/components/Calculator';
@@ -17,7 +17,23 @@ import Story from '@/components/Story';
 import Button from '@/components/atoms/Button'
 import Text from '@/components/Text'
 
-const kreditpodzalognedvizhimosti = () => {
+import { AllContexts } from '@/context/Context'
+
+export async function getStaticProps() {
+  const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+  const dataPhonesResp = respPhones.data;
+  console.log(dataPhonesResp)
+  return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+
+const kreditpodzalognedvizhimosti = (dataGetPhones) => {
+
+	const {setPhonesData} = useContext(AllContexts)
+  useEffect(() => {
+    setPhonesData(dataGetPhones)
+  }, [])
+
   return (
     <>
       <Head>
@@ -34,16 +50,16 @@ const kreditpodzalognedvizhimosti = () => {
         <Story
           type={5}
           reverse={true}
-          title='Заголовок'
-          subtitle='Подзаголовок'
-          text='Текст'
+          title='Вы хотите получить кредит под залог недвижимости?'
+          subtitle=''
+          text='Зелёный свет окажет полную поддержку при оформлении документов, подборе банков и получении кредита под залог недвижимости.'
           photo='/images/story-nedvish-1.png'
         />
         <Story
           type={5}
-          title='Заголовок'
-          subtitle='Подзаголовок'
-          text='Текст'
+          title=''
+          subtitle='С нашей помощью на каждом этапе Вы будете хорошо осведомлены о процессе и уверены в получении лучших условий. С Зелёным светом все пройдет легко и доступно!'
+          text='Позвоните или напишите нам, мы предоставим исчерпывающую информацию по вашему случаю и поможем найти оптимальные условия!'
           photo='/images/story-nedvish-2.png'
         >
           <Button
@@ -53,7 +69,7 @@ const kreditpodzalognedvizhimosti = () => {
           />
         </Story>
         <Text
-          type={1}
+          type={0}
           title='Оформи кредит под залог недвижимости'
           text1='Помогаем оформить имущество для использования в вашем бизнесе с последующим правом выкупа. Предложим надёжную лизинговую компанию и банк для успешной сделки.'
           text2='Бизнес это сложная и «живая» структура, а кредиты — распространённое явление. Мы знаем, как раздобыть для вас лучший вариант займа у банка.'

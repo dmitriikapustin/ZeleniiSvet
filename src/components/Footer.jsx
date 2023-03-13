@@ -13,7 +13,7 @@ export default function Footer(){
             <VideoBackground />
             <div className="container">
                 <div className="footer__top flex justify-between">
-                    <h2 className="footer__title font-5-light">Поможем лучить кредит на выгодных условиях</h2>
+                    <h2 className="footer__title font-5-light">Поможем получить кредит на выгодных условиях</h2>
                     <div className="footer__menu mbm">
                         <Link href="/">Главная</Link>
                         <Link href="/kreditniy-kalkulyator">Кредитный калькулятор</Link>

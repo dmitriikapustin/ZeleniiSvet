@@ -37,6 +37,7 @@ export async function getStaticProps() {
 }
 
 function App(dataGetPhones) {
+  
 	const {setPhonesData} = useContext(AllContexts)
   useEffect(() => {
     setPhonesData(dataGetPhones)

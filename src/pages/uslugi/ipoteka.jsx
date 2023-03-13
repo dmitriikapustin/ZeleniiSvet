@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -17,7 +17,22 @@ import Text from '@/components/Text'
 import MainProfits from '@/components/MainProfits'
 import Button from '@/components/atoms/Button'
 
-function ipoteka () {
+import { AllContexts } from '@/context/Context'
+
+export async function getStaticProps() {
+  const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+  const dataPhonesResp = respPhones.data;
+  console.log(dataPhonesResp)
+  return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+
+function ipoteka (dataGetPhones) {
+
+  const {setPhonesData} = useContext(AllContexts)
+  useEffect(() => {
+    setPhonesData(dataGetPhones)
+  }, [])
 
     return (
         <>
@@ -34,16 +49,16 @@ function ipoteka () {
             <Story 
               type={5}
               reverse={true}
-              title='Заголовок'
-              subtitle='Подзаголовок'
-              text='Текст'
+              title='Вы нуждаетесь в ипотечном кредите?'
+              subtitle=''
+              text='В компании Зелёный свет мы облегчаем получение ипотечного кредита. Наши сотрудники проводят индивидуальные консультации, разбирают сложившуюся ситуацию и находят оптимальные условия для каждого.'
               photo='/images/story-ipoteka-1.png'
             />
             <Story 
               type={5}
-              title='Заголовок'
-              subtitle='Подзаголовок'
-              text='Текст'
+              title=''
+              subtitle='Инвестирование в жилье — одно из самых ответственных финансовых решений, которые Вы можете принять. С нашей помощью Вы сможете получить средства, необходимые для приобретения дома вашей мечты.'
+              text='Пройдите с Зелёным светом все этапы получения кредита, свяжитесь с нами сегодня и мы вместе найдём лучшие условия.'
               photo='/images/story-ipoteka-2.png'
             >
               <Button 
@@ -53,7 +68,7 @@ function ipoteka () {
               />
             </Story>
             <Text
-              type={1}
+              type={0}
               title='Оформи ипотеку'
               text1='Помогаем оформить имущество для использования в вашем бизнесе с последующим правом выкупа. Предложим надёжную лизинговую компанию и банк для успешной сделки.'
               text2='Бизнес это сложная и «живая» структура, а кредиты — распространённое явление. Мы знаем, как раздобыть для вас лучший вариант займа у банка.'

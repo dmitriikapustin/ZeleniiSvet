@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,7 +11,22 @@ import MapBlock from '@/components/MapBlock';
 import CreditStory from '@/components/CreditStory';
 import MainProfits from '@/components/MainProfits'
 
-function kontakty() {
+import { AllContexts } from '@/context/Context'
+
+export async function getStaticProps() {
+  const respPhones = await axios.get(`https://api.zesvet.ru/api/form-requests?populate=*`);
+  const dataPhonesResp = respPhones.data;
+  console.log(dataPhonesResp)
+  return { props: { dataGetPhones: dataPhonesResp } }
+}
+
+
+function kontakty(dataGetPhones) {
+
+	const {setPhonesData} = useContext(AllContexts)
+  useEffect(() => {
+    setPhonesData(dataGetPhones)
+  }, [])
 
   return (
     <>

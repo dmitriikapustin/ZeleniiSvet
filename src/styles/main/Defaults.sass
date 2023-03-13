@@ -81,6 +81,7 @@ video
     gap: 10px
     transition: all 0.3s ease-out
     cursor: pointer
+    width: fit-content
 
     &:hover
         background: var(--dark-green)
@@ -160,6 +161,9 @@ section, footer
 @media (max-width: 800px)
     .videoBack
         video 
-            width: 350%
+            width: 400%
     img
         border-radius: $baseRadius / 2
+
+a > img
+    border-radius: 0 !important
