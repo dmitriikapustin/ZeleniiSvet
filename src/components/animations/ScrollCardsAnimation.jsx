@@ -42,23 +42,17 @@ const ScrollCardsAnimation = ({children, className, i}) => {
 
     // const isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
 
-
-
-
-
     const { ref, inView, entry } = useInView({
         threshold: 0.45,
         triggerOnce: true,
       });
-
-
 
   return (
     <motion.div ref={ref} className={className}>
         {children.map((child, index) => {
             return <Item 
                         i={i} 
-                        key={i}
+                        key={index}
                         index={index}
                         ref={ref}
                         inView={inView}
